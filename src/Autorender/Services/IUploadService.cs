@@ -34,6 +34,14 @@ public interface IUploadService
         UploadCreateParams parameters,
         CancellationToken cancellationToken = default
     );
+
+    /// <summary>
+    /// Fetch a file from a remote URL and store it in your AutoRender workspace.
+    /// </summary>
+    Task<Upload> CreateFromUrl(
+        UploadCreateFromUrlParams parameters,
+        CancellationToken cancellationToken = default
+    );
 }
 
 /// <summary>
@@ -55,6 +63,15 @@ public interface IUploadServiceWithRawResponse
     /// </summary>
     Task<HttpResponse<Upload>> Create(
         UploadCreateParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for <c>post /api/v1/uploads/remote</c>, but is otherwise the
+    /// same as <see cref="IUploadService.CreateFromUrl(UploadCreateFromUrlParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<Upload>> CreateFromUrl(
+        UploadCreateFromUrlParams parameters,
         CancellationToken cancellationToken = default
     );
 }

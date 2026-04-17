@@ -44,6 +44,18 @@ public sealed class UploadService : IUploadService
             .ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
+
+    /// <inheritdoc/>
+    public async Task<Upload> CreateFromUrl(
+        UploadCreateFromUrlParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.CreateFromUrl(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
 }
 
 /// <inheritdoc/>
@@ -69,6 +81,32 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
     )
     {
         HttpRequest<UploadCreateParams> request = new()
+        {
+            Method = HttpMethod.Post,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var upload = await response.Deserialize<Upload>(token).ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    upload.Validate();
+                }
+                return upload;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<Upload>> CreateFromUrl(
+        UploadCreateFromUrlParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        HttpRequest<UploadCreateFromUrlParams> request = new()
         {
             Method = HttpMethod.Post,
             Params = parameters,

@@ -14,4 +14,14 @@ public class UploadServiceTest : TestBase
         );
         upload.Validate();
     }
+
+    [Fact]
+    public async Task CreateFromUrl_Works()
+    {
+        var upload = await this.client.Uploads.CreateFromUrl(
+            new() { RemoteUrl = "remote_url" },
+            TestContext.Current.CancellationToken
+        );
+        upload.Validate();
+    }
 }
