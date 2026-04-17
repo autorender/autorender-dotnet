@@ -22,7 +22,6 @@ public class UploadCreateParamsTest : TestBase
             RandomPrefix = "random_prefix",
             Tags = "tags",
             Transform = "transform",
-            WebhookUrl = "webhook_url",
         };
 
         BinaryContent expectedFile = file;
@@ -33,7 +32,6 @@ public class UploadCreateParamsTest : TestBase
         string expectedRandomPrefix = "random_prefix";
         string expectedTags = "tags";
         string expectedTransform = "transform";
-        string expectedWebhookUrl = "webhook_url";
 
         Assert.Equal(expectedFile, parameters.File);
         Assert.Equal(expectedFileName, parameters.FileName);
@@ -43,7 +41,6 @@ public class UploadCreateParamsTest : TestBase
         Assert.Equal(expectedRandomPrefix, parameters.RandomPrefix);
         Assert.Equal(expectedTags, parameters.Tags);
         Assert.Equal(expectedTransform, parameters.Transform);
-        Assert.Equal(expectedWebhookUrl, parameters.WebhookUrl);
     }
 
     [Fact]
@@ -65,8 +62,6 @@ public class UploadCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("tags"));
         Assert.Null(parameters.Transform);
         Assert.False(parameters.RawBodyData.ContainsKey("transform"));
-        Assert.Null(parameters.WebhookUrl);
-        Assert.False(parameters.RawBodyData.ContainsKey("webhook_url"));
     }
 
     [Fact]
@@ -86,7 +81,6 @@ public class UploadCreateParamsTest : TestBase
             RandomPrefix = null,
             Tags = null,
             Transform = null,
-            WebhookUrl = null,
         };
 
         Assert.Null(parameters.CustomID);
@@ -101,8 +95,6 @@ public class UploadCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("tags"));
         Assert.Null(parameters.Transform);
         Assert.False(parameters.RawBodyData.ContainsKey("transform"));
-        Assert.Null(parameters.WebhookUrl);
-        Assert.False(parameters.RawBodyData.ContainsKey("webhook_url"));
     }
 
     [Fact]
@@ -134,7 +126,6 @@ public class UploadCreateParamsTest : TestBase
             RandomPrefix = "random_prefix",
             Tags = "tags",
             Transform = "transform",
-            WebhookUrl = "webhook_url",
         };
 
         UploadCreateParams copied = new(parameters);

@@ -8,10 +8,10 @@ public class FolderRenameParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new FolderRenameParams { FolderNo = "53855hxPoq", Name = "name" };
+        var parameters = new FolderRenameParams { FolderNo = "53855hxPoq", Name = "demo2" };
 
         string expectedFolderNo = "53855hxPoq";
-        string expectedName = "name";
+        string expectedName = "demo2";
 
         Assert.Equal(expectedFolderNo, parameters.FolderNo);
         Assert.Equal(expectedName, parameters.Name);
@@ -20,7 +20,7 @@ public class FolderRenameParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        FolderRenameParams parameters = new() { FolderNo = "53855hxPoq", Name = "name" };
+        FolderRenameParams parameters = new() { FolderNo = "53855hxPoq", Name = "demo2" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
@@ -35,7 +35,7 @@ public class FolderRenameParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new FolderRenameParams { FolderNo = "53855hxPoq", Name = "name" };
+        var parameters = new FolderRenameParams { FolderNo = "53855hxPoq", Name = "demo2" };
 
         FolderRenameParams copied = new(parameters);
 

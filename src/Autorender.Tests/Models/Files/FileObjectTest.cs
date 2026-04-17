@@ -20,7 +20,7 @@ public class FileObjectTest : TestBase
                 Dimensions = new() { Height = 0, Width = 0 },
                 Extension = "extension",
                 FileNo = "file_no",
-                Folder = "folder",
+                Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
                 Format = "format",
                 Name = "name",
                 Path = "path",
@@ -41,7 +41,7 @@ public class FileObjectTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
-            Folder = "folder",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Path = "path",
@@ -70,7 +70,7 @@ public class FileObjectTest : TestBase
                 Dimensions = new() { Height = 0, Width = 0 },
                 Extension = "extension",
                 FileNo = "file_no",
-                Folder = "folder",
+                Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
                 Format = "format",
                 Name = "name",
                 Path = "path",
@@ -105,7 +105,7 @@ public class FileObjectTest : TestBase
                 Dimensions = new() { Height = 0, Width = 0 },
                 Extension = "extension",
                 FileNo = "file_no",
-                Folder = "folder",
+                Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
                 Format = "format",
                 Name = "name",
                 Path = "path",
@@ -133,7 +133,7 @@ public class FileObjectTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
-            Folder = "folder",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Path = "path",
@@ -162,7 +162,7 @@ public class FileObjectTest : TestBase
                 Dimensions = new() { Height = 0, Width = 0 },
                 Extension = "extension",
                 FileNo = "file_no",
-                Folder = "folder",
+                Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
                 Format = "format",
                 Name = "name",
                 Path = "path",
@@ -239,7 +239,7 @@ public class FileObjectTest : TestBase
                 Dimensions = new() { Height = 0, Width = 0 },
                 Extension = "extension",
                 FileNo = "file_no",
-                Folder = "folder",
+                Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
                 Format = "format",
                 Name = "name",
                 Path = "path",
@@ -271,7 +271,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
-            Folder = "folder",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Path = "path",
@@ -288,7 +288,7 @@ public class DataTest : TestBase
         Dimensions expectedDimensions = new() { Height = 0, Width = 0 };
         string expectedExtension = "extension";
         string expectedFileNo = "file_no";
-        string expectedFolder = "folder";
+        JsonElement expectedFolder = JsonSerializer.Deserialize<JsonElement>("{}");
         string expectedFormat = "format";
         string expectedName = "name";
         string expectedPath = "path";
@@ -304,7 +304,8 @@ public class DataTest : TestBase
         Assert.Equal(expectedDimensions, model.Dimensions);
         Assert.Equal(expectedExtension, model.Extension);
         Assert.Equal(expectedFileNo, model.FileNo);
-        Assert.Equal(expectedFolder, model.Folder);
+        Assert.NotNull(model.Folder);
+        Assert.True(JsonElement.DeepEquals(expectedFolder, model.Folder.Value));
         Assert.Equal(expectedFormat, model.Format);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedPath, model.Path);
@@ -326,7 +327,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
-            Folder = "folder",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Path = "path",
@@ -354,7 +355,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
-            Folder = "folder",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Path = "path",
@@ -375,7 +376,7 @@ public class DataTest : TestBase
         Dimensions expectedDimensions = new() { Height = 0, Width = 0 };
         string expectedExtension = "extension";
         string expectedFileNo = "file_no";
-        string expectedFolder = "folder";
+        JsonElement expectedFolder = JsonSerializer.Deserialize<JsonElement>("{}");
         string expectedFormat = "format";
         string expectedName = "name";
         string expectedPath = "path";
@@ -391,7 +392,8 @@ public class DataTest : TestBase
         Assert.Equal(expectedDimensions, deserialized.Dimensions);
         Assert.Equal(expectedExtension, deserialized.Extension);
         Assert.Equal(expectedFileNo, deserialized.FileNo);
-        Assert.Equal(expectedFolder, deserialized.Folder);
+        Assert.NotNull(deserialized.Folder);
+        Assert.True(JsonElement.DeepEquals(expectedFolder, deserialized.Folder.Value));
         Assert.Equal(expectedFormat, deserialized.Format);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedPath, deserialized.Path);
@@ -413,7 +415,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
-            Folder = "folder",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Path = "path",
@@ -430,7 +432,7 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Data { Folder = "folder", Path = "path" };
+        var model = new Data { Path = "path" };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
@@ -444,6 +446,8 @@ public class DataTest : TestBase
         Assert.False(model.RawData.ContainsKey("extension"));
         Assert.Null(model.FileNo);
         Assert.False(model.RawData.ContainsKey("file_no"));
+        Assert.Null(model.Folder);
+        Assert.False(model.RawData.ContainsKey("folder"));
         Assert.Null(model.Format);
         Assert.False(model.RawData.ContainsKey("format"));
         Assert.Null(model.Name);
@@ -463,7 +467,7 @@ public class DataTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Data { Folder = "folder", Path = "path" };
+        var model = new Data { Path = "path" };
 
         model.Validate();
     }
@@ -473,7 +477,6 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            Folder = "folder",
             Path = "path",
 
             // Null should be interpreted as omitted for these properties
@@ -483,6 +486,7 @@ public class DataTest : TestBase
             Dimensions = null,
             Extension = null,
             FileNo = null,
+            Folder = null,
             Format = null,
             Name = null,
             Size = null,
@@ -504,6 +508,8 @@ public class DataTest : TestBase
         Assert.False(model.RawData.ContainsKey("extension"));
         Assert.Null(model.FileNo);
         Assert.False(model.RawData.ContainsKey("file_no"));
+        Assert.Null(model.Folder);
+        Assert.False(model.RawData.ContainsKey("folder"));
         Assert.Null(model.Format);
         Assert.False(model.RawData.ContainsKey("format"));
         Assert.Null(model.Name);
@@ -525,7 +531,6 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            Folder = "folder",
             Path = "path",
 
             // Null should be interpreted as omitted for these properties
@@ -535,6 +540,7 @@ public class DataTest : TestBase
             Dimensions = null,
             Extension = null,
             FileNo = null,
+            Folder = null,
             Format = null,
             Name = null,
             Size = null,
@@ -558,6 +564,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Size = 0,
@@ -567,8 +574,6 @@ public class DataTest : TestBase
             Workspace = new() { Name = "name", WorkspaceNo = "workspace_no" },
         };
 
-        Assert.Null(model.Folder);
-        Assert.False(model.RawData.ContainsKey("folder"));
         Assert.Null(model.Path);
         Assert.False(model.RawData.ContainsKey("path"));
     }
@@ -584,6 +589,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Size = 0,
@@ -607,6 +613,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Size = 0,
@@ -615,12 +622,9 @@ public class DataTest : TestBase
             Url = "url",
             Workspace = new() { Name = "name", WorkspaceNo = "workspace_no" },
 
-            Folder = null,
             Path = null,
         };
 
-        Assert.Null(model.Folder);
-        Assert.True(model.RawData.ContainsKey("folder"));
         Assert.Null(model.Path);
         Assert.True(model.RawData.ContainsKey("path"));
     }
@@ -636,6 +640,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Size = 0,
@@ -644,7 +649,6 @@ public class DataTest : TestBase
             Url = "url",
             Workspace = new() { Name = "name", WorkspaceNo = "workspace_no" },
 
-            Folder = null,
             Path = null,
         };
 
@@ -662,7 +666,7 @@ public class DataTest : TestBase
             Dimensions = new() { Height = 0, Width = 0 },
             Extension = "extension",
             FileNo = "file_no",
-            Folder = "folder",
+            Folder = JsonSerializer.Deserialize<JsonElement>("{}"),
             Format = "format",
             Name = "name",
             Path = "path",

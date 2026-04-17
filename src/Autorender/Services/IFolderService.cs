@@ -7,11 +7,9 @@ using Autorender.Models.Folders;
 namespace Autorender.Services;
 
 /// <summary>
-/// Manage folder structure
-///
-/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
-/// breaking changes in non-major versions. We may add new methods in the future that
-/// cause existing derived classes to break.</para>
+/// NOTE: Do not inherit from this type outside the SDK unless you're okay with breaking
+/// changes in non-major versions. We may add new methods in the future that cause
+/// existing derived classes to break.
 /// </summary>
 public interface IFolderService
 {
@@ -29,8 +27,7 @@ public interface IFolderService
     IFolderService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Create a new folder. Optionally nest it under an existing folder by providing
-    /// parent_folder_no.
+    /// Create a folder under an optional parent.
     /// </summary>
     Task<FolderCreateResponse> Create(
         FolderCreateParams parameters,
@@ -38,7 +35,8 @@ public interface IFolderService
     );
 
     /// <summary>
-    /// List folders in the workspace. Omit parent_folder_no to list root-level folders.
+    /// List folders under an optional parent. Omit `parent_folder_no` to list
+    /// root-level folders.
     /// </summary>
     Task<FolderListResponse> List(
         FolderListParams? parameters = null,
@@ -46,7 +44,7 @@ public interface IFolderService
     );
 
     /// <summary>
-    /// Delete a folder by its folder number.
+    /// Delete a folder by folder number. No request body required.
     /// </summary>
     Task<FolderDeleteResponse> Delete(
         FolderDeleteParams parameters,
@@ -61,7 +59,7 @@ public interface IFolderService
     );
 
     /// <summary>
-    /// Rename a folder by its folder number.
+    /// Rename a folder by `folder_no`.
     /// </summary>
     Task<Folder> Rename(
         FolderRenameParams parameters,

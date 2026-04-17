@@ -10,7 +10,7 @@ using Autorender.Core;
 namespace Autorender.Models.Folders;
 
 /// <summary>
-/// Rename a folder by its folder number.
+/// Rename a folder by `folder_no`.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -26,9 +26,6 @@ public record class FolderRenameParams : ParamsBase
 
     public string? FolderNo { get; init; }
 
-    /// <summary>
-    /// New folder name
-    /// </summary>
     public required string Name
     {
         get

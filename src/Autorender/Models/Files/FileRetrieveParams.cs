@@ -9,7 +9,7 @@ using Autorender.Core;
 namespace Autorender.Models.Files;
 
 /// <summary>
-/// Retrieve detailed information about a specific file by its file number.
+/// Retrieve detailed information about a file by numeric file id (`file_no`).
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

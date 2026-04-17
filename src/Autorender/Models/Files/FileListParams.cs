@@ -11,8 +11,8 @@ using Autorender.Exceptions;
 namespace Autorender.Models.Files;
 
 /// <summary>
-/// Paginated list of files in the workspace. Filter by folder, path prefix, name,
-/// or tags. Sort by various fields.
+/// Paginated list of files in the workspace. Filter by folder, sort by field and
+/// order, and page through results.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -21,7 +21,7 @@ namespace Autorender.Models.Files;
 public record class FileListParams : ParamsBase
 {
     /// <summary>
-    /// Filter to files in this folder
+    /// Restrict results to files in this folder (folder number)
     /// </summary>
     public string? FolderNo
     {
@@ -63,7 +63,7 @@ public record class FileListParams : ParamsBase
     }
 
     /// <summary>
-    /// Partial filename match (case-insensitive)
+    /// Filter by filename (partial match, if supported)
     /// </summary>
     public string? Name
     {
@@ -105,7 +105,7 @@ public record class FileListParams : ParamsBase
     }
 
     /// <summary>
-    /// Filter by path prefix (e.g., products/sku123/)
+    /// Filter by path prefix (if supported)
     /// </summary>
     public string? Path
     {
@@ -168,7 +168,7 @@ public record class FileListParams : ParamsBase
     }
 
     /// <summary>
-    /// Comma-separated tags to filter by
+    /// Comma-separated tags (if supported)
     /// </summary>
     public string? Tags
     {

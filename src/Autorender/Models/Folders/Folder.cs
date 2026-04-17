@@ -47,6 +47,24 @@ public sealed record class Folder : JsonModel
         }
     }
 
+    public string? CreatedBy
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("created_by");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("created_by", value);
+        }
+    }
+
     public string? FolderNo
     {
         get
@@ -147,6 +165,24 @@ public sealed record class Folder : JsonModel
         }
     }
 
+    public string? Source
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("source");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("source", value);
+        }
+    }
+
     public DateTimeOffset? UpdatedAt
     {
         get
@@ -224,12 +260,14 @@ public sealed record class Folder : JsonModel
     {
         _ = this.ID;
         _ = this.CreatedAt;
+        _ = this.CreatedBy;
         _ = this.FolderNo;
         _ = this.IsActive;
         _ = this.IsDelete;
         _ = this.Name;
         _ = this.ParentFolder;
         _ = this.Path;
+        _ = this.Source;
         _ = this.UpdatedAt;
         this.Workspace?.Validate();
         _ = this.WorkspaceID;

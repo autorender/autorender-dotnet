@@ -8,6 +8,9 @@ using Autorender.Core;
 
 namespace Autorender.Models.Files;
 
+/// <summary>
+/// Updated file record after rename
+/// </summary>
 [JsonConverter(typeof(JsonModelConverter<FileRenameResponse, FileRenameResponseFromRaw>))]
 public sealed record class FileRenameResponse : JsonModel
 {
@@ -44,6 +47,24 @@ public sealed record class FileRenameResponse : JsonModel
             }
 
             this._rawData.Set("created_at", value);
+        }
+    }
+
+    public string? CreatedBy
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("created_by");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("created_by", value);
         }
     }
 
@@ -139,6 +160,60 @@ public sealed record class FileRenameResponse : JsonModel
         init { this._rawData.Set("height", value); }
     }
 
+    public bool? IsActive
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_active");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("is_active", value);
+        }
+    }
+
+    public bool? IsDefault
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_default");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("is_default", value);
+        }
+    }
+
+    public bool? IsDelete
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_delete");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("is_delete", value);
+        }
+    }
+
     public IReadOnlyDictionary<string, JsonElement>? MetaData
     {
         get
@@ -180,6 +255,26 @@ public sealed record class FileRenameResponse : JsonModel
         }
     }
 
+    public string? Orientation
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("orientation");
+        }
+        init { this._rawData.Set("orientation", value); }
+    }
+
+    public string? OriginalUrl
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("original_url");
+        }
+        init { this._rawData.Set("original_url", value); }
+    }
+
     public string? Path
     {
         get
@@ -188,6 +283,34 @@ public sealed record class FileRenameResponse : JsonModel
             return this._rawData.GetNullableClass<string>("path");
         }
         init { this._rawData.Set("path", value); }
+    }
+
+    public string? Source
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("source");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("source", value);
+        }
+    }
+
+    public string? TransformString
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("transform_string");
+        }
+        init { this._rawData.Set("transform_string", value); }
     }
 
     public DateTimeOffset? UpdatedAt
@@ -236,6 +359,24 @@ public sealed record class FileRenameResponse : JsonModel
         init { this._rawData.Set("width", value); }
     }
 
+    public string? WorkspaceID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("workspace_id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("workspace_id", value);
+        }
+    }
+
     public string? WorkspaceNo
     {
         get
@@ -259,18 +400,27 @@ public sealed record class FileRenameResponse : JsonModel
     {
         _ = this.ID;
         _ = this.CreatedAt;
+        _ = this.CreatedBy;
         _ = this.Extension;
         _ = this.FileNo;
         _ = this.FileSize;
         _ = this.FolderID;
         _ = this.Format;
         _ = this.Height;
+        _ = this.IsActive;
+        _ = this.IsDefault;
+        _ = this.IsDelete;
         _ = this.MetaData;
         _ = this.Name;
+        _ = this.Orientation;
+        _ = this.OriginalUrl;
         _ = this.Path;
+        _ = this.Source;
+        _ = this.TransformString;
         _ = this.UpdatedAt;
         _ = this.Url;
         _ = this.Width;
+        _ = this.WorkspaceID;
         _ = this.WorkspaceNo;
     }
 

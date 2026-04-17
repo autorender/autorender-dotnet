@@ -10,8 +10,8 @@ using Autorender.Core;
 namespace Autorender.Models.Files;
 
 /// <summary>
-/// Rename a file. The server preserves the file extension (e.g., supplying "product"
-/// renames to "product.jpg").
+/// Rename a file. The API may preserve or normalize the file extension (e.g. `demo`
+/// → `demo.png`).
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -28,7 +28,7 @@ public record class FileRenameParams : ParamsBase
     public string? FileNo { get; init; }
 
     /// <summary>
-    /// New base name; extension is preserved by the server
+    /// New base name; extension may be applied by the server
     /// </summary>
     public required string Name
     {

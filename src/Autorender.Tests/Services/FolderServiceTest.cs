@@ -8,7 +8,7 @@ public class FolderServiceTest : TestBase
     public async Task Create_Works()
     {
         var folder = await this.client.Folders.Create(
-            new() { Name = "name" },
+            new() { Name = "demo2" },
             TestContext.Current.CancellationToken
         );
         folder.Validate();
@@ -37,7 +37,7 @@ public class FolderServiceTest : TestBase
     {
         var folder = await this.client.Folders.Rename(
             "53855hxPoq",
-            new() { Name = "name" },
+            new() { Name = "demo2" },
             TestContext.Current.CancellationToken
         );
         folder.Validate();

@@ -9,7 +9,7 @@ using Autorender.Core;
 namespace Autorender.Models.Files;
 
 /// <summary>
-/// Permanently delete a file from the workspace.
+/// Permanently delete a file. No request body is required.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

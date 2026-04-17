@@ -20,7 +20,7 @@ public class FileListItemTest : TestBase
             Height = 0,
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             Width = 0,
             WorkspaceNo = "workspace_no",
@@ -34,7 +34,7 @@ public class FileListItemTest : TestBase
         long expectedHeight = 0;
         string expectedName = "name";
         string expectedPath = "path";
-        string expectedThumbnail = "thumbnail";
+        string expectedThumbanil = "thumbanil";
         string expectedUrl = "https://example.com";
         long expectedWidth = 0;
         string expectedWorkspaceNo = "workspace_no";
@@ -47,7 +47,7 @@ public class FileListItemTest : TestBase
         Assert.Equal(expectedHeight, model.Height);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedPath, model.Path);
-        Assert.Equal(expectedThumbnail, model.Thumbnail);
+        Assert.Equal(expectedThumbanil, model.Thumbanil);
         Assert.Equal(expectedUrl, model.Url);
         Assert.Equal(expectedWidth, model.Width);
         Assert.Equal(expectedWorkspaceNo, model.WorkspaceNo);
@@ -66,7 +66,7 @@ public class FileListItemTest : TestBase
             Height = 0,
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             Width = 0,
             WorkspaceNo = "workspace_no",
@@ -94,7 +94,7 @@ public class FileListItemTest : TestBase
             Height = 0,
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             Width = 0,
             WorkspaceNo = "workspace_no",
@@ -115,7 +115,7 @@ public class FileListItemTest : TestBase
         long expectedHeight = 0;
         string expectedName = "name";
         string expectedPath = "path";
-        string expectedThumbnail = "thumbnail";
+        string expectedThumbanil = "thumbanil";
         string expectedUrl = "https://example.com";
         long expectedWidth = 0;
         string expectedWorkspaceNo = "workspace_no";
@@ -128,7 +128,7 @@ public class FileListItemTest : TestBase
         Assert.Equal(expectedHeight, deserialized.Height);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedPath, deserialized.Path);
-        Assert.Equal(expectedThumbnail, deserialized.Thumbnail);
+        Assert.Equal(expectedThumbanil, deserialized.Thumbanil);
         Assert.Equal(expectedUrl, deserialized.Url);
         Assert.Equal(expectedWidth, deserialized.Width);
         Assert.Equal(expectedWorkspaceNo, deserialized.WorkspaceNo);
@@ -147,7 +147,7 @@ public class FileListItemTest : TestBase
             Height = 0,
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             Width = 0,
             WorkspaceNo = "workspace_no",
@@ -175,8 +175,8 @@ public class FileListItemTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Path);
         Assert.False(model.RawData.ContainsKey("path"));
-        Assert.Null(model.Thumbnail);
-        Assert.False(model.RawData.ContainsKey("thumbnail"));
+        Assert.Null(model.Thumbanil);
+        Assert.False(model.RawData.ContainsKey("thumbanil"));
         Assert.Null(model.Url);
         Assert.False(model.RawData.ContainsKey("url"));
         Assert.Null(model.WorkspaceNo);
@@ -207,7 +207,7 @@ public class FileListItemTest : TestBase
             Format = null,
             Name = null,
             Path = null,
-            Thumbnail = null,
+            Thumbanil = null,
             Url = null,
             WorkspaceNo = null,
         };
@@ -226,8 +226,8 @@ public class FileListItemTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Path);
         Assert.False(model.RawData.ContainsKey("path"));
-        Assert.Null(model.Thumbnail);
-        Assert.False(model.RawData.ContainsKey("thumbnail"));
+        Assert.Null(model.Thumbanil);
+        Assert.False(model.RawData.ContainsKey("thumbanil"));
         Assert.Null(model.Url);
         Assert.False(model.RawData.ContainsKey("url"));
         Assert.Null(model.WorkspaceNo);
@@ -250,7 +250,7 @@ public class FileListItemTest : TestBase
             Format = null,
             Name = null,
             Path = null,
-            Thumbnail = null,
+            Thumbanil = null,
             Url = null,
             WorkspaceNo = null,
         };
@@ -270,7 +270,7 @@ public class FileListItemTest : TestBase
             Format = "format",
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             WorkspaceNo = "workspace_no",
         };
@@ -293,7 +293,7 @@ public class FileListItemTest : TestBase
             Format = "format",
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             WorkspaceNo = "workspace_no",
         };
@@ -313,7 +313,7 @@ public class FileListItemTest : TestBase
             Format = "format",
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             WorkspaceNo = "workspace_no",
 
@@ -339,7 +339,7 @@ public class FileListItemTest : TestBase
             Format = "format",
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             WorkspaceNo = "workspace_no",
 
@@ -363,7 +363,7 @@ public class FileListItemTest : TestBase
             Height = 0,
             Name = "name",
             Path = "path",
-            Thumbnail = "thumbnail",
+            Thumbanil = "thumbanil",
             Url = "https://example.com",
             Width = 0,
             WorkspaceNo = "workspace_no",

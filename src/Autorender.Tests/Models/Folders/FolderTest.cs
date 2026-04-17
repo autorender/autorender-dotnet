@@ -14,12 +14,14 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             ParentFolder = "parent_folder",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -28,12 +30,14 @@ public class FolderTest : TestBase
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedCreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedFolderNo = "folder_no";
         bool expectedIsActive = true;
         bool expectedIsDelete = true;
         string expectedName = "name";
         string expectedParentFolder = "parent_folder";
         string expectedPath = "path";
+        string expectedSource = "source";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         Workspace expectedWorkspace = new() { WorkspaceNo = "workspace_no" };
         string expectedWorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -41,12 +45,14 @@ public class FolderTest : TestBase
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
+        Assert.Equal(expectedCreatedBy, model.CreatedBy);
         Assert.Equal(expectedFolderNo, model.FolderNo);
         Assert.Equal(expectedIsActive, model.IsActive);
         Assert.Equal(expectedIsDelete, model.IsDelete);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedParentFolder, model.ParentFolder);
         Assert.Equal(expectedPath, model.Path);
+        Assert.Equal(expectedSource, model.Source);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
         Assert.Equal(expectedWorkspace, model.Workspace);
         Assert.Equal(expectedWorkspaceID, model.WorkspaceID);
@@ -60,12 +66,14 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             ParentFolder = "parent_folder",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -85,12 +93,14 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             ParentFolder = "parent_folder",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -103,12 +113,14 @@ public class FolderTest : TestBase
 
         string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedCreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
         string expectedFolderNo = "folder_no";
         bool expectedIsActive = true;
         bool expectedIsDelete = true;
         string expectedName = "name";
         string expectedParentFolder = "parent_folder";
         string expectedPath = "path";
+        string expectedSource = "source";
         DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         Workspace expectedWorkspace = new() { WorkspaceNo = "workspace_no" };
         string expectedWorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
@@ -116,12 +128,14 @@ public class FolderTest : TestBase
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
+        Assert.Equal(expectedCreatedBy, deserialized.CreatedBy);
         Assert.Equal(expectedFolderNo, deserialized.FolderNo);
         Assert.Equal(expectedIsActive, deserialized.IsActive);
         Assert.Equal(expectedIsDelete, deserialized.IsDelete);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedParentFolder, deserialized.ParentFolder);
         Assert.Equal(expectedPath, deserialized.Path);
+        Assert.Equal(expectedSource, deserialized.Source);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
         Assert.Equal(expectedWorkspace, deserialized.Workspace);
         Assert.Equal(expectedWorkspaceID, deserialized.WorkspaceID);
@@ -135,12 +149,14 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             ParentFolder = "parent_folder",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -159,6 +175,8 @@ public class FolderTest : TestBase
         Assert.False(model.RawData.ContainsKey("id"));
         Assert.Null(model.CreatedAt);
         Assert.False(model.RawData.ContainsKey("created_at"));
+        Assert.Null(model.CreatedBy);
+        Assert.False(model.RawData.ContainsKey("created_by"));
         Assert.Null(model.FolderNo);
         Assert.False(model.RawData.ContainsKey("folder_no"));
         Assert.Null(model.IsActive);
@@ -169,6 +187,8 @@ public class FolderTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Path);
         Assert.False(model.RawData.ContainsKey("path"));
+        Assert.Null(model.Source);
+        Assert.False(model.RawData.ContainsKey("source"));
         Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
         Assert.Null(model.Workspace);
@@ -197,11 +217,13 @@ public class FolderTest : TestBase
             // Null should be interpreted as omitted for these properties
             ID = null,
             CreatedAt = null,
+            CreatedBy = null,
             FolderNo = null,
             IsActive = null,
             IsDelete = null,
             Name = null,
             Path = null,
+            Source = null,
             UpdatedAt = null,
             Workspace = null,
             WorkspaceID = null,
@@ -212,6 +234,8 @@ public class FolderTest : TestBase
         Assert.False(model.RawData.ContainsKey("id"));
         Assert.Null(model.CreatedAt);
         Assert.False(model.RawData.ContainsKey("created_at"));
+        Assert.Null(model.CreatedBy);
+        Assert.False(model.RawData.ContainsKey("created_by"));
         Assert.Null(model.FolderNo);
         Assert.False(model.RawData.ContainsKey("folder_no"));
         Assert.Null(model.IsActive);
@@ -222,6 +246,8 @@ public class FolderTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Path);
         Assert.False(model.RawData.ContainsKey("path"));
+        Assert.Null(model.Source);
+        Assert.False(model.RawData.ContainsKey("source"));
         Assert.Null(model.UpdatedAt);
         Assert.False(model.RawData.ContainsKey("updated_at"));
         Assert.Null(model.Workspace);
@@ -242,11 +268,13 @@ public class FolderTest : TestBase
             // Null should be interpreted as omitted for these properties
             ID = null,
             CreatedAt = null,
+            CreatedBy = null,
             FolderNo = null,
             IsActive = null,
             IsDelete = null,
             Name = null,
             Path = null,
+            Source = null,
             UpdatedAt = null,
             Workspace = null,
             WorkspaceID = null,
@@ -263,11 +291,13 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -285,11 +315,13 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -306,11 +338,13 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -330,11 +364,13 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -353,12 +389,14 @@ public class FolderTest : TestBase
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CreatedBy = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             FolderNo = "folder_no",
             IsActive = true,
             IsDelete = true,
             Name = "name",
             ParentFolder = "parent_folder",
             Path = "path",
+            Source = "source",
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             Workspace = new() { WorkspaceNo = "workspace_no" },
             WorkspaceID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

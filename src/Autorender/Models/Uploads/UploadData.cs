@@ -53,7 +53,7 @@ public sealed record class UploadData : JsonModel
     }
 
     /// <summary>
-    /// File size in bytes
+    /// File size in bytes (after processing)
     /// </summary>
     public long? FileSize
     {
@@ -74,7 +74,7 @@ public sealed record class UploadData : JsonModel
     }
 
     /// <summary>
-    /// File format (e.g., jpeg, png, mp4)
+    /// File format/extension (e.g., jpg, png, webp)
     /// </summary>
     public string? Format
     {
@@ -95,7 +95,7 @@ public sealed record class UploadData : JsonModel
     }
 
     /// <summary>
-    /// Image height in pixels
+    /// Image height in pixels (null for non-image files)
     /// </summary>
     public long? Height
     {
@@ -108,7 +108,7 @@ public sealed record class UploadData : JsonModel
     }
 
     /// <summary>
-    /// Final filename
+    /// Final filename (may include random suffix if requested)
     /// </summary>
     public string? Name
     {
@@ -150,7 +150,7 @@ public sealed record class UploadData : JsonModel
     }
 
     /// <summary>
-    /// CDN URL to access the file
+    /// Full CDN URL to access the uploaded file
     /// </summary>
     public string? Url
     {
@@ -171,7 +171,7 @@ public sealed record class UploadData : JsonModel
     }
 
     /// <summary>
-    /// Image width in pixels
+    /// Image width in pixels (null for non-image files)
     /// </summary>
     public long? Width
     {

@@ -72,7 +72,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Folder path where the file will be stored (e.g., products/sku123)
+    /// Folder path where the file will be stored (e.g., uploads/my-folder)
     /// </summary>
     public string? Folder
     {
@@ -93,7 +93,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// JSON string for custom metadata (e.g., {"productId": "123"})
+    /// JSON string for custom metadata (e.g., {"key": "value"})
     /// </summary>
     public string? Metadata
     {
@@ -114,7 +114,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Set to "true" to add a random suffix to the filename
+    /// Set to "true" to add a random suffix to filename
     /// </summary>
     public string? RandomPrefix
     {
@@ -135,7 +135,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Comma-separated tags (e.g., product,thumbnail)
+    /// Comma-separated tags (e.g., tag1,tag2,tag3)
     /// </summary>
     public string? Tags
     {
@@ -173,27 +173,6 @@ public record class UploadCreateParams : ParamsBase
             }
 
             this._rawBodyData.Set("transform", value);
-        }
-    }
-
-    /// <summary>
-    /// URL to receive a webhook notification when the upload completes
-    /// </summary>
-    public string? WebhookUrl
-    {
-        get
-        {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("webhook_url");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("webhook_url", value);
         }
     }
 

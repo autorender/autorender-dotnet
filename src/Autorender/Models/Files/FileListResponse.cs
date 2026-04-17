@@ -127,6 +127,9 @@ public sealed record class Meta : JsonModel
         init { this._rawData.Set("page", value); }
     }
 
+    /// <summary>
+    /// Total matching files
+    /// </summary>
     public required long Total
     {
         get

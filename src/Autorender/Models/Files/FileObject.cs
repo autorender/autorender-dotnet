@@ -200,14 +200,22 @@ public sealed record class Data : JsonModel
         }
     }
 
-    public string? Folder
+    public JsonElement? Folder
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("folder");
+            return this._rawData.GetNullableStruct<JsonElement>("folder");
         }
-        init { this._rawData.Set("folder", value); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("folder", value);
+        }
     }
 
     public string? Format
@@ -256,6 +264,9 @@ public sealed record class Data : JsonModel
         init { this._rawData.Set("path", value); }
     }
 
+    /// <summary>
+    /// File size in bytes
+    /// </summary>
     public long? Size
     {
         get

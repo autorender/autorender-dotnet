@@ -9,7 +9,7 @@ using Autorender.Core;
 namespace Autorender.Models.Folders;
 
 /// <summary>
-/// List folders in the workspace. Omit parent_folder_no to list root-level folders.
+/// List folders under an optional parent. Omit `parent_folder_no` to list root-level folders.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -18,7 +18,7 @@ namespace Autorender.Models.Folders;
 public record class FolderListParams : ParamsBase
 {
     /// <summary>
-    /// Return only direct children of this folder
+    /// Only return direct children of this folder (folder number)
     /// </summary>
     public string? ParentFolderNo
     {

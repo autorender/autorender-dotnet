@@ -9,7 +9,7 @@ using Autorender.Core;
 namespace Autorender.Models.Folders;
 
 /// <summary>
-/// Delete a folder by its folder number.
+/// Delete a folder by folder number. No request body required.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

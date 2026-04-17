@@ -7,11 +7,9 @@ using Autorender.Models.Files;
 namespace Autorender.Services;
 
 /// <summary>
-/// Manage files in your workspace
-///
-/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
-/// breaking changes in non-major versions. We may add new methods in the future that
-/// cause existing derived classes to break.</para>
+/// NOTE: Do not inherit from this type outside the SDK unless you're okay with breaking
+/// changes in non-major versions. We may add new methods in the future that cause
+/// existing derived classes to break.
 /// </summary>
 public interface IFileService
 {
@@ -29,7 +27,7 @@ public interface IFileService
     IFileService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Retrieve detailed information about a specific file by its file number.
+    /// Retrieve detailed information about a file by numeric file id (`file_no`).
     /// </summary>
     Task<FileObject> Retrieve(
         FileRetrieveParams parameters,
@@ -44,24 +42,8 @@ public interface IFileService
     );
 
     /// <summary>
-    /// Update a file's tags and/or metadata. Tags are merged — add_tags appends,
-    /// remove_tags removes. Metadata is merged with existing values.
-    /// </summary>
-    Task<FileUpdateResponse> Update(
-        FileUpdateParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(FileUpdateParams, CancellationToken)"/>
-    Task<FileUpdateResponse> Update(
-        string fileNo,
-        FileUpdateParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Paginated list of files in the workspace. Filter by folder, path prefix, name,
-    /// or tags. Sort by various fields.
+    /// Paginated list of files in the workspace. Filter by folder, sort by field and
+    /// order, and page through results.
     /// </summary>
     Task<FileListResponse> List(
         FileListParams? parameters = null,
@@ -69,7 +51,7 @@ public interface IFileService
     );
 
     /// <summary>
-    /// Permanently delete a file from the workspace.
+    /// Permanently delete a file. No request body is required.
     /// </summary>
     Task<FileDeleteResponse> Delete(
         FileDeleteParams parameters,
@@ -84,8 +66,8 @@ public interface IFileService
     );
 
     /// <summary>
-    /// Rename a file. The server preserves the file extension (e.g., supplying
-    /// "product" renames to "product.jpg").
+    /// Rename a file. The API may preserve or normalize the file extension (e.g. `demo`
+    /// → `demo.png`).
     /// </summary>
     Task<FileRenameResponse> Rename(
         FileRenameParams parameters,
@@ -126,22 +108,6 @@ public interface IFileServiceWithRawResponse
     Task<HttpResponse<FileObject>> Retrieve(
         string fileNo,
         FileRetrieveParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Returns a raw HTTP response for <c>patch /api/v1/files/{fileNo}</c>, but is otherwise the
-    /// same as <see cref="IFileService.Update(FileUpdateParams, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<FileUpdateResponse>> Update(
-        FileUpdateParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(FileUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<FileUpdateResponse>> Update(
-        string fileNo,
-        FileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

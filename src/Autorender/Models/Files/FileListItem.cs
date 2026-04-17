@@ -8,6 +8,9 @@ using Autorender.Core;
 
 namespace Autorender.Models.Files;
 
+/// <summary>
+/// File summary row in list responses
+/// </summary>
 [JsonConverter(typeof(JsonModelConverter<FileListItem, FileListItemFromRaw>))]
 public sealed record class FileListItem : JsonModel
 {
@@ -29,6 +32,9 @@ public sealed record class FileListItem : JsonModel
         }
     }
 
+    /// <summary>
+    /// Asset category, e.g. image
+    /// </summary>
     public string? Extension
     {
         get
@@ -129,6 +135,9 @@ public sealed record class FileListItem : JsonModel
         }
     }
 
+    /// <summary>
+    /// Relative path / display path
+    /// </summary>
     public string? Path
     {
         get
@@ -148,14 +157,14 @@ public sealed record class FileListItem : JsonModel
     }
 
     /// <summary>
-    /// Thumbnail CDN URL
+    /// Thumbnail CDN URL (field name as returned by the API)
     /// </summary>
-    public string? Thumbnail
+    public string? Thumbanil
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("thumbnail");
+            return this._rawData.GetNullableClass<string>("thumbanil");
         }
         init
         {
@@ -164,7 +173,7 @@ public sealed record class FileListItem : JsonModel
                 return;
             }
 
-            this._rawData.Set("thumbnail", value);
+            this._rawData.Set("thumbanil", value);
         }
     }
 
@@ -225,7 +234,7 @@ public sealed record class FileListItem : JsonModel
         _ = this.Height;
         _ = this.Name;
         _ = this.Path;
-        _ = this.Thumbnail;
+        _ = this.Thumbanil;
         _ = this.Url;
         _ = this.Width;
         _ = this.WorkspaceNo;

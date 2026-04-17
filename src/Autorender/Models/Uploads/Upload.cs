@@ -20,6 +20,9 @@ public sealed record class Upload : JsonModel
         init { this._rawData.Set("data", value); }
     }
 
+    /// <summary>
+    /// Indicates if the upload was successful
+    /// </summary>
     public required bool Success
     {
         get

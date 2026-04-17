@@ -16,17 +16,6 @@ public class FileServiceTest : TestBase
     }
 
     [Fact]
-    public async Task Update_Works()
-    {
-        var file = await this.client.Files.Update(
-            "2353377462",
-            new(),
-            TestContext.Current.CancellationToken
-        );
-        file.Validate();
-    }
-
-    [Fact]
     public async Task List_Works()
     {
         var files = await this.client.Files.List(new(), TestContext.Current.CancellationToken);
@@ -37,7 +26,7 @@ public class FileServiceTest : TestBase
     public async Task Delete_Works()
     {
         var file = await this.client.Files.Delete(
-            "2353377462",
+            "2338056701",
             new(),
             TestContext.Current.CancellationToken
         );
@@ -48,8 +37,8 @@ public class FileServiceTest : TestBase
     public async Task Rename_Works()
     {
         var response = await this.client.Files.Rename(
-            "2353377462",
-            new() { Name = "name" },
+            "2338045312",
+            new() { Name = "demo" },
             TestContext.Current.CancellationToken
         );
         response.Validate();

@@ -8,14 +8,10 @@ public class FolderCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new FolderCreateParams
-        {
-            Name = "name",
-            ParentFolderNo = "parent_folder_no",
-        };
+        var parameters = new FolderCreateParams { Name = "demo2", ParentFolderNo = "sD1LvqoDzG" };
 
-        string expectedName = "name";
-        string expectedParentFolderNo = "parent_folder_no";
+        string expectedName = "demo2";
+        string expectedParentFolderNo = "sD1LvqoDzG";
 
         Assert.Equal(expectedName, parameters.Name);
         Assert.Equal(expectedParentFolderNo, parameters.ParentFolderNo);
@@ -24,7 +20,7 @@ public class FolderCreateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new FolderCreateParams { Name = "name" };
+        var parameters = new FolderCreateParams { Name = "demo2" };
 
         Assert.Null(parameters.ParentFolderNo);
         Assert.False(parameters.RawBodyData.ContainsKey("parent_folder_no"));
@@ -35,7 +31,7 @@ public class FolderCreateParamsTest : TestBase
     {
         var parameters = new FolderCreateParams
         {
-            Name = "name",
+            Name = "demo2",
 
             // Null should be interpreted as omitted for these properties
             ParentFolderNo = null,
@@ -48,7 +44,7 @@ public class FolderCreateParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        FolderCreateParams parameters = new() { Name = "name" };
+        FolderCreateParams parameters = new() { Name = "demo2" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
@@ -60,11 +56,7 @@ public class FolderCreateParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new FolderCreateParams
-        {
-            Name = "name",
-            ParentFolderNo = "parent_folder_no",
-        };
+        var parameters = new FolderCreateParams { Name = "demo2", ParentFolderNo = "sD1LvqoDzG" };
 
         FolderCreateParams copied = new(parameters);
 

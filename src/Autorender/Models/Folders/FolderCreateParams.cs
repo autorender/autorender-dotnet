@@ -10,7 +10,7 @@ using Autorender.Core;
 namespace Autorender.Models.Folders;
 
 /// <summary>
-/// Create a new folder. Optionally nest it under an existing folder by providing parent_folder_no.
+/// Create a folder under an optional parent.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -38,7 +38,7 @@ public record class FolderCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Parent folder number; omit for root level
+    /// Parent folder number; omit or null for root
     /// </summary>
     public string? ParentFolderNo
     {
