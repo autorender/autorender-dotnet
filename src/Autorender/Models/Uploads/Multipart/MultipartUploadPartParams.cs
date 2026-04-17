@@ -23,7 +23,7 @@ public record class MultipartUploadPartParams : ParamsBase
     public JsonElement RawBodyData { get; private init; }
 
     /// <summary>
-    /// One multipart chunk uploaded to a presigned URL
+    /// One multipart chunk
     /// </summary>
     public BinaryContent? Body
     {
