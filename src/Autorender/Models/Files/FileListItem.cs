@@ -150,12 +150,12 @@ public sealed record class FileListItem : JsonModel
     /// <summary>
     /// Thumbnail CDN URL
     /// </summary>
-    public string? Thumbanil
+    public string? Thumbnail
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("thumbanil");
+            return this._rawData.GetNullableClass<string>("thumbnail");
         }
         init
         {
@@ -164,7 +164,7 @@ public sealed record class FileListItem : JsonModel
                 return;
             }
 
-            this._rawData.Set("thumbanil", value);
+            this._rawData.Set("thumbnail", value);
         }
     }
 
@@ -225,7 +225,7 @@ public sealed record class FileListItem : JsonModel
         _ = this.Height;
         _ = this.Name;
         _ = this.Path;
-        _ = this.Thumbanil;
+        _ = this.Thumbnail;
         _ = this.Url;
         _ = this.Width;
         _ = this.WorkspaceNo;
