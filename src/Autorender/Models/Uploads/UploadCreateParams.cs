@@ -9,8 +9,7 @@ using Autorender.Core;
 namespace Autorender.Models.Uploads;
 
 /// <summary>
-/// Upload a file to your AutoRender workspace with optional transformations, tags,
-/// and folder organization
+/// Upload a file from your backend server using multipart/form-data.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -25,7 +24,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// The file to upload (binary data)
+    /// File to upload.
     /// </summary>
     public required BinaryContent File
     {
@@ -38,7 +37,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// File name for the uploaded file (e.g., my-image.jpg)
+    /// File name (e.g. product.jpg)
     /// </summary>
     public required string FileName
     {
@@ -51,7 +50,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Custom identifier for the file
+    /// Custom identifier
     /// </summary>
     public string? CustomID
     {
@@ -72,7 +71,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Folder path where the file will be stored (e.g., uploads/my-folder)
+    /// Optional folder path
     /// </summary>
     public string? Folder
     {
@@ -93,7 +92,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// JSON string for custom metadata (e.g., {"key": "value"})
+    /// JSON string of metadata
     /// </summary>
     public string? Metadata
     {
@@ -114,7 +113,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Set to "true" to add a random suffix to filename
+    /// true/false to append random suffix
     /// </summary>
     public string? RandomPrefix
     {
@@ -135,7 +134,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Comma-separated tags (e.g., tag1,tag2,tag3)
+    /// Comma-separated tags
     /// </summary>
     public string? Tags
     {
@@ -156,7 +155,7 @@ public record class UploadCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Image transformation string (e.g., w_800,h_600,q_90)
+    /// Transform string (w_300,h_300,c_crop,...)
     /// </summary>
     public string? Transform
     {
@@ -173,6 +172,27 @@ public record class UploadCreateParams : ParamsBase
             }
 
             this._rawBodyData.Set("transform", value);
+        }
+    }
+
+    /// <summary>
+    /// URL to notify on success
+    /// </summary>
+    public string? WebhookUrl
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("webhook_url");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("webhook_url", value);
         }
     }
 

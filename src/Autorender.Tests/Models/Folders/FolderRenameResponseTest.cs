@@ -5,12 +5,12 @@ using Autorender.Models.Folders;
 
 namespace Autorender.Tests.Models.Folders;
 
-public class FolderCreateResponseTest : TestBase
+public class FolderRenameResponseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new FolderCreateResponse
+        var model = new FolderRenameResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -41,7 +41,7 @@ public class FolderCreateResponseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new FolderCreateResponse
+        var model = new FolderRenameResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -53,7 +53,7 @@ public class FolderCreateResponseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<FolderCreateResponse>(
+        var deserialized = JsonSerializer.Deserialize<FolderRenameResponse>(
             json,
             ModelBase.SerializerOptions
         );
@@ -64,7 +64,7 @@ public class FolderCreateResponseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new FolderCreateResponse
+        var model = new FolderRenameResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -76,7 +76,7 @@ public class FolderCreateResponseTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<FolderCreateResponse>(
+        var deserialized = JsonSerializer.Deserialize<FolderRenameResponse>(
             element,
             ModelBase.SerializerOptions
         );
@@ -102,7 +102,7 @@ public class FolderCreateResponseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new FolderCreateResponse
+        var model = new FolderRenameResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -119,7 +119,7 @@ public class FolderCreateResponseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new FolderCreateResponse
+        var model = new FolderRenameResponse
         {
             ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -130,7 +130,7 @@ public class FolderCreateResponseTest : TestBase
             UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
-        FolderCreateResponse copied = new(model);
+        FolderRenameResponse copied = new(model);
 
         Assert.Equal(model, copied);
     }

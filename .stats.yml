@@ -1,4 +1,4 @@
-configured_endpoints: 10
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/autorender%2Fautorenderhq-e0466764a44eb8daae613d2f1499356f033567fae86c48883bb497cf9eb1c0ba.yml
-openapi_spec_hash: 92d5c3be19e8d6d88f40fd42b1c0accb
+configured_endpoints: 9
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/autorender%2Fautorenderhq-be58d65a505c8c2be7c539f05e9aa409dbc83451ed14c0be026d8e58171fa903.yml
+openapi_spec_hash: 1918379c9337c16babc646f64061a2af
 config_hash: 0254694f4f42d6e9b8d1ac32d2f7dd12

@@ -8,38 +8,26 @@ public class FolderServiceTest : TestBase
     public async Task Create_Works()
     {
         var folder = await this.client.Folders.Create(
-            new() { Name = "demo2" },
+            new() { FolderName = "folder_name" },
             TestContext.Current.CancellationToken
         );
         folder.Validate();
-    }
-
-    [Fact]
-    public async Task List_Works()
-    {
-        var folders = await this.client.Folders.List(new(), TestContext.Current.CancellationToken);
-        folders.Validate();
     }
 
     [Fact]
     public async Task Delete_Works()
     {
-        var folder = await this.client.Folders.Delete(
-            "my8JeLg4tr",
-            new(),
-            TestContext.Current.CancellationToken
-        );
-        folder.Validate();
+        await this.client.Folders.Delete("folderNo", new(), TestContext.Current.CancellationToken);
     }
 
     [Fact]
     public async Task Rename_Works()
     {
-        var folder = await this.client.Folders.Rename(
-            "53855hxPoq",
-            new() { Name = "demo2" },
+        var response = await this.client.Folders.Rename(
+            "folderNo",
+            new() { Name = "name" },
             TestContext.Current.CancellationToken
         );
-        folder.Validate();
+        response.Validate();
     }
 }

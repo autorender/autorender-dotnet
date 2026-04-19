@@ -6,118 +6,66 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Autorender.Core;
+using Autorender.Exceptions;
 
 namespace Autorender.Models.Files;
 
 /// <summary>
-/// Files list
+/// File details
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<FileListResponse, FileListResponseFromRaw>))]
-public sealed record class FileListResponse : JsonModel
+[JsonConverter(typeof(JsonModelConverter<FileRetrieveResponse, FileRetrieveResponseFromRaw>))]
+public sealed record class FileRetrieveResponse : JsonModel
 {
-    public required bool IsPageNext
+    public required Data Data
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<bool>("is_page_next");
+            return this._rawData.GetNotNullClass<Data>("data");
         }
-        init { this._rawData.Set("is_page_next", value); }
+        init { this._rawData.Set("data", value); }
     }
 
-    public required IReadOnlyList<Item> Items
+    public required ApiEnum<bool, Success> Success
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<Item>>("items");
+            return this._rawData.GetNotNullClass<ApiEnum<bool, Success>>("success");
         }
-        init
-        {
-            this._rawData.Set<ImmutableArray<Item>>(
-                "items",
-                ImmutableArray.ToImmutableArray(value)
-            );
-        }
-    }
-
-    public required long Limit
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("limit");
-        }
-        init { this._rawData.Set("limit", value); }
-    }
-
-    public required long Page
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("page");
-        }
-        init { this._rawData.Set("page", value); }
-    }
-
-    public required long TotalCount
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("total_count");
-        }
-        init { this._rawData.Set("total_count", value); }
-    }
-
-    public required long TotalPages
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("total_pages");
-        }
-        init { this._rawData.Set("total_pages", value); }
+        init { this._rawData.Set("success", value); }
     }
 
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.IsPageNext;
-        foreach (var item in this.Items)
-        {
-            item.Validate();
-        }
-        _ = this.Limit;
-        _ = this.Page;
-        _ = this.TotalCount;
-        _ = this.TotalPages;
+        this.Data.Validate();
+        this.Success.Validate();
     }
 
-    public FileListResponse() { }
+    public FileRetrieveResponse() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public FileListResponse(FileListResponse fileListResponse)
-        : base(fileListResponse) { }
+    public FileRetrieveResponse(FileRetrieveResponse fileRetrieveResponse)
+        : base(fileRetrieveResponse) { }
 #pragma warning restore CS8618
 
-    public FileListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    public FileRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    FileListResponse(FrozenDictionary<string, JsonElement> rawData)
+    FileRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="FileListResponseFromRaw.FromRawUnchecked"/>
-    public static FileListResponse FromRawUnchecked(
+    /// <inheritdoc cref="FileRetrieveResponseFromRaw.FromRawUnchecked"/>
+    public static FileRetrieveResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -125,15 +73,16 @@ public sealed record class FileListResponse : JsonModel
     }
 }
 
-class FileListResponseFromRaw : IFromRawJson<FileListResponse>
+class FileRetrieveResponseFromRaw : IFromRawJson<FileRetrieveResponse>
 {
     /// <inheritdoc/>
-    public FileListResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        FileListResponse.FromRawUnchecked(rawData);
+    public FileRetrieveResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => FileRetrieveResponse.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(JsonModelConverter<Item, ItemFromRaw>))]
-public sealed record class Item : JsonModel
+[JsonConverter(typeof(JsonModelConverter<Data, DataFromRaw>))]
+public sealed record class Data : JsonModel
 {
     public required string ID
     {
@@ -341,37 +290,74 @@ public sealed record class Item : JsonModel
         _ = this.Width;
     }
 
-    public Item() { }
+    public Data() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Item(Item item)
-        : base(item) { }
+    public Data(Data data)
+        : base(data) { }
 #pragma warning restore CS8618
 
-    public Item(IReadOnlyDictionary<string, JsonElement> rawData)
+    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Item(FrozenDictionary<string, JsonElement> rawData)
+    Data(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ItemFromRaw.FromRawUnchecked"/>
-    public static Item FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
+    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ItemFromRaw : IFromRawJson<Item>
+class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public Item FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Item.FromRawUnchecked(rawData);
+    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Data.FromRawUnchecked(rawData);
+}
+
+[JsonConverter(typeof(SuccessConverter))]
+public enum Success
+{
+    True,
+}
+
+sealed class SuccessConverter : JsonConverter<Success>
+{
+    public override Success Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
+        JsonSerializerOptions options
+    )
+    {
+        return JsonSerializer.Deserialize<bool>(ref reader, options) switch
+        {
+            true => Success.True,
+            _ => (Success)(-1),
+        };
+    }
+
+    public override void Write(Utf8JsonWriter writer, Success value, JsonSerializerOptions options)
+    {
+        JsonSerializer.Serialize(
+            writer,
+            value switch
+            {
+                Success.True => true,
+                _ => throw new AutorenderInvalidDataException(
+                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
+                ),
+            },
+            options
+        );
+    }
 }

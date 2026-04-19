@@ -11,8 +11,7 @@ using Autorender.Exceptions;
 namespace Autorender.Models.Files;
 
 /// <summary>
-/// Paginated list of files in the workspace. Filter by folder, sort by field and
-/// order, and page through results.
+/// List/search files with pagination, filtering, and sorting.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -21,14 +20,14 @@ namespace Autorender.Models.Files;
 public record class FileListParams : ParamsBase
 {
     /// <summary>
-    /// Restrict results to files in this folder (folder number)
+    /// Exact folder number
     /// </summary>
     public string? FolderNo
     {
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("folder_no");
+            return this._rawQueryData.GetNullableClass<string>("folderNo");
         }
         init
         {
@@ -37,13 +36,10 @@ public record class FileListParams : ParamsBase
                 return;
             }
 
-            this._rawQueryData.Set("folder_no", value);
+            this._rawQueryData.Set("folderNo", value);
         }
     }
 
-    /// <summary>
-    /// Items per page
-    /// </summary>
     public long? Limit
     {
         get
@@ -63,7 +59,7 @@ public record class FileListParams : ParamsBase
     }
 
     /// <summary>
-    /// Filter by filename (partial match, if supported)
+    /// Partial name match (case-insensitive)
     /// </summary>
     public string? Name
     {
@@ -83,9 +79,6 @@ public record class FileListParams : ParamsBase
         }
     }
 
-    /// <summary>
-    /// Page number (1-based)
-    /// </summary>
     public long? Page
     {
         get
@@ -105,7 +98,7 @@ public record class FileListParams : ParamsBase
     }
 
     /// <summary>
-    /// Filter by path prefix (if supported)
+    /// Folder prefix (e.g. products/sku123/)
     /// </summary>
     public string? Path
     {
@@ -125,15 +118,12 @@ public record class FileListParams : ParamsBase
         }
     }
 
-    /// <summary>
-    /// Field to sort by
-    /// </summary>
-    public ApiEnum<string, SortField>? SortField
+    public ApiEnum<string, Sort>? Sort
     {
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<ApiEnum<string, SortField>>("sort_field");
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, Sort>>("sort");
         }
         init
         {
@@ -142,33 +132,12 @@ public record class FileListParams : ParamsBase
                 return;
             }
 
-            this._rawQueryData.Set("sort_field", value);
+            this._rawQueryData.Set("sort", value);
         }
     }
 
     /// <summary>
-    /// Sort direction
-    /// </summary>
-    public ApiEnum<string, SortOrder>? SortOrder
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<ApiEnum<string, SortOrder>>("sort_order");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawQueryData.Set("sort_order", value);
-        }
-    }
-
-    /// <summary>
-    /// Comma-separated tags (if supported)
+    /// Comma-separated tags
     /// </summary>
     public string? Tags
     {
@@ -278,21 +247,18 @@ public record class FileListParams : ParamsBase
     }
 }
 
-/// <summary>
-/// Field to sort by
-/// </summary>
-[JsonConverter(typeof(SortFieldConverter))]
-public enum SortField
+[JsonConverter(typeof(SortConverter))]
+public enum Sort
 {
-    FileSize,
-    Name,
-    CreatedAt,
-    UpdatedAt,
+    CreatedAtAsc,
+    CreatedAtDesc,
+    SizeAsc,
+    SizeDesc,
 }
 
-sealed class SortFieldConverter : JsonConverter<SortField>
+sealed class SortConverter : JsonConverter<Sort>
 {
-    public override SortField Read(
+    public override Sort Read(
         ref Utf8JsonReader reader,
         Type typeToConvert,
         JsonSerializerOptions options
@@ -300,75 +266,24 @@ sealed class SortFieldConverter : JsonConverter<SortField>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "file_size" => SortField.FileSize,
-            "name" => SortField.Name,
-            "created_at" => SortField.CreatedAt,
-            "updated_at" => SortField.UpdatedAt,
-            _ => (SortField)(-1),
+            "created_at_asc" => Sort.CreatedAtAsc,
+            "created_at_desc" => Sort.CreatedAtDesc,
+            "size_asc" => Sort.SizeAsc,
+            "size_desc" => Sort.SizeDesc,
+            _ => (Sort)(-1),
         };
     }
 
-    public override void Write(
-        Utf8JsonWriter writer,
-        SortField value,
-        JsonSerializerOptions options
-    )
+    public override void Write(Utf8JsonWriter writer, Sort value, JsonSerializerOptions options)
     {
         JsonSerializer.Serialize(
             writer,
             value switch
             {
-                SortField.FileSize => "file_size",
-                SortField.Name => "name",
-                SortField.CreatedAt => "created_at",
-                SortField.UpdatedAt => "updated_at",
-                _ => throw new AutorenderInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
-    }
-}
-
-/// <summary>
-/// Sort direction
-/// </summary>
-[JsonConverter(typeof(SortOrderConverter))]
-public enum SortOrder
-{
-    Asc,
-    Desc,
-}
-
-sealed class SortOrderConverter : JsonConverter<SortOrder>
-{
-    public override SortOrder Read(
-        ref Utf8JsonReader reader,
-        Type typeToConvert,
-        JsonSerializerOptions options
-    )
-    {
-        return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "asc" => SortOrder.Asc,
-            "desc" => SortOrder.Desc,
-            _ => (SortOrder)(-1),
-        };
-    }
-
-    public override void Write(
-        Utf8JsonWriter writer,
-        SortOrder value,
-        JsonSerializerOptions options
-    )
-    {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                SortOrder.Asc => "asc",
-                SortOrder.Desc => "desc",
+                Sort.CreatedAtAsc => "created_at_asc",
+                Sort.CreatedAtDesc => "created_at_desc",
+                Sort.SizeAsc => "size_asc",
+                Sort.SizeDesc => "size_desc",
                 _ => throw new AutorenderInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),

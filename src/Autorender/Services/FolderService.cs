@@ -47,31 +47,13 @@ public sealed class FolderService : IFolderService
     }
 
     /// <inheritdoc/>
-    public async Task<FolderListResponse> List(
-        FolderListParams? parameters = null,
-        CancellationToken cancellationToken = default
-    )
+    public Task Delete(FolderDeleteParams parameters, CancellationToken cancellationToken = default)
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Delete(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<FolderDeleteResponse> Delete(
-        FolderDeleteParams parameters,
-        CancellationToken cancellationToken = default
-    )
-    {
-        using var response = await this
-            .WithRawResponse.Delete(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public Task<FolderDeleteResponse> Delete(
+    public async Task Delete(
         string folderNo,
         FolderDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -79,11 +61,12 @@ public sealed class FolderService : IFolderService
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { FolderNo = folderNo }, cancellationToken);
+        await this.Delete(parameters with { FolderNo = folderNo }, cancellationToken)
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task<Folder> Rename(
+    public async Task<FolderRenameResponse> Rename(
         FolderRenameParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -95,7 +78,7 @@ public sealed class FolderService : IFolderService
     }
 
     /// <inheritdoc/>
-    public Task<Folder> Rename(
+    public Task<FolderRenameResponse> Rename(
         string folderNo,
         FolderRenameParams parameters,
         CancellationToken cancellationToken = default
@@ -150,37 +133,7 @@ public sealed class FolderServiceWithRawResponse : IFolderServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<FolderListResponse>> List(
-        FolderListParams? parameters = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        parameters ??= new();
-
-        HttpRequest<FolderListParams> request = new()
-        {
-            Method = HttpMethod.Get,
-            Params = parameters,
-        };
-        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var folders = await response
-                    .Deserialize<FolderListResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    folders.Validate();
-                }
-                return folders;
-            }
-        );
-    }
-
-    /// <inheritdoc/>
-    public async Task<HttpResponse<FolderDeleteResponse>> Delete(
+    public Task<HttpResponse> Delete(
         FolderDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -195,25 +148,11 @@ public sealed class FolderServiceWithRawResponse : IFolderServiceWithRawResponse
             Method = HttpMethod.Delete,
             Params = parameters,
         };
-        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var folder = await response
-                    .Deserialize<FolderDeleteResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    folder.Validate();
-                }
-                return folder;
-            }
-        );
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<FolderDeleteResponse>> Delete(
+    public Task<HttpResponse> Delete(
         string folderNo,
         FolderDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -225,7 +164,7 @@ public sealed class FolderServiceWithRawResponse : IFolderServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<Folder>> Rename(
+    public async Task<HttpResponse<FolderRenameResponse>> Rename(
         FolderRenameParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -245,18 +184,20 @@ public sealed class FolderServiceWithRawResponse : IFolderServiceWithRawResponse
             response,
             async (token) =>
             {
-                var folder = await response.Deserialize<Folder>(token).ConfigureAwait(false);
+                var deserializedResponse = await response
+                    .Deserialize<FolderRenameResponse>(token)
+                    .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    folder.Validate();
+                    deserializedResponse.Validate();
                 }
-                return folder;
+                return deserializedResponse;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<Folder>> Rename(
+    public Task<HttpResponse<FolderRenameResponse>> Rename(
         string folderNo,
         FolderRenameParams parameters,
         CancellationToken cancellationToken = default

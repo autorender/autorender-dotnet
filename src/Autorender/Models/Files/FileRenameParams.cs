@@ -10,8 +10,7 @@ using Autorender.Core;
 namespace Autorender.Models.Files;
 
 /// <summary>
-/// Rename a file. The API may preserve or normalize the file extension (e.g. `demo`
-/// → `demo.png`).
+/// Rename file
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -28,7 +27,7 @@ public record class FileRenameParams : ParamsBase
     public string? FileNo { get; init; }
 
     /// <summary>
-    /// New base name; extension may be applied by the server
+    /// New file name without extension or path separators
     /// </summary>
     public required string Name
     {

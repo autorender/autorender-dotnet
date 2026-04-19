@@ -8,9 +8,9 @@ public class FileRetrieveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new FileRetrieveParams { FileNo = "2353377462" };
+        var parameters = new FileRetrieveParams { FileNo = "fileNo" };
 
-        string expectedFileNo = "2353377462";
+        string expectedFileNo = "fileNo";
 
         Assert.Equal(expectedFileNo, parameters.FileNo);
     }
@@ -18,19 +18,19 @@ public class FileRetrieveParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        FileRetrieveParams parameters = new() { FileNo = "2353377462" };
+        FileRetrieveParams parameters = new() { FileNo = "fileNo" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(new() { });
 
         Assert.True(
-            TestBase.UrisEqual(new Uri("https://upload.autorender.io/api/v1/files/2353377462"), url)
+            TestBase.UrisEqual(new Uri("https://upload.autorender.io/api/v1/files/fileNo"), url)
         );
     }
 
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new FileRetrieveParams { FileNo = "2353377462" };
+        var parameters = new FileRetrieveParams { FileNo = "fileNo" };
 
         FileRetrieveParams copied = new(parameters);
 

@@ -7,12 +7,12 @@ using Autorender.Models.Files;
 
 namespace Autorender.Tests.Models.Files;
 
-public class FileRenameResponseTest : TestBase
+public class FileRetrieveResponseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new FileRenameResponse
+        var model = new FileRetrieveResponse
         {
             Data = new()
             {
@@ -37,10 +37,10 @@ public class FileRenameResponseTest : TestBase
                 Url = "url",
                 Width = -9007199254740991,
             },
-            Success = FileRenameResponseSuccess.True,
+            Success = Success.True,
         };
 
-        FileRenameResponseData expectedData = new()
+        Data expectedData = new()
         {
             ID = "id",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -63,7 +63,7 @@ public class FileRenameResponseTest : TestBase
             Url = "url",
             Width = -9007199254740991,
         };
-        ApiEnum<bool, FileRenameResponseSuccess> expectedSuccess = FileRenameResponseSuccess.True;
+        ApiEnum<bool, Success> expectedSuccess = Success.True;
 
         Assert.Equal(expectedData, model.Data);
         Assert.Equal(expectedSuccess, model.Success);
@@ -72,7 +72,7 @@ public class FileRenameResponseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new FileRenameResponse
+        var model = new FileRetrieveResponse
         {
             Data = new()
             {
@@ -97,11 +97,11 @@ public class FileRenameResponseTest : TestBase
                 Url = "url",
                 Width = -9007199254740991,
             },
-            Success = FileRenameResponseSuccess.True,
+            Success = Success.True,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<FileRenameResponse>(
+        var deserialized = JsonSerializer.Deserialize<FileRetrieveResponse>(
             json,
             ModelBase.SerializerOptions
         );
@@ -112,7 +112,7 @@ public class FileRenameResponseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new FileRenameResponse
+        var model = new FileRetrieveResponse
         {
             Data = new()
             {
@@ -137,17 +137,17 @@ public class FileRenameResponseTest : TestBase
                 Url = "url",
                 Width = -9007199254740991,
             },
-            Success = FileRenameResponseSuccess.True,
+            Success = Success.True,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<FileRenameResponse>(
+        var deserialized = JsonSerializer.Deserialize<FileRetrieveResponse>(
             element,
             ModelBase.SerializerOptions
         );
         Assert.NotNull(deserialized);
 
-        FileRenameResponseData expectedData = new()
+        Data expectedData = new()
         {
             ID = "id",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -170,7 +170,7 @@ public class FileRenameResponseTest : TestBase
             Url = "url",
             Width = -9007199254740991,
         };
-        ApiEnum<bool, FileRenameResponseSuccess> expectedSuccess = FileRenameResponseSuccess.True;
+        ApiEnum<bool, Success> expectedSuccess = Success.True;
 
         Assert.Equal(expectedData, deserialized.Data);
         Assert.Equal(expectedSuccess, deserialized.Success);
@@ -179,7 +179,7 @@ public class FileRenameResponseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new FileRenameResponse
+        var model = new FileRetrieveResponse
         {
             Data = new()
             {
@@ -204,7 +204,7 @@ public class FileRenameResponseTest : TestBase
                 Url = "url",
                 Width = -9007199254740991,
             },
-            Success = FileRenameResponseSuccess.True,
+            Success = Success.True,
         };
 
         model.Validate();
@@ -213,7 +213,7 @@ public class FileRenameResponseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new FileRenameResponse
+        var model = new FileRetrieveResponse
         {
             Data = new()
             {
@@ -238,21 +238,21 @@ public class FileRenameResponseTest : TestBase
                 Url = "url",
                 Width = -9007199254740991,
             },
-            Success = FileRenameResponseSuccess.True,
+            Success = Success.True,
         };
 
-        FileRenameResponse copied = new(model);
+        FileRetrieveResponse copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class FileRenameResponseDataTest : TestBase
+public class DataTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new FileRenameResponseData
+        var model = new Data
         {
             ID = "id",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -330,7 +330,7 @@ public class FileRenameResponseDataTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new FileRenameResponseData
+        var model = new Data
         {
             ID = "id",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -355,10 +355,7 @@ public class FileRenameResponseDataTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<FileRenameResponseData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Data>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -366,7 +363,7 @@ public class FileRenameResponseDataTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new FileRenameResponseData
+        var model = new Data
         {
             ID = "id",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -391,10 +388,7 @@ public class FileRenameResponseDataTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<FileRenameResponseData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Data>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -451,7 +445,7 @@ public class FileRenameResponseDataTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new FileRenameResponseData
+        var model = new Data
         {
             ID = "id",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -481,7 +475,7 @@ public class FileRenameResponseDataTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new FileRenameResponseData
+        var model = new Data
         {
             ID = "id",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
@@ -505,27 +499,27 @@ public class FileRenameResponseDataTest : TestBase
             Width = -9007199254740991,
         };
 
-        FileRenameResponseData copied = new(model);
+        Data copied = new(model);
 
         Assert.Equal(model, copied);
     }
 }
 
-public class FileRenameResponseSuccessTest : TestBase
+public class SuccessTest : TestBase
 {
     [Theory]
-    [InlineData(FileRenameResponseSuccess.True)]
-    public void Validation_Works(FileRenameResponseSuccess rawValue)
+    [InlineData(Success.True)]
+    public void Validation_Works(Success rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<bool, FileRenameResponseSuccess> value = rawValue;
+        ApiEnum<bool, Success> value = rawValue;
         value.Validate();
     }
 
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<bool, FileRenameResponseSuccess>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<bool, Success>>(
             JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
@@ -535,14 +529,14 @@ public class FileRenameResponseSuccessTest : TestBase
     }
 
     [Theory]
-    [InlineData(FileRenameResponseSuccess.True)]
-    public void SerializationRoundtrip_Works(FileRenameResponseSuccess rawValue)
+    [InlineData(Success.True)]
+    public void SerializationRoundtrip_Works(Success rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<bool, FileRenameResponseSuccess> value = rawValue;
+        ApiEnum<bool, Success> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<bool, FileRenameResponseSuccess>>(
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<bool, Success>>(
             json,
             ModelBase.SerializerOptions
         );
@@ -553,12 +547,12 @@ public class FileRenameResponseSuccessTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<bool, FileRenameResponseSuccess>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<bool, Success>>(
             JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<bool, FileRenameResponseSuccess>>(
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<bool, Success>>(
             json,
             ModelBase.SerializerOptions
         );
