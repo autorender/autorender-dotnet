@@ -26,7 +26,7 @@ public record class UploadUploadWithTokenParams : ParamsBase
     /// <summary>
     /// Raw file bytes. Accepts any file type (images, documents, videos, etc.).
     /// </summary>
-    public BinaryContent? Body
+    public BinaryContent? File
     {
         get
         {

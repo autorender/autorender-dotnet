@@ -10,15 +10,15 @@ public class UploadUploadWithTokenParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        BinaryContent body = Encoding.UTF8.GetBytes("Example data");
+        BinaryContent file = Encoding.UTF8.GetBytes("Example data");
 
-        var parameters = new UploadUploadWithTokenParams { Token = "token", Body = body };
+        var parameters = new UploadUploadWithTokenParams { Token = "token", File = file };
 
         string expectedToken = "token";
-        BinaryContent expectedBody = body;
+        BinaryContent expectedFile = file;
 
         Assert.Equal(expectedToken, parameters.Token);
-        Assert.Equal(expectedBody, parameters.Body);
+        Assert.Equal(expectedFile, parameters.File);
     }
 
     [Fact]
@@ -27,7 +27,7 @@ public class UploadUploadWithTokenParamsTest : TestBase
         UploadUploadWithTokenParams parameters = new()
         {
             Token = "token",
-            Body = Encoding.UTF8.GetBytes("Example data"),
+            File = Encoding.UTF8.GetBytes("Example data"),
         };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
@@ -43,7 +43,7 @@ public class UploadUploadWithTokenParamsTest : TestBase
         var parameters = new UploadUploadWithTokenParams
         {
             Token = "token",
-            Body = Encoding.UTF8.GetBytes("Example data"),
+            File = Encoding.UTF8.GetBytes("Example data"),
         };
 
         UploadUploadWithTokenParams copied = new(parameters);

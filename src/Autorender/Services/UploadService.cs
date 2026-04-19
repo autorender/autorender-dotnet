@@ -85,7 +85,7 @@ public sealed class UploadService : IUploadService
     /// <inheritdoc/>
     public Task<UploadUploadWithTokenResponse> UploadWithToken(
         string token,
-        BinaryContent body,
+        BinaryContent file,
         UploadUploadWithTokenParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -96,7 +96,7 @@ public sealed class UploadService : IUploadService
             parameters with
             {
                 Token = token,
-                Body = body,
+                File = file,
             },
             cancellationToken
         );
@@ -213,9 +213,9 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
         {
             throw new AutorenderInvalidDataException("'parameters.Token' cannot be null");
         }
-        if (parameters.Body == null)
+        if (parameters.File == null)
         {
-            throw new AutorenderInvalidDataException("'parameters.Body' cannot be null");
+            throw new AutorenderInvalidDataException("'parameters.File' cannot be null");
         }
 
         HttpRequest<UploadUploadWithTokenParams> request = new()
@@ -243,7 +243,7 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
     /// <inheritdoc/>
     public Task<HttpResponse<UploadUploadWithTokenResponse>> UploadWithToken(
         string token,
-        BinaryContent body,
+        BinaryContent file,
         UploadUploadWithTokenParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -254,7 +254,7 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
             parameters with
             {
                 Token = token,
-                Body = body,
+                File = file,
             },
             cancellationToken
         );

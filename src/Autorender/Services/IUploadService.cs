@@ -65,7 +65,7 @@ public interface IUploadService
     /// <inheritdoc cref="UploadWithToken(UploadUploadWithTokenParams, CancellationToken)"/>
     Task<UploadUploadWithTokenResponse> UploadWithToken(
         string token,
-        BinaryContent body,
+        BinaryContent file,
         UploadUploadWithTokenParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -123,7 +123,7 @@ public interface IUploadServiceWithRawResponse
     /// <inheritdoc cref="UploadWithToken(UploadUploadWithTokenParams, CancellationToken)"/>
     Task<HttpResponse<UploadUploadWithTokenResponse>> UploadWithToken(
         string token,
-        BinaryContent body,
+        BinaryContent file,
         UploadUploadWithTokenParams? parameters = null,
         CancellationToken cancellationToken = default
     );
