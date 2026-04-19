@@ -98,7 +98,7 @@ public class UploadCreateFromUrlParamsTest : TestBase
     {
         UploadCreateFromUrlParams parameters = new() { RemoteUrl = "https://example.com" };
 
-        var url = parameters.Url(new() { });
+        var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.True(
             TestBase.UrisEqual(new Uri("https://upload.autorender.io/api/v1/uploads/remote"), url)

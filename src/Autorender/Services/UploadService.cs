@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Autorender.Core;
+using Autorender.Exceptions;
 using Autorender.Models.Uploads;
 
 namespace Autorender.Services;
@@ -55,6 +56,50 @@ public sealed class UploadService : IUploadService
             .WithRawResponse.CreateFromUrl(parameters, cancellationToken)
             .ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<UploadGenerateTokenResponse> GenerateToken(
+        UploadGenerateTokenParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.GenerateToken(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<UploadUploadWithTokenResponse> UploadWithToken(
+        UploadUploadWithTokenParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.UploadWithToken(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<UploadUploadWithTokenResponse> UploadWithToken(
+        string token,
+        BinaryContent body,
+        UploadUploadWithTokenParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.UploadWithToken(
+            parameters with
+            {
+                Token = token,
+                Body = body,
+            },
+            cancellationToken
+        );
     }
 }
 
@@ -127,6 +172,91 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
                 }
                 return deserializedResponse;
             }
+        );
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<UploadGenerateTokenResponse>> GenerateToken(
+        UploadGenerateTokenParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        HttpRequest<UploadGenerateTokenParams> request = new()
+        {
+            Method = HttpMethod.Post,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<UploadGenerateTokenResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<UploadUploadWithTokenResponse>> UploadWithToken(
+        UploadUploadWithTokenParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        if (parameters.Token == null)
+        {
+            throw new AutorenderInvalidDataException("'parameters.Token' cannot be null");
+        }
+        if (parameters.Body == null)
+        {
+            throw new AutorenderInvalidDataException("'parameters.Body' cannot be null");
+        }
+
+        HttpRequest<UploadUploadWithTokenParams> request = new()
+        {
+            Method = HttpMethod.Post,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<UploadUploadWithTokenResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public Task<HttpResponse<UploadUploadWithTokenResponse>> UploadWithToken(
+        string token,
+        BinaryContent body,
+        UploadUploadWithTokenParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.UploadWithToken(
+            parameters with
+            {
+                Token = token,
+                Body = body,
+            },
+            cancellationToken
         );
     }
 }

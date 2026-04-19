@@ -105,7 +105,7 @@ public class FileListParamsTest : TestBase
             Tags = "tags",
         };
 
-        var url = parameters.Url(new() { });
+        var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.True(
             TestBase.UrisEqual(

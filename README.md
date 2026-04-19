@@ -31,8 +31,8 @@ AutorenderClient client = new();
 
 UploadCreateParams parameters = new()
 {
-    File = Encoding.UTF8.GetBytes("Example data"),
-    FileName = "product.jpg",
+    File = Encoding.UTF8.GetBytes("<binary>"),
+    FileName = "photo.jpg",
 };
 
 var upload = await client.Uploads.Create(parameters);
@@ -56,7 +56,7 @@ Or manually:
 ```csharp
 using Autorender;
 
-AutorenderClient client = new();
+AutorenderClient client = new() { ApiKey = "My API Key" };
 ```
 
 Or using a combination of the two approaches.
@@ -294,6 +294,46 @@ var parameters = UploadCreateParams.FromRawUnchecked
         }
     }
 );
+```
+
+### Nested Parameters
+
+Undocumented properties, or undocumented values of documented properties, on nested parameters can be set similarly, using a dictionary in the constructor of the nested parameter.
+
+```csharp
+using System.Collections.Generic;
+using System.Text.Json;
+using Autorender.Models.Uploads;
+
+UploadGenerateTokenParams parameters = new()
+{
+    AllowOverride = new
+    (
+        new Dictionary<string, JsonElement>
+        {
+            { "custom_nested_param", JsonSerializer.SerializeToElement(42) }
+        }
+    )
+};
+```
+
+Required properties on the nested parameter can also be changed or omitted using the `FromRawUnchecked` method:
+
+```csharp
+using System.Collections.Generic;
+using System.Text.Json;
+using Autorender.Models.Uploads;
+
+UploadGenerateTokenParams parameters = new()
+{
+    AllowOverride = AllowOverride.FromRawUnchecked
+    (
+        new Dictionary<string, JsonElement>
+        {
+            { "required_property", JsonSerializer.SerializeToElement("custom value") }
+        }
+    )
+};
 ```
 
 ### Response properties

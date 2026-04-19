@@ -22,7 +22,7 @@ public class FileRenameParamsTest : TestBase
     {
         FileRenameParams parameters = new() { FileNo = "fileNo", Name = "name" };
 
-        var url = parameters.Url(new() { });
+        var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.True(
             TestBase.UrisEqual(

@@ -59,6 +59,30 @@ public sealed class FileService : IFileService
     }
 
     /// <inheritdoc/>
+    public async Task<FileUpdateResponse> Update(
+        FileUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Update(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<FileUpdateResponse> Update(
+        string fileNo,
+        FileUpdateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Update(parameters with { FileNo = fileNo }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
     public async Task<FileListResponse> List(
         FileListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -171,6 +195,51 @@ public sealed class FileServiceWithRawResponse : IFileServiceWithRawResponse
         parameters ??= new();
 
         return this.Retrieve(parameters with { FileNo = fileNo }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<FileUpdateResponse>> Update(
+        FileUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        if (parameters.FileNo == null)
+        {
+            throw new AutorenderInvalidDataException("'parameters.FileNo' cannot be null");
+        }
+
+        HttpRequest<FileUpdateParams> request = new()
+        {
+            Method = AutorenderClientWithRawResponse.PatchMethod,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var file = await response
+                    .Deserialize<FileUpdateResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    file.Validate();
+                }
+                return file;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public Task<HttpResponse<FileUpdateResponse>> Update(
+        string fileNo,
+        FileUpdateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Update(parameters with { FileNo = fileNo }, cancellationToken);
     }
 
     /// <inheritdoc/>

@@ -22,6 +22,7 @@ public abstract record class ModelBase
         {
             new FrozenDictionaryConverterFactory(),
             new ApiEnumConverter<bool, Success>(),
+            new ApiEnumConverter<bool, FileUpdateResponseSuccess>(),
             new ApiEnumConverter<bool, FileRenameResponseSuccess>(),
             new ApiEnumConverter<string, Sort>(),
         },

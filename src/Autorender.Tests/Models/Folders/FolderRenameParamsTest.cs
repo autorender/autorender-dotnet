@@ -22,7 +22,7 @@ public class FolderRenameParamsTest : TestBase
     {
         FolderRenameParams parameters = new() { FolderNo = "folderNo", Name = "name" };
 
-        var url = parameters.Url(new() { });
+        var url = parameters.Url(new() { ApiKey = "My API Key" });
 
         Assert.True(
             TestBase.UrisEqual(
