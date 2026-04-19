@@ -8,9 +8,9 @@ public class FolderDeleteParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new FolderDeleteParams { FolderNo = "my8JeLg4tr" };
+        var parameters = new FolderDeleteParams { FolderNo = "folderNo" };
 
-        string expectedFolderNo = "my8JeLg4tr";
+        string expectedFolderNo = "folderNo";
 
         Assert.Equal(expectedFolderNo, parameters.FolderNo);
     }
@@ -18,22 +18,19 @@ public class FolderDeleteParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        FolderDeleteParams parameters = new() { FolderNo = "my8JeLg4tr" };
+        FolderDeleteParams parameters = new() { FolderNo = "folderNo" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(new() { });
 
         Assert.True(
-            TestBase.UrisEqual(
-                new Uri("https://upload.autorender.io/api/v1/folders/my8JeLg4tr"),
-                url
-            )
+            TestBase.UrisEqual(new Uri("https://upload.autorender.io/api/v1/folders/folderNo"), url)
         );
     }
 
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new FolderDeleteParams { FolderNo = "my8JeLg4tr" };
+        var parameters = new FolderDeleteParams { FolderNo = "folderNo" };
 
         FolderDeleteParams copied = new(parameters);
 

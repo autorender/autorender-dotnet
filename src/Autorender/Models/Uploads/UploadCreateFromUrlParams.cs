@@ -10,7 +10,7 @@ using Autorender.Core;
 namespace Autorender.Models.Uploads;
 
 /// <summary>
-/// Fetch a file from a remote URL and store it in your AutoRender workspace.
+/// Download a file from a remote URL and store it in AutoRender.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -25,7 +25,7 @@ public record class UploadCreateFromUrlParams : ParamsBase
     }
 
     /// <summary>
-    /// The HTTP or HTTPS URL of the image to download
+    /// HTTP/HTTPS URL to fetch
     /// </summary>
     public required string RemoteUrl
     {
@@ -37,9 +37,6 @@ public record class UploadCreateFromUrlParams : ParamsBase
         init { this._rawBodyData.Set("remote_url", value); }
     }
 
-    /// <summary>
-    /// Custom identifier for tracking the upload
-    /// </summary>
     public string? CustomID
     {
         get
@@ -59,7 +56,28 @@ public record class UploadCreateFromUrlParams : ParamsBase
     }
 
     /// <summary>
-    /// Folder path where the file should be stored
+    /// Override file name
+    /// </summary>
+    public string? FileName
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("file_name");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawBodyData.Set("file_name", value);
+        }
+    }
+
+    /// <summary>
+    /// Destination folder path
     /// </summary>
     public string? Folder
     {
@@ -80,7 +98,7 @@ public record class UploadCreateFromUrlParams : ParamsBase
     }
 
     /// <summary>
-    /// JSON string containing custom metadata object
+    /// JSON string of metadata object
     /// </summary>
     public string? Metadata
     {
@@ -101,7 +119,7 @@ public record class UploadCreateFromUrlParams : ParamsBase
     }
 
     /// <summary>
-    /// Set to 'true' to generate a random suffix for the filename
+    /// true/false to append random suffix
     /// </summary>
     public string? RandomPrefix
     {
@@ -122,7 +140,7 @@ public record class UploadCreateFromUrlParams : ParamsBase
     }
 
     /// <summary>
-    /// Comma-separated list of tags to apply to the file
+    /// Comma-separated tags
     /// </summary>
     public string? Tags
     {
@@ -142,30 +160,6 @@ public record class UploadCreateFromUrlParams : ParamsBase
         }
     }
 
-    /// <summary>
-    /// Transformation string to apply during upload (e.g., w_800,h_600,c_crop)
-    /// </summary>
-    public string? Transform
-    {
-        get
-        {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("transform");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawBodyData.Set("transform", value);
-        }
-    }
-
-    /// <summary>
-    /// URL to receive webhook notification when upload completes
-    /// </summary>
     public string? WebhookUrl
     {
         get

@@ -13,23 +13,21 @@ public class FileListParamsTest : TestBase
     {
         var parameters = new FileListParams
         {
-            FolderNo = "folder_no",
-            Limit = 0,
+            FolderNo = "folderNo",
+            Limit = 1,
             Name = "name",
-            Page = 0,
+            Page = 1,
             Path = "path",
-            SortField = SortField.FileSize,
-            SortOrder = SortOrder.Asc,
+            Sort = Sort.CreatedAtAsc,
             Tags = "tags",
         };
 
-        string expectedFolderNo = "folder_no";
-        long expectedLimit = 0;
+        string expectedFolderNo = "folderNo";
+        long expectedLimit = 1;
         string expectedName = "name";
-        long expectedPage = 0;
+        long expectedPage = 1;
         string expectedPath = "path";
-        ApiEnum<string, SortField> expectedSortField = SortField.FileSize;
-        ApiEnum<string, SortOrder> expectedSortOrder = SortOrder.Asc;
+        ApiEnum<string, Sort> expectedSort = Sort.CreatedAtAsc;
         string expectedTags = "tags";
 
         Assert.Equal(expectedFolderNo, parameters.FolderNo);
@@ -37,8 +35,7 @@ public class FileListParamsTest : TestBase
         Assert.Equal(expectedName, parameters.Name);
         Assert.Equal(expectedPage, parameters.Page);
         Assert.Equal(expectedPath, parameters.Path);
-        Assert.Equal(expectedSortField, parameters.SortField);
-        Assert.Equal(expectedSortOrder, parameters.SortOrder);
+        Assert.Equal(expectedSort, parameters.Sort);
         Assert.Equal(expectedTags, parameters.Tags);
     }
 
@@ -48,7 +45,7 @@ public class FileListParamsTest : TestBase
         var parameters = new FileListParams { };
 
         Assert.Null(parameters.FolderNo);
-        Assert.False(parameters.RawQueryData.ContainsKey("folder_no"));
+        Assert.False(parameters.RawQueryData.ContainsKey("folderNo"));
         Assert.Null(parameters.Limit);
         Assert.False(parameters.RawQueryData.ContainsKey("limit"));
         Assert.Null(parameters.Name);
@@ -57,10 +54,8 @@ public class FileListParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("page"));
         Assert.Null(parameters.Path);
         Assert.False(parameters.RawQueryData.ContainsKey("path"));
-        Assert.Null(parameters.SortField);
-        Assert.False(parameters.RawQueryData.ContainsKey("sort_field"));
-        Assert.Null(parameters.SortOrder);
-        Assert.False(parameters.RawQueryData.ContainsKey("sort_order"));
+        Assert.Null(parameters.Sort);
+        Assert.False(parameters.RawQueryData.ContainsKey("sort"));
         Assert.Null(parameters.Tags);
         Assert.False(parameters.RawQueryData.ContainsKey("tags"));
     }
@@ -76,13 +71,12 @@ public class FileListParamsTest : TestBase
             Name = null,
             Page = null,
             Path = null,
-            SortField = null,
-            SortOrder = null,
+            Sort = null,
             Tags = null,
         };
 
         Assert.Null(parameters.FolderNo);
-        Assert.False(parameters.RawQueryData.ContainsKey("folder_no"));
+        Assert.False(parameters.RawQueryData.ContainsKey("folderNo"));
         Assert.Null(parameters.Limit);
         Assert.False(parameters.RawQueryData.ContainsKey("limit"));
         Assert.Null(parameters.Name);
@@ -91,10 +85,8 @@ public class FileListParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("page"));
         Assert.Null(parameters.Path);
         Assert.False(parameters.RawQueryData.ContainsKey("path"));
-        Assert.Null(parameters.SortField);
-        Assert.False(parameters.RawQueryData.ContainsKey("sort_field"));
-        Assert.Null(parameters.SortOrder);
-        Assert.False(parameters.RawQueryData.ContainsKey("sort_order"));
+        Assert.Null(parameters.Sort);
+        Assert.False(parameters.RawQueryData.ContainsKey("sort"));
         Assert.Null(parameters.Tags);
         Assert.False(parameters.RawQueryData.ContainsKey("tags"));
     }
@@ -104,22 +96,21 @@ public class FileListParamsTest : TestBase
     {
         FileListParams parameters = new()
         {
-            FolderNo = "folder_no",
-            Limit = 0,
+            FolderNo = "folderNo",
+            Limit = 1,
             Name = "name",
-            Page = 0,
+            Page = 1,
             Path = "path",
-            SortField = SortField.FileSize,
-            SortOrder = SortOrder.Asc,
+            Sort = Sort.CreatedAtAsc,
             Tags = "tags",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(new() { });
 
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://upload.autorender.io/api/v1/files?folder_no=folder_no&limit=0&name=name&page=0&path=path&sort_field=file_size&sort_order=asc&tags=tags"
+                    "https://upload.autorender.io/api/v1/files?folderNo=folderNo&limit=1&name=name&page=1&path=path&sort=created_at_asc&tags=tags"
                 ),
                 url
             )
@@ -131,13 +122,12 @@ public class FileListParamsTest : TestBase
     {
         var parameters = new FileListParams
         {
-            FolderNo = "folder_no",
-            Limit = 0,
+            FolderNo = "folderNo",
+            Limit = 1,
             Name = "name",
-            Page = 0,
+            Page = 1,
             Path = "path",
-            SortField = SortField.FileSize,
-            SortOrder = SortOrder.Asc,
+            Sort = Sort.CreatedAtAsc,
             Tags = "tags",
         };
 
@@ -147,24 +137,24 @@ public class FileListParamsTest : TestBase
     }
 }
 
-public class SortFieldTest : TestBase
+public class SortTest : TestBase
 {
     [Theory]
-    [InlineData(SortField.FileSize)]
-    [InlineData(SortField.Name)]
-    [InlineData(SortField.CreatedAt)]
-    [InlineData(SortField.UpdatedAt)]
-    public void Validation_Works(SortField rawValue)
+    [InlineData(Sort.CreatedAtAsc)]
+    [InlineData(Sort.CreatedAtDesc)]
+    [InlineData(Sort.SizeAsc)]
+    [InlineData(Sort.SizeDesc)]
+    public void Validation_Works(Sort rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, SortField> value = rawValue;
+        ApiEnum<string, Sort> value = rawValue;
         value.Validate();
     }
 
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, SortField>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Sort>>(
             JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
@@ -174,17 +164,17 @@ public class SortFieldTest : TestBase
     }
 
     [Theory]
-    [InlineData(SortField.FileSize)]
-    [InlineData(SortField.Name)]
-    [InlineData(SortField.CreatedAt)]
-    [InlineData(SortField.UpdatedAt)]
-    public void SerializationRoundtrip_Works(SortField rawValue)
+    [InlineData(Sort.CreatedAtAsc)]
+    [InlineData(Sort.CreatedAtDesc)]
+    [InlineData(Sort.SizeAsc)]
+    [InlineData(Sort.SizeDesc)]
+    public void SerializationRoundtrip_Works(Sort rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, SortField> value = rawValue;
+        ApiEnum<string, Sort> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, SortField>>(
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Sort>>(
             json,
             ModelBase.SerializerOptions
         );
@@ -195,70 +185,12 @@ public class SortFieldTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, SortField>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Sort>>(
             JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, SortField>>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(value, deserialized);
-    }
-}
-
-public class SortOrderTest : TestBase
-{
-    [Theory]
-    [InlineData(SortOrder.Asc)]
-    [InlineData(SortOrder.Desc)]
-    public void Validation_Works(SortOrder rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, SortOrder> value = rawValue;
-        value.Validate();
-    }
-
-    [Fact]
-    public void InvalidEnumValidationThrows_Works()
-    {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, SortOrder>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
-
-        Assert.NotNull(value);
-        Assert.Throws<AutorenderInvalidDataException>(() => value.Validate());
-    }
-
-    [Theory]
-    [InlineData(SortOrder.Asc)]
-    [InlineData(SortOrder.Desc)]
-    public void SerializationRoundtrip_Works(SortOrder rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, SortOrder> value = rawValue;
-
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, SortOrder>>(
-            json,
-            ModelBase.SerializerOptions
-        );
-
-        Assert.Equal(value, deserialized);
-    }
-
-    [Fact]
-    public void InvalidEnumSerializationRoundtrip_Works()
-    {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, SortOrder>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, SortOrder>>(
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Sort>>(
             json,
             ModelBase.SerializerOptions
         );

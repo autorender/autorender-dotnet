@@ -7,9 +7,11 @@ using Autorender.Models.Folders;
 namespace Autorender.Services;
 
 /// <summary>
-/// NOTE: Do not inherit from this type outside the SDK unless you're okay with breaking
-/// changes in non-major versions. We may add new methods in the future that cause
-/// existing derived classes to break.
+/// Folder management endpoints (API key required)
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 public interface IFolderService
 {
@@ -27,7 +29,7 @@ public interface IFolderService
     IFolderService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Create a folder under an optional parent.
+    /// Create folder
     /// </summary>
     Task<FolderCreateResponse> Create(
         FolderCreateParams parameters,
@@ -35,39 +37,27 @@ public interface IFolderService
     );
 
     /// <summary>
-    /// List folders under an optional parent. Omit `parent_folder_no` to list
-    /// root-level folders.
+    /// Delete folder
     /// </summary>
-    Task<FolderListResponse> List(
-        FolderListParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Delete a folder by folder number. No request body required.
-    /// </summary>
-    Task<FolderDeleteResponse> Delete(
-        FolderDeleteParams parameters,
-        CancellationToken cancellationToken = default
-    );
+    Task Delete(FolderDeleteParams parameters, CancellationToken cancellationToken = default);
 
     /// <inheritdoc cref="Delete(FolderDeleteParams, CancellationToken)"/>
-    Task<FolderDeleteResponse> Delete(
+    Task Delete(
         string folderNo,
         FolderDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Rename a folder by `folder_no`.
+    /// Rename folder
     /// </summary>
-    Task<Folder> Rename(
+    Task<FolderRenameResponse> Rename(
         FolderRenameParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Rename(FolderRenameParams, CancellationToken)"/>
-    Task<Folder> Rename(
+    Task<FolderRenameResponse> Rename(
         string folderNo,
         FolderRenameParams parameters,
         CancellationToken cancellationToken = default
@@ -97,25 +87,16 @@ public interface IFolderServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /api/v1/folders</c>, but is otherwise the
-    /// same as <see cref="IFolderService.List(FolderListParams?, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<FolderListResponse>> List(
-        FolderListParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
     /// Returns a raw HTTP response for <c>delete /api/v1/folders/{folderNo}</c>, but is otherwise the
     /// same as <see cref="IFolderService.Delete(FolderDeleteParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<FolderDeleteResponse>> Delete(
+    Task<HttpResponse> Delete(
         FolderDeleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Delete(FolderDeleteParams, CancellationToken)"/>
-    Task<HttpResponse<FolderDeleteResponse>> Delete(
+    Task<HttpResponse> Delete(
         string folderNo,
         FolderDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -125,13 +106,13 @@ public interface IFolderServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /api/v1/folders/rename/{folderNo}</c>, but is otherwise the
     /// same as <see cref="IFolderService.Rename(FolderRenameParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<Folder>> Rename(
+    Task<HttpResponse<FolderRenameResponse>> Rename(
         FolderRenameParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Rename(FolderRenameParams, CancellationToken)"/>
-    Task<HttpResponse<Folder>> Rename(
+    Task<HttpResponse<FolderRenameResponse>> Rename(
         string folderNo,
         FolderRenameParams parameters,
         CancellationToken cancellationToken = default

@@ -10,7 +10,7 @@ using Autorender.Core;
 namespace Autorender.Models.Folders;
 
 /// <summary>
-/// Create a folder under an optional parent.
+/// Create folder
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
@@ -25,27 +25,27 @@ public record class FolderCreateParams : ParamsBase
     }
 
     /// <summary>
-    /// Folder display name
+    /// Folder name without slashes
     /// </summary>
-    public required string Name
+    public required string FolderName
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("name");
+            return this._rawBodyData.GetNotNullClass<string>("folder_name");
         }
-        init { this._rawBodyData.Set("name", value); }
+        init { this._rawBodyData.Set("folder_name", value); }
     }
 
     /// <summary>
-    /// Parent folder number; omit or null for root
+    /// Optional parent path, e.g. products/sku123
     /// </summary>
-    public string? ParentFolderNo
+    public string? Path
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("parent_folder_no");
+            return this._rawBodyData.GetNullableClass<string>("path");
         }
         init
         {
@@ -54,7 +54,7 @@ public record class FolderCreateParams : ParamsBase
                 return;
             }
 
-            this._rawBodyData.Set("parent_folder_no", value);
+            this._rawBodyData.Set("path", value);
         }
     }
 

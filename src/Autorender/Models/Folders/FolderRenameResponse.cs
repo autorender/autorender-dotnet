@@ -9,10 +9,10 @@ using Autorender.Core;
 namespace Autorender.Models.Folders;
 
 /// <summary>
-/// Folder created
+/// Renamed folder
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<FolderCreateResponse, FolderCreateResponseFromRaw>))]
-public sealed record class FolderCreateResponse : JsonModel
+[JsonConverter(typeof(JsonModelConverter<FolderRenameResponse, FolderRenameResponseFromRaw>))]
+public sealed record class FolderRenameResponse : JsonModel
 {
     public required string ID
     {
@@ -96,29 +96,29 @@ public sealed record class FolderCreateResponse : JsonModel
         _ = this.UpdatedAt;
     }
 
-    public FolderCreateResponse() { }
+    public FolderRenameResponse() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public FolderCreateResponse(FolderCreateResponse folderCreateResponse)
-        : base(folderCreateResponse) { }
+    public FolderRenameResponse(FolderRenameResponse folderRenameResponse)
+        : base(folderRenameResponse) { }
 #pragma warning restore CS8618
 
-    public FolderCreateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    public FolderRenameResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    FolderCreateResponse(FrozenDictionary<string, JsonElement> rawData)
+    FolderRenameResponse(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="FolderCreateResponseFromRaw.FromRawUnchecked"/>
-    public static FolderCreateResponse FromRawUnchecked(
+    /// <inheritdoc cref="FolderRenameResponseFromRaw.FromRawUnchecked"/>
+    public static FolderRenameResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -126,10 +126,10 @@ public sealed record class FolderCreateResponse : JsonModel
     }
 }
 
-class FolderCreateResponseFromRaw : IFromRawJson<FolderCreateResponse>
+class FolderRenameResponseFromRaw : IFromRawJson<FolderRenameResponse>
 {
     /// <inheritdoc/>
-    public FolderCreateResponse FromRawUnchecked(
+    public FolderRenameResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => FolderCreateResponse.FromRawUnchecked(rawData);
+    ) => FolderRenameResponse.FromRawUnchecked(rawData);
 }

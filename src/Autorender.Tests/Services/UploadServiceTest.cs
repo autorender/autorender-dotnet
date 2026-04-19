@@ -9,7 +9,7 @@ public class UploadServiceTest : TestBase
     public async Task Create_Works()
     {
         var upload = await this.client.Uploads.Create(
-            new() { File = Encoding.UTF8.GetBytes("Example data"), FileName = "file_name" },
+            new() { File = Encoding.UTF8.GetBytes("Example data"), FileName = "product.jpg" },
             TestContext.Current.CancellationToken
         );
         upload.Validate();
@@ -18,10 +18,10 @@ public class UploadServiceTest : TestBase
     [Fact]
     public async Task CreateFromUrl_Works()
     {
-        var upload = await this.client.Uploads.CreateFromUrl(
-            new() { RemoteUrl = "remote_url" },
+        var response = await this.client.Uploads.CreateFromUrl(
+            new() { RemoteUrl = "https://example.com" },
             TestContext.Current.CancellationToken
         );
-        upload.Validate();
+        response.Validate();
     }
 }

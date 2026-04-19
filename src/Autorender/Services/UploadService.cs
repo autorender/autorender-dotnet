@@ -34,7 +34,7 @@ public sealed class UploadService : IUploadService
     }
 
     /// <inheritdoc/>
-    public async Task<Upload> Create(
+    public async Task<UploadCreateResponse> Create(
         UploadCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -46,7 +46,7 @@ public sealed class UploadService : IUploadService
     }
 
     /// <inheritdoc/>
-    public async Task<Upload> CreateFromUrl(
+    public async Task<UploadCreateFromUrlResponse> CreateFromUrl(
         UploadCreateFromUrlParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -75,7 +75,7 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<Upload>> Create(
+    public async Task<HttpResponse<UploadCreateResponse>> Create(
         UploadCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -90,7 +90,9 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
             response,
             async (token) =>
             {
-                var upload = await response.Deserialize<Upload>(token).ConfigureAwait(false);
+                var upload = await response
+                    .Deserialize<UploadCreateResponse>(token)
+                    .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
                     upload.Validate();
@@ -101,7 +103,7 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<Upload>> CreateFromUrl(
+    public async Task<HttpResponse<UploadCreateFromUrlResponse>> CreateFromUrl(
         UploadCreateFromUrlParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -116,12 +118,14 @@ public sealed class UploadServiceWithRawResponse : IUploadServiceWithRawResponse
             response,
             async (token) =>
             {
-                var upload = await response.Deserialize<Upload>(token).ConfigureAwait(false);
+                var deserializedResponse = await response
+                    .Deserialize<UploadCreateFromUrlResponse>(token)
+                    .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    upload.Validate();
+                    deserializedResponse.Validate();
                 }
-                return upload;
+                return deserializedResponse;
             }
         );
     }

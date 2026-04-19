@@ -8,9 +8,9 @@ public class FileDeleteParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new FileDeleteParams { FileNo = "2338056701" };
+        var parameters = new FileDeleteParams { FileNo = "fileNo" };
 
-        string expectedFileNo = "2338056701";
+        string expectedFileNo = "fileNo";
 
         Assert.Equal(expectedFileNo, parameters.FileNo);
     }
@@ -18,19 +18,19 @@ public class FileDeleteParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        FileDeleteParams parameters = new() { FileNo = "2338056701" };
+        FileDeleteParams parameters = new() { FileNo = "fileNo" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(new() { });
 
         Assert.True(
-            TestBase.UrisEqual(new Uri("https://upload.autorender.io/api/v1/files/2338056701"), url)
+            TestBase.UrisEqual(new Uri("https://upload.autorender.io/api/v1/files/fileNo"), url)
         );
     }
 
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new FileDeleteParams { FileNo = "2338056701" };
+        var parameters = new FileDeleteParams { FileNo = "fileNo" };
 
         FileDeleteParams copied = new(parameters);
 

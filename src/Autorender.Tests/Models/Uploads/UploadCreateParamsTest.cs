@@ -15,23 +15,25 @@ public class UploadCreateParamsTest : TestBase
         var parameters = new UploadCreateParams
         {
             File = file,
-            FileName = "file_name",
-            CustomID = "custom_id",
-            Folder = "folder",
-            Metadata = "metadata",
+            FileName = "product.jpg",
+            CustomID = "sku123",
+            Folder = "products/sku123",
+            Metadata = "{\"productId\":\"123\"}",
             RandomPrefix = "random_prefix",
-            Tags = "tags",
+            Tags = "product,thumbnail",
             Transform = "transform",
+            WebhookUrl = "webhook_url",
         };
 
         BinaryContent expectedFile = file;
-        string expectedFileName = "file_name";
-        string expectedCustomID = "custom_id";
-        string expectedFolder = "folder";
-        string expectedMetadata = "metadata";
+        string expectedFileName = "product.jpg";
+        string expectedCustomID = "sku123";
+        string expectedFolder = "products/sku123";
+        string expectedMetadata = "{\"productId\":\"123\"}";
         string expectedRandomPrefix = "random_prefix";
-        string expectedTags = "tags";
+        string expectedTags = "product,thumbnail";
         string expectedTransform = "transform";
+        string expectedWebhookUrl = "webhook_url";
 
         Assert.Equal(expectedFile, parameters.File);
         Assert.Equal(expectedFileName, parameters.FileName);
@@ -41,6 +43,7 @@ public class UploadCreateParamsTest : TestBase
         Assert.Equal(expectedRandomPrefix, parameters.RandomPrefix);
         Assert.Equal(expectedTags, parameters.Tags);
         Assert.Equal(expectedTransform, parameters.Transform);
+        Assert.Equal(expectedWebhookUrl, parameters.WebhookUrl);
     }
 
     [Fact]
@@ -48,7 +51,7 @@ public class UploadCreateParamsTest : TestBase
     {
         BinaryContent file = Encoding.UTF8.GetBytes("Example data");
 
-        var parameters = new UploadCreateParams { File = file, FileName = "file_name" };
+        var parameters = new UploadCreateParams { File = file, FileName = "product.jpg" };
 
         Assert.Null(parameters.CustomID);
         Assert.False(parameters.RawBodyData.ContainsKey("custom_id"));
@@ -62,6 +65,8 @@ public class UploadCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("tags"));
         Assert.Null(parameters.Transform);
         Assert.False(parameters.RawBodyData.ContainsKey("transform"));
+        Assert.Null(parameters.WebhookUrl);
+        Assert.False(parameters.RawBodyData.ContainsKey("webhook_url"));
     }
 
     [Fact]
@@ -72,7 +77,7 @@ public class UploadCreateParamsTest : TestBase
         var parameters = new UploadCreateParams
         {
             File = file,
-            FileName = "file_name",
+            FileName = "product.jpg",
 
             // Null should be interpreted as omitted for these properties
             CustomID = null,
@@ -81,6 +86,7 @@ public class UploadCreateParamsTest : TestBase
             RandomPrefix = null,
             Tags = null,
             Transform = null,
+            WebhookUrl = null,
         };
 
         Assert.Null(parameters.CustomID);
@@ -95,6 +101,8 @@ public class UploadCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("tags"));
         Assert.Null(parameters.Transform);
         Assert.False(parameters.RawBodyData.ContainsKey("transform"));
+        Assert.Null(parameters.WebhookUrl);
+        Assert.False(parameters.RawBodyData.ContainsKey("webhook_url"));
     }
 
     [Fact]
@@ -103,10 +111,10 @@ public class UploadCreateParamsTest : TestBase
         UploadCreateParams parameters = new()
         {
             File = Encoding.UTF8.GetBytes("Example data"),
-            FileName = "file_name",
+            FileName = "product.jpg",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(new() { });
 
         Assert.True(
             TestBase.UrisEqual(new Uri("https://upload.autorender.io/api/v1/uploads"), url)
@@ -119,13 +127,14 @@ public class UploadCreateParamsTest : TestBase
         var parameters = new UploadCreateParams
         {
             File = Encoding.UTF8.GetBytes("Example data"),
-            FileName = "file_name",
-            CustomID = "custom_id",
-            Folder = "folder",
-            Metadata = "metadata",
+            FileName = "product.jpg",
+            CustomID = "sku123",
+            Folder = "products/sku123",
+            Metadata = "{\"productId\":\"123\"}",
             RandomPrefix = "random_prefix",
-            Tags = "tags",
+            Tags = "product,thumbnail",
             Transform = "transform",
+            WebhookUrl = "webhook_url",
         };
 
         UploadCreateParams copied = new(parameters);

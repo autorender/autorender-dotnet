@@ -35,7 +35,7 @@ public sealed class FileService : IFileService
     }
 
     /// <inheritdoc/>
-    public async Task<FileObject> Retrieve(
+    public async Task<FileRetrieveResponse> Retrieve(
         FileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class FileService : IFileService
     }
 
     /// <inheritdoc/>
-    public Task<FileObject> Retrieve(
+    public Task<FileRetrieveResponse> Retrieve(
         string fileNo,
         FileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -71,19 +71,13 @@ public sealed class FileService : IFileService
     }
 
     /// <inheritdoc/>
-    public async Task<FileDeleteResponse> Delete(
-        FileDeleteParams parameters,
-        CancellationToken cancellationToken = default
-    )
+    public Task Delete(FileDeleteParams parameters, CancellationToken cancellationToken = default)
     {
-        using var response = await this
-            .WithRawResponse.Delete(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Delete(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task<FileDeleteResponse> Delete(
+    public async Task Delete(
         string fileNo,
         FileDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -91,7 +85,8 @@ public sealed class FileService : IFileService
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { FileNo = fileNo }, cancellationToken);
+        await this.Delete(parameters with { FileNo = fileNo }, cancellationToken)
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -134,7 +129,7 @@ public sealed class FileServiceWithRawResponse : IFileServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<FileObject>> Retrieve(
+    public async Task<HttpResponse<FileRetrieveResponse>> Retrieve(
         FileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -154,20 +149,20 @@ public sealed class FileServiceWithRawResponse : IFileServiceWithRawResponse
             response,
             async (token) =>
             {
-                var fileObject = await response
-                    .Deserialize<FileObject>(token)
+                var file = await response
+                    .Deserialize<FileRetrieveResponse>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    fileObject.Validate();
+                    file.Validate();
                 }
-                return fileObject;
+                return file;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<FileObject>> Retrieve(
+    public Task<HttpResponse<FileRetrieveResponse>> Retrieve(
         string fileNo,
         FileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -209,7 +204,7 @@ public sealed class FileServiceWithRawResponse : IFileServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<FileDeleteResponse>> Delete(
+    public Task<HttpResponse> Delete(
         FileDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -224,25 +219,11 @@ public sealed class FileServiceWithRawResponse : IFileServiceWithRawResponse
             Method = HttpMethod.Delete,
             Params = parameters,
         };
-        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var file = await response
-                    .Deserialize<FileDeleteResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    file.Validate();
-                }
-                return file;
-            }
-        );
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<FileDeleteResponse>> Delete(
+    public Task<HttpResponse> Delete(
         string fileNo,
         FileDeleteParams? parameters = null,
         CancellationToken cancellationToken = default

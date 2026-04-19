@@ -32,7 +32,7 @@ AutorenderClient client = new();
 UploadCreateParams parameters = new()
 {
     File = Encoding.UTF8.GetBytes("Example data"),
-    FileName = "file_name",
+    FileName = "product.jpg",
 };
 
 var upload = await client.Uploads.Create(parameters);
@@ -56,7 +56,7 @@ Or manually:
 ```csharp
 using Autorender;
 
-AutorenderClient client = new() { ApiKey = "My API Key" };
+AutorenderClient client = new();
 ```
 
 Or using a combination of the two approaches.
@@ -96,7 +96,7 @@ The `WithOptions` method does not affect the original client or service.
 
 To send a request to the Autorender API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a C# class.
 
-For example, `client.Uploads.Create` should be called with an instance of `UploadCreateParams`, and it will return an instance of `Task<Upload>`.
+For example, `client.Uploads.Create` should be called with an instance of `UploadCreateParams`, and it will return an instance of `Task<UploadCreateResponse>`.
 
 ## Raw responses
 
@@ -119,7 +119,7 @@ using System;
 using Autorender.Models.Uploads;
 
 var response = await client.WithRawResponse.Uploads.Create(parameters);
-Upload deserialized = await response.Deserialize();
+UploadCreateResponse deserialized = await response.Deserialize();
 Console.WriteLine(deserialized);
 ```
 

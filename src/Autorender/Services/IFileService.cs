@@ -7,9 +7,11 @@ using Autorender.Models.Files;
 namespace Autorender.Services;
 
 /// <summary>
-/// NOTE: Do not inherit from this type outside the SDK unless you're okay with breaking
-/// changes in non-major versions. We may add new methods in the future that cause
-/// existing derived classes to break.
+/// File management endpoints (API key required)
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 public interface IFileService
 {
@@ -27,23 +29,22 @@ public interface IFileService
     IFileService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Retrieve detailed information about a file by numeric file id (`file_no`).
+    /// Get file details
     /// </summary>
-    Task<FileObject> Retrieve(
+    Task<FileRetrieveResponse> Retrieve(
         FileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(FileRetrieveParams, CancellationToken)"/>
-    Task<FileObject> Retrieve(
+    Task<FileRetrieveResponse> Retrieve(
         string fileNo,
         FileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Paginated list of files in the workspace. Filter by folder, sort by field and
-    /// order, and page through results.
+    /// List/search files with pagination, filtering, and sorting.
     /// </summary>
     Task<FileListResponse> List(
         FileListParams? parameters = null,
@@ -51,23 +52,19 @@ public interface IFileService
     );
 
     /// <summary>
-    /// Permanently delete a file. No request body is required.
+    /// Delete file
     /// </summary>
-    Task<FileDeleteResponse> Delete(
-        FileDeleteParams parameters,
-        CancellationToken cancellationToken = default
-    );
+    Task Delete(FileDeleteParams parameters, CancellationToken cancellationToken = default);
 
     /// <inheritdoc cref="Delete(FileDeleteParams, CancellationToken)"/>
-    Task<FileDeleteResponse> Delete(
+    Task Delete(
         string fileNo,
         FileDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Rename a file. The API may preserve or normalize the file extension (e.g. `demo`
-    /// → `demo.png`).
+    /// Rename file
     /// </summary>
     Task<FileRenameResponse> Rename(
         FileRenameParams parameters,
@@ -99,13 +96,13 @@ public interface IFileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /api/v1/files/{fileNo}</c>, but is otherwise the
     /// same as <see cref="IFileService.Retrieve(FileRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<FileObject>> Retrieve(
+    Task<HttpResponse<FileRetrieveResponse>> Retrieve(
         FileRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(FileRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<FileObject>> Retrieve(
+    Task<HttpResponse<FileRetrieveResponse>> Retrieve(
         string fileNo,
         FileRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -124,13 +121,13 @@ public interface IFileServiceWithRawResponse
     /// Returns a raw HTTP response for <c>delete /api/v1/files/{fileNo}</c>, but is otherwise the
     /// same as <see cref="IFileService.Delete(FileDeleteParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<FileDeleteResponse>> Delete(
+    Task<HttpResponse> Delete(
         FileDeleteParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Delete(FileDeleteParams, CancellationToken)"/>
-    Task<HttpResponse<FileDeleteResponse>> Delete(
+    Task<HttpResponse> Delete(
         string fileNo,
         FileDeleteParams? parameters = null,
         CancellationToken cancellationToken = default

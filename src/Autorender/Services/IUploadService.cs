@@ -7,9 +7,11 @@ using Autorender.Models.Uploads;
 namespace Autorender.Services;
 
 /// <summary>
-/// NOTE: Do not inherit from this type outside the SDK unless you're okay with breaking
-/// changes in non-major versions. We may add new methods in the future that cause
-/// existing derived classes to break.
+/// Upload endpoints (API key required)
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 public interface IUploadService
 {
@@ -27,18 +29,17 @@ public interface IUploadService
     IUploadService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Upload a file to your AutoRender workspace with optional transformations, tags,
-    /// and folder organization
+    /// Upload a file from your backend server using multipart/form-data.
     /// </summary>
-    Task<Upload> Create(
+    Task<UploadCreateResponse> Create(
         UploadCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Fetch a file from a remote URL and store it in your AutoRender workspace.
+    /// Download a file from a remote URL and store it in AutoRender.
     /// </summary>
-    Task<Upload> CreateFromUrl(
+    Task<UploadCreateFromUrlResponse> CreateFromUrl(
         UploadCreateFromUrlParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -61,7 +62,7 @@ public interface IUploadServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /api/v1/uploads</c>, but is otherwise the
     /// same as <see cref="IUploadService.Create(UploadCreateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<Upload>> Create(
+    Task<HttpResponse<UploadCreateResponse>> Create(
         UploadCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -70,7 +71,7 @@ public interface IUploadServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /api/v1/uploads/remote</c>, but is otherwise the
     /// same as <see cref="IUploadService.CreateFromUrl(UploadCreateFromUrlParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<Upload>> CreateFromUrl(
+    Task<HttpResponse<UploadCreateFromUrlResponse>> CreateFromUrl(
         UploadCreateFromUrlParams parameters,
         CancellationToken cancellationToken = default
     );
