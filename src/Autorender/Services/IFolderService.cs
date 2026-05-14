@@ -37,6 +37,14 @@ public interface IFolderService
     );
 
     /// <summary>
+    /// List folders
+    /// </summary>
+    Task<FolderListResponse> List(
+        FolderListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Delete folder
     /// </summary>
     Task Delete(FolderDeleteParams parameters, CancellationToken cancellationToken = default);
@@ -83,6 +91,15 @@ public interface IFolderServiceWithRawResponse
     /// </summary>
     Task<HttpResponse<FolderCreateResponse>> Create(
         FolderCreateParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for <c>get /api/v1/folders</c>, but is otherwise the
+    /// same as <see cref="IFolderService.List(FolderListParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<FolderListResponse>> List(
+        FolderListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

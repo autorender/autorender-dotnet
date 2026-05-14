@@ -43,32 +43,6 @@ public interface IUploadService
         UploadCreateFromUrlParams parameters,
         CancellationToken cancellationToken = default
     );
-
-    /// <summary>
-    /// Generate a short-lived token for direct browser uploads. No file is created at
-    /// this stage.
-    /// </summary>
-    Task<UploadGenerateTokenResponse> GenerateToken(
-        UploadGenerateTokenParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Upload a file directly from the browser using a token from /generate-token. Send
-    /// the raw file as binary in the request body.
-    /// </summary>
-    Task<UploadUploadWithTokenResponse> UploadWithToken(
-        UploadUploadWithTokenParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="UploadWithToken(UploadUploadWithTokenParams, CancellationToken)"/>
-    Task<UploadUploadWithTokenResponse> UploadWithToken(
-        string token,
-        BinaryContent file,
-        UploadUploadWithTokenParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
 }
 
 /// <summary>
@@ -99,32 +73,6 @@ public interface IUploadServiceWithRawResponse
     /// </summary>
     Task<HttpResponse<UploadCreateFromUrlResponse>> CreateFromUrl(
         UploadCreateFromUrlParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Returns a raw HTTP response for <c>post /api/v1/generate-token</c>, but is otherwise the
-    /// same as <see cref="IUploadService.GenerateToken(UploadGenerateTokenParams, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<UploadGenerateTokenResponse>> GenerateToken(
-        UploadGenerateTokenParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Returns a raw HTTP response for <c>post /api/v1/uploads/{token}</c>, but is otherwise the
-    /// same as <see cref="IUploadService.UploadWithToken(UploadUploadWithTokenParams, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<UploadUploadWithTokenResponse>> UploadWithToken(
-        UploadUploadWithTokenParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="UploadWithToken(UploadUploadWithTokenParams, CancellationToken)"/>
-    Task<HttpResponse<UploadUploadWithTokenResponse>> UploadWithToken(
-        string token,
-        BinaryContent file,
-        UploadUploadWithTokenParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }

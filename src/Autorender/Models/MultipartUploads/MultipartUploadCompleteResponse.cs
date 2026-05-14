@@ -7,15 +7,18 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Autorender.Core;
 
-namespace Autorender.Models.Uploads;
+namespace Autorender.Models.MultipartUploads;
 
 /// <summary>
-/// Upload created
+/// Upload completed
 /// </summary>
 [JsonConverter(
-    typeof(JsonModelConverter<UploadUploadWithTokenResponse, UploadUploadWithTokenResponseFromRaw>)
+    typeof(JsonModelConverter<
+        MultipartUploadCompleteResponse,
+        MultipartUploadCompleteResponseFromRaw
+    >)
 )]
-public sealed record class UploadUploadWithTokenResponse : JsonModel
+public sealed record class MultipartUploadCompleteResponse : JsonModel
 {
     public required string ID
     {
@@ -45,6 +48,16 @@ public sealed record class UploadUploadWithTokenResponse : JsonModel
             return this._rawData.GetNullableClass<string>("custom_id");
         }
         init { this._rawData.Set("custom_id", value); }
+    }
+
+    public required string Extension
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("extension");
+        }
+        init { this._rawData.Set("extension", value); }
     }
 
     public required string FileNo
@@ -85,16 +98,6 @@ public sealed record class UploadUploadWithTokenResponse : JsonModel
             return this._rawData.GetNotNullStruct<bool>("is_duplicate");
         }
         init { this._rawData.Set("is_duplicate", value); }
-    }
-
-    public required bool IsPrivate
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<bool>("is_private");
-        }
-        init { this._rawData.Set("is_private", value); }
     }
 
     public required IReadOnlyDictionary<string, JsonElement>? Metadata
@@ -169,6 +172,16 @@ public sealed record class UploadUploadWithTokenResponse : JsonModel
                 ImmutableArray.ToImmutableArray(value)
             );
         }
+    }
+
+    public required string Thumbnail
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("thumbnail");
+        }
+        init { this._rawData.Set("thumbnail", value); }
     }
 
     public required string UploadSource
@@ -247,56 +260,76 @@ public sealed record class UploadUploadWithTokenResponse : JsonModel
         }
     }
 
+    public bool? IsPrivate
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_private");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("is_private", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.ID;
         _ = this.CreatedAt;
         _ = this.CustomID;
+        _ = this.Extension;
         _ = this.FileNo;
         _ = this.FolderNo;
         _ = this.Height;
         _ = this.IsDuplicate;
-        _ = this.IsPrivate;
         _ = this.Metadata;
         _ = this.MimeType;
         _ = this.Name;
         _ = this.Path;
         _ = this.Size;
         _ = this.Tags;
+        _ = this.Thumbnail;
         _ = this.UploadSource;
         _ = this.Url;
         _ = this.Width;
         _ = this.WorkspaceID;
         _ = this.Format;
         _ = this.Hash;
+        _ = this.IsPrivate;
     }
 
-    public UploadUploadWithTokenResponse() { }
+    public MultipartUploadCompleteResponse() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public UploadUploadWithTokenResponse(
-        UploadUploadWithTokenResponse uploadUploadWithTokenResponse
+    public MultipartUploadCompleteResponse(
+        MultipartUploadCompleteResponse multipartUploadCompleteResponse
     )
-        : base(uploadUploadWithTokenResponse) { }
+        : base(multipartUploadCompleteResponse) { }
 #pragma warning restore CS8618
 
-    public UploadUploadWithTokenResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    public MultipartUploadCompleteResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    UploadUploadWithTokenResponse(FrozenDictionary<string, JsonElement> rawData)
+    MultipartUploadCompleteResponse(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="UploadUploadWithTokenResponseFromRaw.FromRawUnchecked"/>
-    public static UploadUploadWithTokenResponse FromRawUnchecked(
+    /// <inheritdoc cref="MultipartUploadCompleteResponseFromRaw.FromRawUnchecked"/>
+    public static MultipartUploadCompleteResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -304,10 +337,10 @@ public sealed record class UploadUploadWithTokenResponse : JsonModel
     }
 }
 
-class UploadUploadWithTokenResponseFromRaw : IFromRawJson<UploadUploadWithTokenResponse>
+class MultipartUploadCompleteResponseFromRaw : IFromRawJson<MultipartUploadCompleteResponse>
 {
     /// <inheritdoc/>
-    public UploadUploadWithTokenResponse FromRawUnchecked(
+    public MultipartUploadCompleteResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => UploadUploadWithTokenResponse.FromRawUnchecked(rawData);
+    ) => MultipartUploadCompleteResponse.FromRawUnchecked(rawData);
 }

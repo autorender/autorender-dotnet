@@ -20,7 +20,7 @@ or products provided by Autorender, please follow the respective company's secur
 
 ### Autorender Terms and Policies
 
-Please contact support@autorender.io for any questions or concerns regarding the security of our services.
+Please contact engineering@autorender.io for any questions or concerns regarding the security of our services.
 
 ---
 

@@ -5,7 +5,7 @@
     <PackageTags>sdk;api;http;library</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright 2026 Autorender</Copyright>
-    <PackageProjectUrl>https://docs.autorender.io</PackageProjectUrl>
+    <PackageProjectUrl>https://autorender.mintlify.app/</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/autorenderhq/autorender-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 

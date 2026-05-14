@@ -8,26 +8,26 @@ using System.Text.Json.Serialization;
 using Autorender.Core;
 using Autorender.Exceptions;
 
-namespace Autorender.Models.Files;
+namespace Autorender.Models.Folders;
 
 /// <summary>
-/// List/search files with pagination, filtering, and sorting.
+/// List folders
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public record class FileListParams : ParamsBase
+public record class FolderListParams : ParamsBase
 {
     /// <summary>
-    /// Filter by folder number
+    /// Filter by parent folder number
     /// </summary>
-    public string? FolderNo
+    public string? ParentFolderNo
     {
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("folder_no");
+            return this._rawQueryData.GetNullableClass<string>("parent_folder_no");
         }
         init
         {
@@ -36,43 +36,7 @@ public record class FileListParams : ParamsBase
                 return;
             }
 
-            this._rawQueryData.Set("folder_no", value);
-        }
-    }
-
-    public long? Limit
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawQueryData.Set("limit", value);
-        }
-    }
-
-    public long? Page
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("page");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawQueryData.Set("page", value);
+            this._rawQueryData.Set("parent_folder_no", value);
         }
     }
 
@@ -115,15 +79,15 @@ public record class FileListParams : ParamsBase
         }
     }
 
-    public FileListParams() { }
+    public FolderListParams() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public FileListParams(FileListParams fileListParams)
-        : base(fileListParams) { }
+    public FolderListParams(FolderListParams folderListParams)
+        : base(folderListParams) { }
 #pragma warning restore CS8618
 
-    public FileListParams(
+    public FolderListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -134,7 +98,7 @@ public record class FileListParams : ParamsBase
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    FileListParams(
+    FolderListParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -145,7 +109,7 @@ public record class FileListParams : ParamsBase
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
-    public static FileListParams FromRawUnchecked(
+    public static FolderListParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -172,7 +136,7 @@ public record class FileListParams : ParamsBase
             ModelBase.ToStringSerializerOptions
         );
 
-    public virtual bool Equals(FileListParams? other)
+    public virtual bool Equals(FolderListParams? other)
     {
         if (other == null)
         {
@@ -184,7 +148,7 @@ public record class FileListParams : ParamsBase
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/api/v1/files")
+        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/api/v1/folders")
         {
             Query = this.QueryString(options),
         }.Uri;
@@ -210,8 +174,6 @@ public enum Sort
 {
     NameAsc,
     NameDesc,
-    SizeAsc,
-    SizeDesc,
     CreatedAtAsc,
     CreatedAtDesc,
 }
@@ -228,8 +190,6 @@ sealed class SortConverter : JsonConverter<Sort>
         {
             "name_asc" => Sort.NameAsc,
             "name_desc" => Sort.NameDesc,
-            "size_asc" => Sort.SizeAsc,
-            "size_desc" => Sort.SizeDesc,
             "created_at_asc" => Sort.CreatedAtAsc,
             "created_at_desc" => Sort.CreatedAtDesc,
             _ => (Sort)(-1),
@@ -244,8 +204,6 @@ sealed class SortConverter : JsonConverter<Sort>
             {
                 Sort.NameAsc => "name_asc",
                 Sort.NameDesc => "name_desc",
-                Sort.SizeAsc => "size_asc",
-                Sort.SizeDesc => "size_desc",
                 Sort.CreatedAtAsc => "created_at_asc",
                 Sort.CreatedAtDesc => "created_at_desc",
                 _ => throw new AutorenderInvalidDataException(

@@ -1,10 +1,10 @@
 # Autorender C# API Library
 
-The Autorender C# SDK provides convenient access to the [Autorender REST API](https://docs.autorender.io) from applications written in C#.
+The Autorender C# SDK provides convenient access to the [Autorender REST API](https://autorender.mintlify.app/) from applications written in C#.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
-The REST API documentation can be found on [docs.autorender.io](https://docs.autorender.io).
+The REST API documentation can be found on [autorender.mintlify.app](https://autorender.mintlify.app/).
 
 ## Installation
 
@@ -23,21 +23,16 @@ See the [`examples`](examples) directory for complete and runnable examples.
 
 ```csharp
 using System;
-using System.Text;
 using Autorender;
-using Autorender.Models.Uploads;
+using Autorender.Models.Files;
 
 AutorenderClient client = new();
 
-UploadCreateParams parameters = new()
-{
-    File = Encoding.UTF8.GetBytes("<binary>"),
-    FileName = "photo.jpg",
-};
+FileListParams parameters = new() { Limit = 10 };
 
-var upload = await client.Uploads.Create(parameters);
+var files = await client.Files.List(parameters);
 
-Console.WriteLine(upload);
+Console.WriteLine(files);
 ```
 
 ## Client configuration
@@ -96,7 +91,7 @@ The `WithOptions` method does not affect the original client or service.
 
 To send a request to the Autorender API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a C# class.
 
-For example, `client.Uploads.Create` should be called with an instance of `UploadCreateParams`, and it will return an instance of `Task<UploadCreateResponse>`.
+For example, `client.Files.List` should be called with an instance of `FileListParams`, and it will return an instance of `Task<FileListResponse>`.
 
 ## Raw responses
 
@@ -243,12 +238,10 @@ To set undocumented parameters, a constructor exists that accepts dictionaries f
 
 ```csharp
 using System.Collections.Generic;
-using System.Text;
 using System.Text.Json;
-using Autorender.Core;
-using Autorender.Models.Uploads;
+using Autorender.Models.Files;
 
-UploadCreateParams parameters = new
+FileListParams parameters = new
 (
     rawHeaderData: new Dictionary<string, JsonElement>()
     {
@@ -258,17 +251,12 @@ UploadCreateParams parameters = new
     rawQueryData: new Dictionary<string, JsonElement>()
     {
         { "custom_query_param", JsonSerializer.SerializeToElement(42) }
-    },
-
-    rawBodyData: new Dictionary<string, MultipartJsonElement>()
-    {
-        { "custom_body_param", JsonSerializer.SerializeToElement(42) }
     }
 )
 {
     // Documented properties can still be added here.
     // In case of conflict, these parameters take precedence over the custom parameters.
-    File = Encoding.UTF8.GetBytes("Example data")
+    Limit = 1
 };
 ```
 
@@ -296,46 +284,6 @@ var parameters = UploadCreateParams.FromRawUnchecked
 );
 ```
 
-### Nested Parameters
-
-Undocumented properties, or undocumented values of documented properties, on nested parameters can be set similarly, using a dictionary in the constructor of the nested parameter.
-
-```csharp
-using System.Collections.Generic;
-using System.Text.Json;
-using Autorender.Models.Uploads;
-
-UploadGenerateTokenParams parameters = new()
-{
-    AllowOverride = new
-    (
-        new Dictionary<string, JsonElement>
-        {
-            { "custom_nested_param", JsonSerializer.SerializeToElement(42) }
-        }
-    )
-};
-```
-
-Required properties on the nested parameter can also be changed or omitted using the `FromRawUnchecked` method:
-
-```csharp
-using System.Collections.Generic;
-using System.Text.Json;
-using Autorender.Models.Uploads;
-
-UploadGenerateTokenParams parameters = new()
-{
-    AllowOverride = AllowOverride.FromRawUnchecked
-    (
-        new Dictionary<string, JsonElement>
-        {
-            { "required_property", JsonSerializer.SerializeToElement("custom value") }
-        }
-    )
-};
-```
-
 ### Response properties
 
 To access undocumented response properties, the `RawData` property can be used:
@@ -343,7 +291,7 @@ To access undocumented response properties, the `RawData` property can be used:
 ```csharp
 using System.Text.Json;
 
-var response = client.Uploads.Create(parameters)
+var response = client.Files.List()
 if (response.RawData.TryGetValue("my_custom_key", out JsonElement value))
 {
     // Do something with `value`
@@ -361,8 +309,8 @@ By default, the SDK will not throw an exception in this case. It will throw `Aut
 If you would prefer to check that the response is completely well-typed upfront, then either call `Validate`:
 
 ```csharp
-var upload = client.Uploads.Create(parameters);
-upload.Validate();
+var files = client.Files.List();
+files.Validate();
 ```
 
 Or configure the client using the `ResponseValidation` option:
@@ -378,13 +326,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var upload = await client
+var files = await client
     .WithOptions(options =>
         options with { ResponseValidation = true }
     )
-    .Uploads.Create(parameters);
+    .Files.List(parameters);
 
-Console.WriteLine(upload);
+Console.WriteLine(files);
 ```
 
 ## Semantic versioning

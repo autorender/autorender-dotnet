@@ -44,21 +44,6 @@ public interface IFileService
     );
 
     /// <summary>
-    /// Update file tags/metadata
-    /// </summary>
-    Task<FileUpdateResponse> Update(
-        FileUpdateParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(FileUpdateParams, CancellationToken)"/>
-    Task<FileUpdateResponse> Update(
-        string fileNo,
-        FileUpdateParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
     /// List/search files with pagination, filtering, and sorting.
     /// </summary>
     Task<FileListResponse> List(
@@ -120,22 +105,6 @@ public interface IFileServiceWithRawResponse
     Task<HttpResponse<FileRetrieveResponse>> Retrieve(
         string fileNo,
         FileRetrieveParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Returns a raw HTTP response for <c>patch /api/v1/files/{fileNo}</c>, but is otherwise the
-    /// same as <see cref="IFileService.Update(FileUpdateParams, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<FileUpdateResponse>> Update(
-        FileUpdateParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(FileUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<FileUpdateResponse>> Update(
-        string fileNo,
-        FileUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 

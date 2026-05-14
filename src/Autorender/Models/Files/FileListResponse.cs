@@ -15,84 +15,40 @@ namespace Autorender.Models.Files;
 [JsonConverter(typeof(JsonModelConverter<FileListResponse, FileListResponseFromRaw>))]
 public sealed record class FileListResponse : JsonModel
 {
-    public required bool IsPageNext
+    public required IReadOnlyList<File> Files
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<bool>("is_page_next");
-        }
-        init { this._rawData.Set("is_page_next", value); }
-    }
-
-    public required IReadOnlyList<Item> Items
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<Item>>("items");
+            return this._rawData.GetNotNullStruct<ImmutableArray<File>>("files");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<Item>>(
-                "items",
+            this._rawData.Set<ImmutableArray<File>>(
+                "files",
                 ImmutableArray.ToImmutableArray(value)
             );
         }
     }
 
-    public required long Limit
+    public required Meta Meta
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("limit");
+            return this._rawData.GetNotNullClass<Meta>("meta");
         }
-        init { this._rawData.Set("limit", value); }
-    }
-
-    public required long Page
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("page");
-        }
-        init { this._rawData.Set("page", value); }
-    }
-
-    public required long TotalCount
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("total_count");
-        }
-        init { this._rawData.Set("total_count", value); }
-    }
-
-    public required long TotalPages
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("total_pages");
-        }
-        init { this._rawData.Set("total_pages", value); }
+        init { this._rawData.Set("meta", value); }
     }
 
     /// <inheritdoc/>
     public override void Validate()
     {
-        _ = this.IsPageNext;
-        foreach (var item in this.Items)
+        foreach (var item in this.Files)
         {
             item.Validate();
         }
-        _ = this.Limit;
-        _ = this.Page;
-        _ = this.TotalCount;
-        _ = this.TotalPages;
+        this.Meta.Validate();
     }
 
     public FileListResponse() { }
@@ -132,8 +88,8 @@ class FileListResponseFromRaw : IFromRawJson<FileListResponse>
         FileListResponse.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(JsonModelConverter<Item, ItemFromRaw>))]
-public sealed record class Item : JsonModel
+[JsonConverter(typeof(JsonModelConverter<File, FileFromRaw>))]
+public sealed record class File : JsonModel
 {
     public required string ID
     {
@@ -341,37 +297,135 @@ public sealed record class Item : JsonModel
         _ = this.Width;
     }
 
-    public Item() { }
+    public File() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Item(Item item)
-        : base(item) { }
+    public File(File file)
+        : base(file) { }
 #pragma warning restore CS8618
 
-    public Item(IReadOnlyDictionary<string, JsonElement> rawData)
+    public File(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Item(FrozenDictionary<string, JsonElement> rawData)
+    File(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="ItemFromRaw.FromRawUnchecked"/>
-    public static Item FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="FileFromRaw.FromRawUnchecked"/>
+    public static File FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class ItemFromRaw : IFromRawJson<Item>
+class FileFromRaw : IFromRawJson<File>
 {
     /// <inheritdoc/>
-    public Item FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Item.FromRawUnchecked(rawData);
+    public File FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        File.FromRawUnchecked(rawData);
+}
+
+[JsonConverter(typeof(JsonModelConverter<Meta, MetaFromRaw>))]
+public sealed record class Meta : JsonModel
+{
+    public required bool HasNext
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<bool>("hasNext");
+        }
+        init { this._rawData.Set("hasNext", value); }
+    }
+
+    public required bool HasPrev
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<bool>("hasPrev");
+        }
+        init { this._rawData.Set("hasPrev", value); }
+    }
+
+    public required long Limit
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("limit");
+        }
+        init { this._rawData.Set("limit", value); }
+    }
+
+    public required long Page
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("page");
+        }
+        init { this._rawData.Set("page", value); }
+    }
+
+    public required long Total
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total");
+        }
+        init { this._rawData.Set("total", value); }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.HasNext;
+        _ = this.HasPrev;
+        _ = this.Limit;
+        _ = this.Page;
+        _ = this.Total;
+    }
+
+    public Meta() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Meta(Meta meta)
+        : base(meta) { }
+#pragma warning restore CS8618
+
+    public Meta(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Meta(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="MetaFromRaw.FromRawUnchecked"/>
+    public static Meta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class MetaFromRaw : IFromRawJson<Meta>
+{
+    /// <inheritdoc/>
+    public Meta FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Meta.FromRawUnchecked(rawData);
 }

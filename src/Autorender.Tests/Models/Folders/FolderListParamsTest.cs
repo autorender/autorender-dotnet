@@ -2,33 +2,27 @@ using System;
 using System.Text.Json;
 using Autorender.Core;
 using Autorender.Exceptions;
-using Autorender.Models.Files;
+using Autorender.Models.Folders;
 
-namespace Autorender.Tests.Models.Files;
+namespace Autorender.Tests.Models.Folders;
 
-public class FileListParamsTest : TestBase
+public class FolderListParamsTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new FileListParams
+        var parameters = new FolderListParams
         {
-            FolderNo = "folder_no",
-            Limit = 1,
-            Page = 1,
+            ParentFolderNo = "parent_folder_no",
             Search = "search",
             Sort = Sort.NameAsc,
         };
 
-        string expectedFolderNo = "folder_no";
-        long expectedLimit = 1;
-        long expectedPage = 1;
+        string expectedParentFolderNo = "parent_folder_no";
         string expectedSearch = "search";
         ApiEnum<string, Sort> expectedSort = Sort.NameAsc;
 
-        Assert.Equal(expectedFolderNo, parameters.FolderNo);
-        Assert.Equal(expectedLimit, parameters.Limit);
-        Assert.Equal(expectedPage, parameters.Page);
+        Assert.Equal(expectedParentFolderNo, parameters.ParentFolderNo);
         Assert.Equal(expectedSearch, parameters.Search);
         Assert.Equal(expectedSort, parameters.Sort);
     }
@@ -36,14 +30,10 @@ public class FileListParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new FileListParams { };
+        var parameters = new FolderListParams { };
 
-        Assert.Null(parameters.FolderNo);
-        Assert.False(parameters.RawQueryData.ContainsKey("folder_no"));
-        Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Page);
-        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.ParentFolderNo);
+        Assert.False(parameters.RawQueryData.ContainsKey("parent_folder_no"));
         Assert.Null(parameters.Search);
         Assert.False(parameters.RawQueryData.ContainsKey("search"));
         Assert.Null(parameters.Sort);
@@ -53,22 +43,16 @@ public class FileListParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
-        var parameters = new FileListParams
+        var parameters = new FolderListParams
         {
             // Null should be interpreted as omitted for these properties
-            FolderNo = null,
-            Limit = null,
-            Page = null,
+            ParentFolderNo = null,
             Search = null,
             Sort = null,
         };
 
-        Assert.Null(parameters.FolderNo);
-        Assert.False(parameters.RawQueryData.ContainsKey("folder_no"));
-        Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Page);
-        Assert.False(parameters.RawQueryData.ContainsKey("page"));
+        Assert.Null(parameters.ParentFolderNo);
+        Assert.False(parameters.RawQueryData.ContainsKey("parent_folder_no"));
         Assert.Null(parameters.Search);
         Assert.False(parameters.RawQueryData.ContainsKey("search"));
         Assert.Null(parameters.Sort);
@@ -78,11 +62,9 @@ public class FileListParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        FileListParams parameters = new()
+        FolderListParams parameters = new()
         {
-            FolderNo = "folder_no",
-            Limit = 1,
-            Page = 1,
+            ParentFolderNo = "parent_folder_no",
             Search = "search",
             Sort = Sort.NameAsc,
         };
@@ -92,7 +74,7 @@ public class FileListParamsTest : TestBase
         Assert.True(
             TestBase.UrisEqual(
                 new Uri(
-                    "https://upload.autorender.io/api/v1/files?folder_no=folder_no&limit=1&page=1&search=search&sort=name_asc"
+                    "https://upload.autorender.io/api/v1/folders?parent_folder_no=parent_folder_no&search=search&sort=name_asc"
                 ),
                 url
             )
@@ -102,16 +84,14 @@ public class FileListParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new FileListParams
+        var parameters = new FolderListParams
         {
-            FolderNo = "folder_no",
-            Limit = 1,
-            Page = 1,
+            ParentFolderNo = "parent_folder_no",
             Search = "search",
             Sort = Sort.NameAsc,
         };
 
-        FileListParams copied = new(parameters);
+        FolderListParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
     }
@@ -122,8 +102,6 @@ public class SortTest : TestBase
     [Theory]
     [InlineData(Sort.NameAsc)]
     [InlineData(Sort.NameDesc)]
-    [InlineData(Sort.SizeAsc)]
-    [InlineData(Sort.SizeDesc)]
     [InlineData(Sort.CreatedAtAsc)]
     [InlineData(Sort.CreatedAtDesc)]
     public void Validation_Works(Sort rawValue)
@@ -148,8 +126,6 @@ public class SortTest : TestBase
     [Theory]
     [InlineData(Sort.NameAsc)]
     [InlineData(Sort.NameDesc)]
-    [InlineData(Sort.SizeAsc)]
-    [InlineData(Sort.SizeDesc)]
     [InlineData(Sort.CreatedAtAsc)]
     [InlineData(Sort.CreatedAtDesc)]
     public void SerializationRoundtrip_Works(Sort rawValue)

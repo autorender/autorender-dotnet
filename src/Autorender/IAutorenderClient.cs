@@ -56,6 +56,8 @@ public interface IAutorenderClient : IDisposable
     IFileService Files { get; }
 
     IFolderService Folders { get; }
+
+    IMultipartUploadService MultipartUploads { get; }
 }
 
 /// <summary>
@@ -92,6 +94,8 @@ public interface IAutorenderClientWithRawResponse : IDisposable
     IFileServiceWithRawResponse Files { get; }
 
     IFolderServiceWithRawResponse Folders { get; }
+
+    IMultipartUploadServiceWithRawResponse MultipartUploads { get; }
 
     /// <summary>
     /// Sends a request to the Autorender REST API.

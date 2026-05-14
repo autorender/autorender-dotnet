@@ -16,17 +16,6 @@ public class FileServiceTest : TestBase
     }
 
     [Fact]
-    public async Task Update_Works()
-    {
-        var file = await this.client.Files.Update(
-            "fileNo",
-            new(),
-            TestContext.Current.CancellationToken
-        );
-        file.Validate();
-    }
-
-    [Fact]
     public async Task List_Works()
     {
         var files = await this.client.Files.List(new(), TestContext.Current.CancellationToken);

@@ -90,6 +90,12 @@ public sealed class AutorenderClient : IAutorenderClient
         get { return _folders.Value; }
     }
 
+    readonly Lazy<IMultipartUploadService> _multipartUploads;
+    public IMultipartUploadService MultipartUploads
+    {
+        get { return _multipartUploads.Value; }
+    }
+
     public void Dispose() => this.HttpClient.Dispose();
 
     public AutorenderClient()
@@ -100,6 +106,7 @@ public sealed class AutorenderClient : IAutorenderClient
         _uploads = new(() => new UploadService(this));
         _files = new(() => new FileService(this));
         _folders = new(() => new FolderService(this));
+        _multipartUploads = new(() => new MultipartUploadService(this));
     }
 
     public AutorenderClient(ClientOptions options)
@@ -191,6 +198,12 @@ public sealed class AutorenderClientWithRawResponse : IAutorenderClientWithRawRe
     public IFolderServiceWithRawResponse Folders
     {
         get { return _folders.Value; }
+    }
+
+    readonly Lazy<IMultipartUploadServiceWithRawResponse> _multipartUploads;
+    public IMultipartUploadServiceWithRawResponse MultipartUploads
+    {
+        get { return _multipartUploads.Value; }
     }
 
     /// <inheritdoc/>
@@ -394,6 +407,7 @@ public sealed class AutorenderClientWithRawResponse : IAutorenderClientWithRawRe
         _uploads = new(() => new UploadServiceWithRawResponse(this));
         _files = new(() => new FileServiceWithRawResponse(this));
         _folders = new(() => new FolderServiceWithRawResponse(this));
+        _multipartUploads = new(() => new MultipartUploadServiceWithRawResponse(this));
     }
 
     public AutorenderClientWithRawResponse(ClientOptions options)

@@ -8,22 +8,22 @@ public class FolderCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new FolderCreateParams { FolderName = "folder_name", Path = "path" };
+        var parameters = new FolderCreateParams { Name = "x", ParentFolderNo = "parent_folder_no" };
 
-        string expectedFolderName = "folder_name";
-        string expectedPath = "path";
+        string expectedName = "x";
+        string expectedParentFolderNo = "parent_folder_no";
 
-        Assert.Equal(expectedFolderName, parameters.FolderName);
-        Assert.Equal(expectedPath, parameters.Path);
+        Assert.Equal(expectedName, parameters.Name);
+        Assert.Equal(expectedParentFolderNo, parameters.ParentFolderNo);
     }
 
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new FolderCreateParams { FolderName = "folder_name" };
+        var parameters = new FolderCreateParams { Name = "x" };
 
-        Assert.Null(parameters.Path);
-        Assert.False(parameters.RawBodyData.ContainsKey("path"));
+        Assert.Null(parameters.ParentFolderNo);
+        Assert.False(parameters.RawBodyData.ContainsKey("parent_folder_no"));
     }
 
     [Fact]
@@ -31,20 +31,20 @@ public class FolderCreateParamsTest : TestBase
     {
         var parameters = new FolderCreateParams
         {
-            FolderName = "folder_name",
+            Name = "x",
 
             // Null should be interpreted as omitted for these properties
-            Path = null,
+            ParentFolderNo = null,
         };
 
-        Assert.Null(parameters.Path);
-        Assert.False(parameters.RawBodyData.ContainsKey("path"));
+        Assert.Null(parameters.ParentFolderNo);
+        Assert.False(parameters.RawBodyData.ContainsKey("parent_folder_no"));
     }
 
     [Fact]
     public void Url_Works()
     {
-        FolderCreateParams parameters = new() { FolderName = "folder_name" };
+        FolderCreateParams parameters = new() { Name = "x" };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
@@ -56,7 +56,7 @@ public class FolderCreateParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new FolderCreateParams { FolderName = "folder_name", Path = "path" };
+        var parameters = new FolderCreateParams { Name = "x", ParentFolderNo = "parent_folder_no" };
 
         FolderCreateParams copied = new(parameters);
 

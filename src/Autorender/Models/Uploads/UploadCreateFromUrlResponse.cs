@@ -47,6 +47,16 @@ public sealed record class UploadCreateFromUrlResponse : JsonModel
         init { this._rawData.Set("custom_id", value); }
     }
 
+    public required string Extension
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("extension");
+        }
+        init { this._rawData.Set("extension", value); }
+    }
+
     public required string FileNo
     {
         get
@@ -85,16 +95,6 @@ public sealed record class UploadCreateFromUrlResponse : JsonModel
             return this._rawData.GetNotNullStruct<bool>("is_duplicate");
         }
         init { this._rawData.Set("is_duplicate", value); }
-    }
-
-    public required bool IsPrivate
-    {
-        get
-        {
-            this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<bool>("is_private");
-        }
-        init { this._rawData.Set("is_private", value); }
     }
 
     public required IReadOnlyDictionary<string, JsonElement>? Metadata
@@ -169,6 +169,16 @@ public sealed record class UploadCreateFromUrlResponse : JsonModel
                 ImmutableArray.ToImmutableArray(value)
             );
         }
+    }
+
+    public required string Thumbnail
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("thumbnail");
+        }
+        init { this._rawData.Set("thumbnail", value); }
     }
 
     public required string UploadSource
@@ -247,29 +257,49 @@ public sealed record class UploadCreateFromUrlResponse : JsonModel
         }
     }
 
+    public bool? IsPrivate
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_private");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("is_private", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.ID;
         _ = this.CreatedAt;
         _ = this.CustomID;
+        _ = this.Extension;
         _ = this.FileNo;
         _ = this.FolderNo;
         _ = this.Height;
         _ = this.IsDuplicate;
-        _ = this.IsPrivate;
         _ = this.Metadata;
         _ = this.MimeType;
         _ = this.Name;
         _ = this.Path;
         _ = this.Size;
         _ = this.Tags;
+        _ = this.Thumbnail;
         _ = this.UploadSource;
         _ = this.Url;
         _ = this.Width;
         _ = this.WorkspaceID;
         _ = this.Format;
         _ = this.Hash;
+        _ = this.IsPrivate;
     }
 
     public UploadCreateFromUrlResponse() { }

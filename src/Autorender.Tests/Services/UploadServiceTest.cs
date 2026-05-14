@@ -24,26 +24,4 @@ public class UploadServiceTest : TestBase
         );
         response.Validate();
     }
-
-    [Fact]
-    public async Task GenerateToken_Works()
-    {
-        var response = await this.client.Uploads.GenerateToken(
-            new() { FileName = "file_name" },
-            TestContext.Current.CancellationToken
-        );
-        response.Validate();
-    }
-
-    [Fact]
-    public async Task UploadWithToken_Works()
-    {
-        var response = await this.client.Uploads.UploadWithToken(
-            "token",
-            Encoding.UTF8.GetBytes("Example data"),
-            new(),
-            TestContext.Current.CancellationToken
-        );
-        response.Validate();
-    }
 }

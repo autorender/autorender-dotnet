@@ -27,25 +27,25 @@ public record class FolderCreateParams : ParamsBase
     /// <summary>
     /// Folder name without slashes
     /// </summary>
-    public required string FolderName
+    public required string Name
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("folder_name");
+            return this._rawBodyData.GetNotNullClass<string>("name");
         }
-        init { this._rawBodyData.Set("folder_name", value); }
+        init { this._rawBodyData.Set("name", value); }
     }
 
     /// <summary>
-    /// Optional parent path, e.g. products/sku123
+    /// Parent folder number
     /// </summary>
-    public string? Path
+    public string? ParentFolderNo
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("path");
+            return this._rawBodyData.GetNullableClass<string>("parent_folder_no");
         }
         init
         {
@@ -54,7 +54,7 @@ public record class FolderCreateParams : ParamsBase
                 return;
             }
 
-            this._rawBodyData.Set("path", value);
+            this._rawBodyData.Set("parent_folder_no", value);
         }
     }
 

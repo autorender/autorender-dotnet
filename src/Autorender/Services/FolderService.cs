@@ -47,6 +47,18 @@ public sealed class FolderService : IFolderService
     }
 
     /// <inheritdoc/>
+    public async Task<FolderListResponse> List(
+        FolderListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.List(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
     public Task Delete(FolderDeleteParams parameters, CancellationToken cancellationToken = default)
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
@@ -128,6 +140,36 @@ public sealed class FolderServiceWithRawResponse : IFolderServiceWithRawResponse
                     folder.Validate();
                 }
                 return folder;
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<FolderListResponse>> List(
+        FolderListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        HttpRequest<FolderListParams> request = new()
+        {
+            Method = HttpMethod.Get,
+            Params = parameters,
+        };
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var folders = await response
+                    .Deserialize<FolderListResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    folders.Validate();
+                }
+                return folders;
             }
         );
     }

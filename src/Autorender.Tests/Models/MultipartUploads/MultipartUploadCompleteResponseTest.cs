@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Autorender.Core;
-using Autorender.Models.Uploads;
+using Autorender.Models.MultipartUploads;
 
-namespace Autorender.Tests.Models.Uploads;
+namespace Autorender.Tests.Models.MultipartUploads;
 
-public class UploadCreateFromUrlResponseTest : TestBase
+public class MultipartUploadCompleteResponseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -103,7 +103,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -133,7 +133,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UploadCreateFromUrlResponse>(
+        var deserialized = JsonSerializer.Deserialize<MultipartUploadCompleteResponse>(
             json,
             ModelBase.SerializerOptions
         );
@@ -144,7 +144,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -174,7 +174,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UploadCreateFromUrlResponse>(
+        var deserialized = JsonSerializer.Deserialize<MultipartUploadCompleteResponse>(
             element,
             ModelBase.SerializerOptions
         );
@@ -243,7 +243,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -278,7 +278,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -315,7 +315,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -347,7 +347,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -389,7 +389,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -426,7 +426,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new UploadCreateFromUrlResponse
+        var model = new MultipartUploadCompleteResponse
         {
             ID = "id_abc123",
             CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
@@ -455,7 +455,7 @@ public class UploadCreateFromUrlResponseTest : TestBase
             IsPrivate = false,
         };
 
-        UploadCreateFromUrlResponse copied = new(model);
+        MultipartUploadCompleteResponse copied = new(model);
 
         Assert.Equal(model, copied);
     }
