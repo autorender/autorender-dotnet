@@ -1,0 +1,32 @@
+# Changelog
+
+## 0.1.0 (2026-05-15)
+
+Full Changelog: [v0.0.1...v0.1.0](https://github.com/autorenderhq/autorender-dotnet/compare/v0.0.1...v0.1.0)
+
+### Features
+
+* **api:** api update ([5bfa059](https://github.com/autorenderhq/autorender-dotnet/commit/5bfa059e795eb4a292a7a22586088c80dceece7c))
+* **api:** api update ([1fbb67a](https://github.com/autorenderhq/autorender-dotnet/commit/1fbb67a9f05cb79b85859b7e028cc7552d0f60b2))
+* **api:** api update ([71b75de](https://github.com/autorenderhq/autorender-dotnet/commit/71b75de426317e1f08dd424f14cc19b72b7b1d29))
+* **api:** api update ([0481ca3](https://github.com/autorenderhq/autorender-dotnet/commit/0481ca3dd185aaa65d570d5b00533a39b1b2ea77))
+* **api:** api update ([06b57cd](https://github.com/autorenderhq/autorender-dotnet/commit/06b57cd0781d2d8b6f104532b2ab722aec7af8af))
+* **api:** api update ([c4b4f6e](https://github.com/autorenderhq/autorender-dotnet/commit/c4b4f6ef8713b359da5e3ab916d5f665896db671))
+* **api:** api update ([ef5d8c9](https://github.com/autorenderhq/autorender-dotnet/commit/ef5d8c991d125a3def4504bf780f6c7eaef9130c))
+* **api:** api update ([fb9c94f](https://github.com/autorenderhq/autorender-dotnet/commit/fb9c94f3b71f5b4c3153711a5ce56e00b758aff2))
+* **api:** api update ([93f94cd](https://github.com/autorenderhq/autorender-dotnet/commit/93f94cdbbe90863b1fa528f2ee600d2115d179fb))
+* **api:** api update ([7747d65](https://github.com/autorenderhq/autorender-dotnet/commit/7747d6540d65b80def8a12cb2d9b9a103564bfc3))
+* **api:** api update ([82bb11b](https://github.com/autorenderhq/autorender-dotnet/commit/82bb11bb4cac4b5bf62036ccdcc112460ffb5afc))
+* support setting headers via env ([578b2b8](https://github.com/autorenderhq/autorender-dotnet/commit/578b2b818f700cbf58c6c488590346ebc8d5fefb))
+
+
+### Bug Fixes
+
+* **internal:** disable default HttpClient timeout as we have our own ([9872d63](https://github.com/autorenderhq/autorender-dotnet/commit/9872d63313c79be242776e355841c0051e36ca96))
+
+
+### Chores
+
+* **examples:** add Docker + runnable examples for files, folders, multipart ([bbc87a6](https://github.com/autorenderhq/autorender-dotnet/commit/bbc87a63a34106b2449322221c3febf992617521))
+* remove examples and Dockerfile from main ([8428553](https://github.com/autorenderhq/autorender-dotnet/commit/8428553e12eaaeea2b899d2d2c6d5c77b2c0b050))
+* **tests:** bump steady to v0.22.1 ([3f88099](https://github.com/autorenderhq/autorender-dotnet/commit/3f88099f0adb9dd10279d3fc2f69b004996a3246))
