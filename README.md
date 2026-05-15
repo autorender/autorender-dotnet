@@ -8,9 +8,10 @@ The REST API documentation can be found on [autorender.mintlify.app](https://aut
 
 ## Installation
 
+Install the package from [NuGet](https://www.nuget.org/packages/Autorender):
+
 ```bash
-git clone git@github.com:autorenderhq/autorender-dotnet.git
-dotnet add reference autorender-dotnet/src/Autorender
+dotnet add package Autorender
 ```
 
 ## Requirements
