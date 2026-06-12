@@ -45,6 +45,26 @@ jobs:
         run: |
           git push production origin/main:refs/heads/stainless/release --force
 
+          # Overlay files that production owns (CHANGELOG.md, lock files) but stlc
+          # regeneration removed from staging — prevents delete-vs-modify conflicts in PR
+          OVERLAY_FILES=""
+          for f in CHANGELOG.md; do
+            if git ls-tree production/main -- "$f" | grep -q . && \
+               ! git ls-tree origin/main -- "$f" | grep -q .; then
+              OVERLAY_FILES="$OVERLAY_FILES $f"
+            fi
+          done
+          if [ -n "$OVERLAY_FILES" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git checkout -b stlc-patch-release origin/main
+            for f in $OVERLAY_FILES; do
+              git checkout production/main -- "$f"
+            done
+            git commit -m "chore: preserve production-managed files"
+            git push production HEAD:refs/heads/stainless/release --force
+          fi
+
       - name: Open or update the release PR on production
         if: steps.diff.outputs.synced == 'false'
         run: |
