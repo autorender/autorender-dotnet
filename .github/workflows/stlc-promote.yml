@@ -45,28 +45,27 @@ jobs:
         run: |
           git push production origin/main:refs/heads/stainless/release --force
 
-          # Overlay files that production owns (CHANGELOG.md, version files) so
-          # stlc regeneration never causes delete-vs-modify or stale-content conflicts
-          OVERLAY_FILES=""
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b stlc-patch-release origin/main
+
+          # Strip staging-only workflows — must not exist in production
+          git rm -f .github/workflows/stlc-promote.yml \
+                    .github/workflows/stlc-sync-from-production.yml 2>/dev/null || true
+
+          # Overlay files production owns so stlc regeneration never causes conflicts
           for f in CHANGELOG.md; do
             if git ls-tree production/main -- "$f" | grep -q .; then
               PROD_BLOB=$(git ls-tree production/main -- "$f" | awk '{print $3}')
-              STAGE_BLOB=$(git ls-tree origin/main -- "$f" | awk '{print $3}')
+              STAGE_BLOB=$(git ls-tree HEAD -- "$f" | awk '{print $3}')
               if [ "$PROD_BLOB" != "$STAGE_BLOB" ]; then
-                OVERLAY_FILES="$OVERLAY_FILES $f"
+                git checkout production/main -- "$f"
               fi
             fi
           done
-          if [ -n "$OVERLAY_FILES" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git checkout -b stlc-patch-release origin/main
-            for f in $OVERLAY_FILES; do
-              git checkout production/main -- "$f"
-            done
-            git commit -m "chore: preserve production-managed files"
-            git push production HEAD:refs/heads/stainless/release --force
-          fi
+
+          git commit -m "chore: strip internal workflows; preserve production-managed files" || true
+          git push production HEAD:refs/heads/stainless/release --force
 
       - name: Open or update the release PR on production
         if: steps.diff.outputs.synced == 'false'
