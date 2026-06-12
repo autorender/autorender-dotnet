@@ -2,8 +2,6 @@
 
 The Autorender C# SDK provides convenient access to the [Autorender REST API](https://autorender.mintlify.app/) from applications written in C#.
 
-It is generated with [Stainless](https://www.stainless.com/).
-
 The REST API documentation can be found on [autorender.mintlify.app](https://autorender.mintlify.app/).
 
 ## Installation
