@@ -45,13 +45,16 @@ jobs:
         run: |
           git push production origin/main:refs/heads/stainless/release --force
 
-          # Overlay files that production owns (CHANGELOG.md, lock files) but stlc
-          # regeneration removed from staging — prevents delete-vs-modify conflicts in PR
+          # Overlay files that production owns (CHANGELOG.md, version files) so
+          # stlc regeneration never causes delete-vs-modify or stale-content conflicts
           OVERLAY_FILES=""
           for f in CHANGELOG.md; do
-            if git ls-tree production/main -- "$f" | grep -q . && \
-               ! git ls-tree origin/main -- "$f" | grep -q .; then
-              OVERLAY_FILES="$OVERLAY_FILES $f"
+            if git ls-tree production/main -- "$f" | grep -q .; then
+              PROD_BLOB=$(git ls-tree production/main -- "$f" | awk '{print $3}')
+              STAGE_BLOB=$(git ls-tree origin/main -- "$f" | awk '{print $3}')
+              if [ "$PROD_BLOB" != "$STAGE_BLOB" ]; then
+                OVERLAY_FILES="$OVERLAY_FILES $f"
+              fi
             fi
           done
           if [ -n "$OVERLAY_FILES" ]; then
