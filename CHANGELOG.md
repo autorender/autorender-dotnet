@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.3.0](https://github.com/autorenderhq/autorender-dotnet/compare/v0.2.0...v0.3.0) (2026-06-12)
+
+
+### Features
+
+* **java:** enable maven publishing with release-please ([dd8c8ba](https://github.com/autorenderhq/autorender-dotnet/commit/dd8c8ba1ef28fc615aa21b9fe411bd18cec1ef67))
+* **ruby:** enable rubygems publishing with release-please ([78b3b02](https://github.com/autorenderhq/autorender-dotnet/commit/78b3b02b449a82d29ba91b25fba2b1b08a299a80))
+
+
+### Bug Fixes
+
+* preserve production-managed files in release branch ([d542c79](https://github.com/autorenderhq/autorender-dotnet/commit/d542c799238becd441e9ca5cf7c3118c66454b62))
+* strip internal workflows from production release branch ([9f5f9fb](https://github.com/autorenderhq/autorender-dotnet/commit/9f5f9fbaebef41c2a4a8ae28f53d94cada507ea2))
+* update promote workflow and add back-sync from production ([ef29114](https://github.com/autorenderhq/autorender-dotnet/commit/ef29114b8cc50185c758b62617dccea0561f362c))
+* use blob comparison in overlay; add language-specific version files ([46e9aaf](https://github.com/autorenderhq/autorender-dotnet/commit/46e9aaf7ad6abe2e0b52fd261df157a7f2220493))
+* use persist-credentials: false in sync workflow ([55a94cf](https://github.com/autorenderhq/autorender-dotnet/commit/55a94cf25a501b32f493c9f618967695a4fd31c4))
+
+
+### Chores
+
+* remove staging-only workflows from production ([95d09a4](https://github.com/autorenderhq/autorender-dotnet/commit/95d09a4e244f548ee5a1773523c4b7ce650ef9fe))
+* remove staging-only workflows from production ([cccf6f4](https://github.com/autorenderhq/autorender-dotnet/commit/cccf6f4d55a4daf318a48889533980b21c8dff2b))
+* strip internal workflows; preserve production-managed files ([b2d5cc8](https://github.com/autorenderhq/autorender-dotnet/commit/b2d5cc8a083207bc26d834b5e1c8494f1254c0e7))
+
+
+### Documentation
+
+* add auto-generated notice to CONTRIBUTING.md ([9bba1dd](https://github.com/autorenderhq/autorender-dotnet/commit/9bba1dd3a1e1dca1187294a885a9864b582ba175))
+
 ## [0.2.0](https://github.com/autorenderhq/autorender-dotnet/compare/v0.1.0...v0.2.0) (2026-05-25)
 
 
