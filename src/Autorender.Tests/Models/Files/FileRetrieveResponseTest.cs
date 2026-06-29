@@ -16,52 +16,52 @@ public class FileRetrieveResponseTest : TestBase
         {
             Data = new()
             {
-                ID = "id_abc123",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FileNo = "file_abc123",
-                FolderName = null,
-                FolderNo = null,
-                Format = "jpg",
-                Height = 1080,
+                ID = "id",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FileNo = "file_no",
+                FolderName = "folder_name",
+                FolderNo = "folder_no",
+                Format = "format",
+                Height = -9007199254740991,
                 Metadata = new Dictionary<string, JsonElement>()
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
-                MimeType = "image/jpeg",
-                Name = "example.jpg",
-                Path = "/example.jpg",
-                Size = 12345,
-                Source = "direct",
+                MimeType = "mime_type",
+                Name = "name",
+                Path = "path",
+                Size = -9007199254740991,
+                Source = "source",
                 Tags = ["string"],
-                UpdatedAt = null,
-                Url = "https://cdn.autorender.io/example.jpg",
-                Width = 1920,
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Url = "url",
+                Width = -9007199254740991,
             },
             Success = Success.True,
         };
 
         Data expectedData = new()
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = null,
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = null,
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
         ApiEnum<bool, Success> expectedSuccess = Success.True;
 
@@ -76,26 +76,26 @@ public class FileRetrieveResponseTest : TestBase
         {
             Data = new()
             {
-                ID = "id_abc123",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FileNo = "file_abc123",
-                FolderName = null,
-                FolderNo = null,
-                Format = "jpg",
-                Height = 1080,
+                ID = "id",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FileNo = "file_no",
+                FolderName = "folder_name",
+                FolderNo = "folder_no",
+                Format = "format",
+                Height = -9007199254740991,
                 Metadata = new Dictionary<string, JsonElement>()
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
-                MimeType = "image/jpeg",
-                Name = "example.jpg",
-                Path = "/example.jpg",
-                Size = 12345,
-                Source = "direct",
+                MimeType = "mime_type",
+                Name = "name",
+                Path = "path",
+                Size = -9007199254740991,
+                Source = "source",
                 Tags = ["string"],
-                UpdatedAt = null,
-                Url = "https://cdn.autorender.io/example.jpg",
-                Width = 1920,
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Url = "url",
+                Width = -9007199254740991,
             },
             Success = Success.True,
         };
@@ -116,26 +116,26 @@ public class FileRetrieveResponseTest : TestBase
         {
             Data = new()
             {
-                ID = "id_abc123",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FileNo = "file_abc123",
-                FolderName = null,
-                FolderNo = null,
-                Format = "jpg",
-                Height = 1080,
+                ID = "id",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FileNo = "file_no",
+                FolderName = "folder_name",
+                FolderNo = "folder_no",
+                Format = "format",
+                Height = -9007199254740991,
                 Metadata = new Dictionary<string, JsonElement>()
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
-                MimeType = "image/jpeg",
-                Name = "example.jpg",
-                Path = "/example.jpg",
-                Size = 12345,
-                Source = "direct",
+                MimeType = "mime_type",
+                Name = "name",
+                Path = "path",
+                Size = -9007199254740991,
+                Source = "source",
                 Tags = ["string"],
-                UpdatedAt = null,
-                Url = "https://cdn.autorender.io/example.jpg",
-                Width = 1920,
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Url = "url",
+                Width = -9007199254740991,
             },
             Success = Success.True,
         };
@@ -149,26 +149,26 @@ public class FileRetrieveResponseTest : TestBase
 
         Data expectedData = new()
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = null,
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = null,
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
         ApiEnum<bool, Success> expectedSuccess = Success.True;
 
@@ -183,26 +183,26 @@ public class FileRetrieveResponseTest : TestBase
         {
             Data = new()
             {
-                ID = "id_abc123",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FileNo = "file_abc123",
-                FolderName = null,
-                FolderNo = null,
-                Format = "jpg",
-                Height = 1080,
+                ID = "id",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FileNo = "file_no",
+                FolderName = "folder_name",
+                FolderNo = "folder_no",
+                Format = "format",
+                Height = -9007199254740991,
                 Metadata = new Dictionary<string, JsonElement>()
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
-                MimeType = "image/jpeg",
-                Name = "example.jpg",
-                Path = "/example.jpg",
-                Size = 12345,
-                Source = "direct",
+                MimeType = "mime_type",
+                Name = "name",
+                Path = "path",
+                Size = -9007199254740991,
+                Source = "source",
                 Tags = ["string"],
-                UpdatedAt = null,
-                Url = "https://cdn.autorender.io/example.jpg",
-                Width = 1920,
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Url = "url",
+                Width = -9007199254740991,
             },
             Success = Success.True,
         };
@@ -217,26 +217,26 @@ public class FileRetrieveResponseTest : TestBase
         {
             Data = new()
             {
-                ID = "id_abc123",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FileNo = "file_abc123",
-                FolderName = null,
-                FolderNo = null,
-                Format = "jpg",
-                Height = 1080,
+                ID = "id",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FileNo = "file_no",
+                FolderName = "folder_name",
+                FolderNo = "folder_no",
+                Format = "format",
+                Height = -9007199254740991,
                 Metadata = new Dictionary<string, JsonElement>()
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
-                MimeType = "image/jpeg",
-                Name = "example.jpg",
-                Path = "/example.jpg",
-                Size = 12345,
-                Source = "direct",
+                MimeType = "mime_type",
+                Name = "name",
+                Path = "path",
+                Size = -9007199254740991,
+                Source = "source",
                 Tags = ["string"],
-                UpdatedAt = null,
-                Url = "https://cdn.autorender.io/example.jpg",
-                Width = 1920,
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Url = "url",
+                Width = -9007199254740991,
             },
             Success = Success.True,
         };
@@ -254,51 +254,54 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = null,
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = null,
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
-        string expectedID = "id_abc123";
-        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedFileNo = "file_abc123";
-        string expectedFormat = "jpg";
-        long expectedHeight = 1080;
+        string expectedID = "id";
+        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedFileNo = "file_no";
+        string expectedFolderName = "folder_name";
+        string expectedFolderNo = "folder_no";
+        string expectedFormat = "format";
+        long expectedHeight = -9007199254740991;
         Dictionary<string, JsonElement> expectedMetadata = new()
         {
             { "foo", JsonSerializer.SerializeToElement("bar") },
         };
-        string expectedMimeType = "image/jpeg";
-        string expectedName = "example.jpg";
-        string expectedPath = "/example.jpg";
-        long expectedSize = 12345;
-        string expectedSource = "direct";
+        string expectedMimeType = "mime_type";
+        string expectedName = "name";
+        string expectedPath = "path";
+        long expectedSize = -9007199254740991;
+        string expectedSource = "source";
         List<string> expectedTags = ["string"];
-        string expectedUrl = "https://cdn.autorender.io/example.jpg";
-        long expectedWidth = 1920;
+        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedUrl = "url";
+        long expectedWidth = -9007199254740991;
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedFileNo, model.FileNo);
-        Assert.Null(model.FolderName);
-        Assert.Null(model.FolderNo);
+        Assert.Equal(expectedFolderName, model.FolderName);
+        Assert.Equal(expectedFolderNo, model.FolderNo);
         Assert.Equal(expectedFormat, model.Format);
         Assert.Equal(expectedHeight, model.Height);
         Assert.NotNull(model.Metadata);
@@ -319,7 +322,7 @@ public class DataTest : TestBase
         {
             Assert.Equal(expectedTags[i], model.Tags[i]);
         }
-        Assert.Null(model.UpdatedAt);
+        Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
         Assert.Equal(expectedUrl, model.Url);
         Assert.Equal(expectedWidth, model.Width);
     }
@@ -329,26 +332,26 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = null,
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = null,
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -362,55 +365,58 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = null,
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = null,
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Data>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        string expectedID = "id_abc123";
-        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedFileNo = "file_abc123";
-        string expectedFormat = "jpg";
-        long expectedHeight = 1080;
+        string expectedID = "id";
+        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedFileNo = "file_no";
+        string expectedFolderName = "folder_name";
+        string expectedFolderNo = "folder_no";
+        string expectedFormat = "format";
+        long expectedHeight = -9007199254740991;
         Dictionary<string, JsonElement> expectedMetadata = new()
         {
             { "foo", JsonSerializer.SerializeToElement("bar") },
         };
-        string expectedMimeType = "image/jpeg";
-        string expectedName = "example.jpg";
-        string expectedPath = "/example.jpg";
-        long expectedSize = 12345;
-        string expectedSource = "direct";
+        string expectedMimeType = "mime_type";
+        string expectedName = "name";
+        string expectedPath = "path";
+        long expectedSize = -9007199254740991;
+        string expectedSource = "source";
         List<string> expectedTags = ["string"];
-        string expectedUrl = "https://cdn.autorender.io/example.jpg";
-        long expectedWidth = 1920;
+        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedUrl = "url";
+        long expectedWidth = -9007199254740991;
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedFileNo, deserialized.FileNo);
-        Assert.Null(deserialized.FolderName);
-        Assert.Null(deserialized.FolderNo);
+        Assert.Equal(expectedFolderName, deserialized.FolderName);
+        Assert.Equal(expectedFolderNo, deserialized.FolderNo);
         Assert.Equal(expectedFormat, deserialized.Format);
         Assert.Equal(expectedHeight, deserialized.Height);
         Assert.NotNull(deserialized.Metadata);
@@ -431,7 +437,7 @@ public class DataTest : TestBase
         {
             Assert.Equal(expectedTags[i], deserialized.Tags[i]);
         }
-        Assert.Null(deserialized.UpdatedAt);
+        Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
         Assert.Equal(expectedUrl, deserialized.Url);
         Assert.Equal(expectedWidth, deserialized.Width);
     }
@@ -441,26 +447,26 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = null,
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = null,
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
         model.Validate();
@@ -471,26 +477,26 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = null,
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = null,
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
         Data copied = new(model);

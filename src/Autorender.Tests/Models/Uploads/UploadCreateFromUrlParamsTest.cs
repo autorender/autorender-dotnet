@@ -1,4 +1,6 @@
 using System;
+using System.Text.Json;
+using Autorender.Core;
 using Autorender.Models.Uploads;
 
 namespace Autorender.Tests.Models.Uploads;
@@ -16,7 +18,7 @@ public class UploadCreateFromUrlParamsTest : TestBase
             Folder = "folder",
             Metadata = "metadata",
             RandomPrefix = "random_prefix",
-            Tags = "tags",
+            Tags = new(["string"]),
             WebhookUrl = "https://example.com",
         };
 
@@ -26,7 +28,7 @@ public class UploadCreateFromUrlParamsTest : TestBase
         string expectedFolder = "folder";
         string expectedMetadata = "metadata";
         string expectedRandomPrefix = "random_prefix";
-        string expectedTags = "tags";
+        Tags expectedTags = new(["string"]);
         string expectedWebhookUrl = "https://example.com";
 
         Assert.Equal(expectedRemoteUrl, parameters.RemoteUrl);
@@ -116,12 +118,49 @@ public class UploadCreateFromUrlParamsTest : TestBase
             Folder = "folder",
             Metadata = "metadata",
             RandomPrefix = "random_prefix",
-            Tags = "tags",
+            Tags = new(["string"]),
             WebhookUrl = "https://example.com",
         };
 
         UploadCreateFromUrlParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
+    }
+}
+
+public class TagsTest : TestBase
+{
+    [Fact]
+    public void StringsValidationWorks()
+    {
+        Tags value = new(["string"]);
+        value.Validate();
+    }
+
+    [Fact]
+    public void StringValidationWorks()
+    {
+        Tags value = "string";
+        value.Validate();
+    }
+
+    [Fact]
+    public void StringsSerializationRoundtripWorks()
+    {
+        Tags value = new(["string"]);
+        string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Tags>(element, ModelBase.SerializerOptions);
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void StringSerializationRoundtripWorks()
+    {
+        Tags value = "string";
+        string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Tags>(element, ModelBase.SerializerOptions);
+
+        Assert.Equal(value, deserialized);
     }
 }

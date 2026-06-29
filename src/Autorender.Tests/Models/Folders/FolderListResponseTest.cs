@@ -17,13 +17,13 @@ public class FolderListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FolderNo = "folder_abc123",
-                    Name = "My Folder",
-                    ParentFolderNo = null,
-                    Path = "/My Folder",
-                    UpdatedAt = null,
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FolderNo = "folder_no",
+                    Name = "name",
+                    ParentFolderNo = "parent_folder_no",
+                    Path = "path",
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
         };
@@ -32,13 +32,13 @@ public class FolderListResponseTest : TestBase
         [
             new()
             {
-                ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FolderNo = "folder_abc123",
-                Name = "My Folder",
-                ParentFolderNo = null,
-                Path = "/My Folder",
-                UpdatedAt = null,
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FolderNo = "folder_no",
+                Name = "name",
+                ParentFolderNo = "parent_folder_no",
+                Path = "path",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
         ];
 
@@ -58,13 +58,13 @@ public class FolderListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FolderNo = "folder_abc123",
-                    Name = "My Folder",
-                    ParentFolderNo = null,
-                    Path = "/My Folder",
-                    UpdatedAt = null,
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FolderNo = "folder_no",
+                    Name = "name",
+                    ParentFolderNo = "parent_folder_no",
+                    Path = "path",
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
         };
@@ -87,13 +87,13 @@ public class FolderListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FolderNo = "folder_abc123",
-                    Name = "My Folder",
-                    ParentFolderNo = null,
-                    Path = "/My Folder",
-                    UpdatedAt = null,
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FolderNo = "folder_no",
+                    Name = "name",
+                    ParentFolderNo = "parent_folder_no",
+                    Path = "path",
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
         };
@@ -109,13 +109,13 @@ public class FolderListResponseTest : TestBase
         [
             new()
             {
-                ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FolderNo = "folder_abc123",
-                Name = "My Folder",
-                ParentFolderNo = null,
-                Path = "/My Folder",
-                UpdatedAt = null,
+                ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FolderNo = "folder_no",
+                Name = "name",
+                ParentFolderNo = "parent_folder_no",
+                Path = "path",
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
             },
         ];
 
@@ -135,13 +135,13 @@ public class FolderListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FolderNo = "folder_abc123",
-                    Name = "My Folder",
-                    ParentFolderNo = null,
-                    Path = "/My Folder",
-                    UpdatedAt = null,
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FolderNo = "folder_no",
+                    Name = "name",
+                    ParentFolderNo = "parent_folder_no",
+                    Path = "path",
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
         };
@@ -158,13 +158,13 @@ public class FolderListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FolderNo = "folder_abc123",
-                    Name = "My Folder",
-                    ParentFolderNo = null,
-                    Path = "/My Folder",
-                    UpdatedAt = null,
+                    ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FolderNo = "folder_no",
+                    Name = "name",
+                    ParentFolderNo = "parent_folder_no",
+                    Path = "path",
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
                 },
             ],
         };
@@ -182,27 +182,28 @@ public class FolderTest : TestBase
     {
         var model = new Folder
         {
-            ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FolderNo = "folder_abc123",
-            Name = "example.jpg",
-            ParentFolderNo = null,
-            Path = "/example.jpg",
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FolderNo = "folder_no",
+            Name = "name",
+            ParentFolderNo = "parent_folder_no",
+            Path = "path",
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
-        string expectedID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a";
-        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedFolderNo = "folder_abc123";
-        string expectedName = "example.jpg";
-        string expectedPath = "/example.jpg";
-        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedFolderNo = "folder_no";
+        string expectedName = "name";
+        string expectedParentFolderNo = "parent_folder_no";
+        string expectedPath = "path";
+        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedFolderNo, model.FolderNo);
         Assert.Equal(expectedName, model.Name);
-        Assert.Null(model.ParentFolderNo);
+        Assert.Equal(expectedParentFolderNo, model.ParentFolderNo);
         Assert.Equal(expectedPath, model.Path);
         Assert.Equal(expectedUpdatedAt, model.UpdatedAt);
     }
@@ -212,13 +213,13 @@ public class FolderTest : TestBase
     {
         var model = new Folder
         {
-            ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FolderNo = "folder_abc123",
-            Name = "example.jpg",
-            ParentFolderNo = null,
-            Path = "/example.jpg",
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FolderNo = "folder_no",
+            Name = "name",
+            ParentFolderNo = "parent_folder_no",
+            Path = "path",
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -232,31 +233,32 @@ public class FolderTest : TestBase
     {
         var model = new Folder
         {
-            ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FolderNo = "folder_abc123",
-            Name = "example.jpg",
-            ParentFolderNo = null,
-            Path = "/example.jpg",
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FolderNo = "folder_no",
+            Name = "name",
+            ParentFolderNo = "parent_folder_no",
+            Path = "path",
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Folder>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        string expectedID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a";
-        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedFolderNo = "folder_abc123";
-        string expectedName = "example.jpg";
-        string expectedPath = "/example.jpg";
-        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
+        string expectedID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
+        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedFolderNo = "folder_no";
+        string expectedName = "name";
+        string expectedParentFolderNo = "parent_folder_no";
+        string expectedPath = "path";
+        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedFolderNo, deserialized.FolderNo);
         Assert.Equal(expectedName, deserialized.Name);
-        Assert.Null(deserialized.ParentFolderNo);
+        Assert.Equal(expectedParentFolderNo, deserialized.ParentFolderNo);
         Assert.Equal(expectedPath, deserialized.Path);
         Assert.Equal(expectedUpdatedAt, deserialized.UpdatedAt);
     }
@@ -266,13 +268,13 @@ public class FolderTest : TestBase
     {
         var model = new Folder
         {
-            ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FolderNo = "folder_abc123",
-            Name = "example.jpg",
-            ParentFolderNo = null,
-            Path = "/example.jpg",
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FolderNo = "folder_no",
+            Name = "name",
+            ParentFolderNo = "parent_folder_no",
+            Path = "path",
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -283,13 +285,13 @@ public class FolderTest : TestBase
     {
         var model = new Folder
         {
-            ID = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FolderNo = "folder_abc123",
-            Name = "example.jpg",
-            ParentFolderNo = null,
-            Path = "/example.jpg",
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
+            ID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FolderNo = "folder_no",
+            Name = "name",
+            ParentFolderNo = "parent_folder_no",
+            Path = "path",
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         Folder copied = new(model);

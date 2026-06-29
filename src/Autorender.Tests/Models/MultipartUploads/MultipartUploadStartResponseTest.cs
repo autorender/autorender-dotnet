@@ -12,38 +12,38 @@ public class MultipartUploadStartResponseTest : TestBase
     {
         var model = new MultipartUploadStartResponse
         {
-            ExpireAt = 1704067200,
-            MinPartSize = 5242880,
-            PartSize = 5242880,
-            Parts = ["https://s3.amazonaws.com/bucket/part1?signed=true"],
+            ExpireAt = -9007199254740991,
+            MinPartSize = -9007199254740991,
+            PartSize = -9007199254740991,
+            Parts = ["string"],
             Policy = new()
             {
-                Folder = "/uploads",
-                Format = "jpg",
-                Size = 104857600,
+                Folder = "folder",
+                Format = "format",
+                Size = -9007199254740991,
                 Tags = ["string"],
             },
-            PublicKey = "pk_abc123",
-            SessionID = "sess_abc123",
-            Uuid = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            WorkspaceID = "ws_abc123",
+            PublicKey = "public_key",
+            SessionID = "session_id",
+            Uuid = "uuid",
+            WorkspaceID = "workspace_id",
         };
 
-        long expectedExpireAt = 1704067200;
-        long expectedMinPartSize = 5242880;
-        long expectedPartSize = 5242880;
-        List<string> expectedParts = ["https://s3.amazonaws.com/bucket/part1?signed=true"];
+        long expectedExpireAt = -9007199254740991;
+        long expectedMinPartSize = -9007199254740991;
+        long expectedPartSize = -9007199254740991;
+        List<string> expectedParts = ["string"];
         Policy expectedPolicy = new()
         {
-            Folder = "/uploads",
-            Format = "jpg",
-            Size = 104857600,
+            Folder = "folder",
+            Format = "format",
+            Size = -9007199254740991,
             Tags = ["string"],
         };
-        string expectedPublicKey = "pk_abc123";
-        string expectedSessionID = "sess_abc123";
-        string expectedUuid = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a";
-        string expectedWorkspaceID = "ws_abc123";
+        string expectedPublicKey = "public_key";
+        string expectedSessionID = "session_id";
+        string expectedUuid = "uuid";
+        string expectedWorkspaceID = "workspace_id";
 
         Assert.Equal(expectedExpireAt, model.ExpireAt);
         Assert.Equal(expectedMinPartSize, model.MinPartSize);
@@ -65,21 +65,21 @@ public class MultipartUploadStartResponseTest : TestBase
     {
         var model = new MultipartUploadStartResponse
         {
-            ExpireAt = 1704067200,
-            MinPartSize = 5242880,
-            PartSize = 5242880,
-            Parts = ["https://s3.amazonaws.com/bucket/part1?signed=true"],
+            ExpireAt = -9007199254740991,
+            MinPartSize = -9007199254740991,
+            PartSize = -9007199254740991,
+            Parts = ["string"],
             Policy = new()
             {
-                Folder = "/uploads",
-                Format = "jpg",
-                Size = 104857600,
+                Folder = "folder",
+                Format = "format",
+                Size = -9007199254740991,
                 Tags = ["string"],
             },
-            PublicKey = "pk_abc123",
-            SessionID = "sess_abc123",
-            Uuid = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            WorkspaceID = "ws_abc123",
+            PublicKey = "public_key",
+            SessionID = "session_id",
+            Uuid = "uuid",
+            WorkspaceID = "workspace_id",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -96,21 +96,21 @@ public class MultipartUploadStartResponseTest : TestBase
     {
         var model = new MultipartUploadStartResponse
         {
-            ExpireAt = 1704067200,
-            MinPartSize = 5242880,
-            PartSize = 5242880,
-            Parts = ["https://s3.amazonaws.com/bucket/part1?signed=true"],
+            ExpireAt = -9007199254740991,
+            MinPartSize = -9007199254740991,
+            PartSize = -9007199254740991,
+            Parts = ["string"],
             Policy = new()
             {
-                Folder = "/uploads",
-                Format = "jpg",
-                Size = 104857600,
+                Folder = "folder",
+                Format = "format",
+                Size = -9007199254740991,
                 Tags = ["string"],
             },
-            PublicKey = "pk_abc123",
-            SessionID = "sess_abc123",
-            Uuid = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            WorkspaceID = "ws_abc123",
+            PublicKey = "public_key",
+            SessionID = "session_id",
+            Uuid = "uuid",
+            WorkspaceID = "workspace_id",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -120,21 +120,21 @@ public class MultipartUploadStartResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        long expectedExpireAt = 1704067200;
-        long expectedMinPartSize = 5242880;
-        long expectedPartSize = 5242880;
-        List<string> expectedParts = ["https://s3.amazonaws.com/bucket/part1?signed=true"];
+        long expectedExpireAt = -9007199254740991;
+        long expectedMinPartSize = -9007199254740991;
+        long expectedPartSize = -9007199254740991;
+        List<string> expectedParts = ["string"];
         Policy expectedPolicy = new()
         {
-            Folder = "/uploads",
-            Format = "jpg",
-            Size = 104857600,
+            Folder = "folder",
+            Format = "format",
+            Size = -9007199254740991,
             Tags = ["string"],
         };
-        string expectedPublicKey = "pk_abc123";
-        string expectedSessionID = "sess_abc123";
-        string expectedUuid = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a";
-        string expectedWorkspaceID = "ws_abc123";
+        string expectedPublicKey = "public_key";
+        string expectedSessionID = "session_id";
+        string expectedUuid = "uuid";
+        string expectedWorkspaceID = "workspace_id";
 
         Assert.Equal(expectedExpireAt, deserialized.ExpireAt);
         Assert.Equal(expectedMinPartSize, deserialized.MinPartSize);
@@ -156,21 +156,21 @@ public class MultipartUploadStartResponseTest : TestBase
     {
         var model = new MultipartUploadStartResponse
         {
-            ExpireAt = 1704067200,
-            MinPartSize = 5242880,
-            PartSize = 5242880,
-            Parts = ["https://s3.amazonaws.com/bucket/part1?signed=true"],
+            ExpireAt = -9007199254740991,
+            MinPartSize = -9007199254740991,
+            PartSize = -9007199254740991,
+            Parts = ["string"],
             Policy = new()
             {
-                Folder = "/uploads",
-                Format = "jpg",
-                Size = 104857600,
+                Folder = "folder",
+                Format = "format",
+                Size = -9007199254740991,
                 Tags = ["string"],
             },
-            PublicKey = "pk_abc123",
-            SessionID = "sess_abc123",
-            Uuid = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            WorkspaceID = "ws_abc123",
+            PublicKey = "public_key",
+            SessionID = "session_id",
+            Uuid = "uuid",
+            WorkspaceID = "workspace_id",
         };
 
         model.Validate();
@@ -181,21 +181,21 @@ public class MultipartUploadStartResponseTest : TestBase
     {
         var model = new MultipartUploadStartResponse
         {
-            ExpireAt = 1704067200,
-            MinPartSize = 5242880,
-            PartSize = 5242880,
-            Parts = ["https://s3.amazonaws.com/bucket/part1?signed=true"],
+            ExpireAt = -9007199254740991,
+            MinPartSize = -9007199254740991,
+            PartSize = -9007199254740991,
+            Parts = ["string"],
             Policy = new()
             {
-                Folder = "/uploads",
-                Format = "jpg",
-                Size = 104857600,
+                Folder = "folder",
+                Format = "format",
+                Size = -9007199254740991,
                 Tags = ["string"],
             },
-            PublicKey = "pk_abc123",
-            SessionID = "sess_abc123",
-            Uuid = "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a",
-            WorkspaceID = "ws_abc123",
+            PublicKey = "public_key",
+            SessionID = "session_id",
+            Uuid = "uuid",
+            WorkspaceID = "workspace_id",
         };
 
         MultipartUploadStartResponse copied = new(model);
@@ -211,15 +211,15 @@ public class PolicyTest : TestBase
     {
         var model = new Policy
         {
-            Folder = "/uploads",
-            Format = "jpg",
-            Size = 104857600,
+            Folder = "folder",
+            Format = "format",
+            Size = -9007199254740991,
             Tags = ["string"],
         };
 
-        string expectedFolder = "/uploads";
-        string expectedFormat = "jpg";
-        long expectedSize = 104857600;
+        string expectedFolder = "folder";
+        string expectedFormat = "format";
+        long expectedSize = -9007199254740991;
         List<string> expectedTags = ["string"];
 
         Assert.Equal(expectedFolder, model.Folder);
@@ -237,9 +237,9 @@ public class PolicyTest : TestBase
     {
         var model = new Policy
         {
-            Folder = "/uploads",
-            Format = "jpg",
-            Size = 104857600,
+            Folder = "folder",
+            Format = "format",
+            Size = -9007199254740991,
             Tags = ["string"],
         };
 
@@ -254,9 +254,9 @@ public class PolicyTest : TestBase
     {
         var model = new Policy
         {
-            Folder = "/uploads",
-            Format = "jpg",
-            Size = 104857600,
+            Folder = "folder",
+            Format = "format",
+            Size = -9007199254740991,
             Tags = ["string"],
         };
 
@@ -264,9 +264,9 @@ public class PolicyTest : TestBase
         var deserialized = JsonSerializer.Deserialize<Policy>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        string expectedFolder = "/uploads";
-        string expectedFormat = "jpg";
-        long expectedSize = 104857600;
+        string expectedFolder = "folder";
+        string expectedFormat = "format";
+        long expectedSize = -9007199254740991;
         List<string> expectedTags = ["string"];
 
         Assert.Equal(expectedFolder, deserialized.Folder);
@@ -284,9 +284,9 @@ public class PolicyTest : TestBase
     {
         var model = new Policy
         {
-            Folder = "/uploads",
-            Format = "jpg",
-            Size = 104857600,
+            Folder = "folder",
+            Format = "format",
+            Size = -9007199254740991,
             Tags = ["string"],
         };
 
@@ -298,9 +298,9 @@ public class PolicyTest : TestBase
     {
         var model = new Policy
         {
-            Folder = "/uploads",
-            Format = "jpg",
-            Size = 104857600,
+            Folder = "folder",
+            Format = "format",
+            Size = -9007199254740991,
             Tags = ["string"],
         };
 

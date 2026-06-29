@@ -17,35 +17,35 @@ public class FileListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "id_abc123",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FileNo = "file_abc123",
-                    FolderName = null,
-                    FolderNo = null,
-                    Format = "jpg",
-                    Height = 1080,
+                    ID = "id",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FileNo = "file_no",
+                    FolderName = "folder_name",
+                    FolderNo = "folder_no",
+                    Format = "format",
+                    Height = -9007199254740991,
                     Metadata = new Dictionary<string, JsonElement>()
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
-                    MimeType = "image/jpeg",
-                    Name = "example.jpg",
-                    Path = "/example.jpg",
-                    Size = 12345,
-                    Source = "direct",
+                    MimeType = "mime_type",
+                    Name = "name",
+                    Path = "path",
+                    Size = -9007199254740991,
+                    Source = "source",
                     Tags = ["string"],
-                    UpdatedAt = null,
-                    Url = "https://cdn.autorender.io/example.jpg",
-                    Width = 1920,
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Url = "url",
+                    Width = -9007199254740991,
                 },
             ],
             Meta = new()
             {
-                HasNext = false,
-                HasPrev = false,
-                Limit = 20,
-                Page = 1,
-                Total = 100,
+                HasNext = true,
+                HasPrev = true,
+                Limit = -9007199254740991,
+                Page = -9007199254740991,
+                Total = -9007199254740991,
             },
         };
 
@@ -53,35 +53,35 @@ public class FileListResponseTest : TestBase
         [
             new()
             {
-                ID = "id_abc123",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FileNo = "file_abc123",
-                FolderName = null,
-                FolderNo = null,
-                Format = "jpg",
-                Height = 1080,
+                ID = "id",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FileNo = "file_no",
+                FolderName = "folder_name",
+                FolderNo = "folder_no",
+                Format = "format",
+                Height = -9007199254740991,
                 Metadata = new Dictionary<string, JsonElement>()
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
-                MimeType = "image/jpeg",
-                Name = "example.jpg",
-                Path = "/example.jpg",
-                Size = 12345,
-                Source = "direct",
+                MimeType = "mime_type",
+                Name = "name",
+                Path = "path",
+                Size = -9007199254740991,
+                Source = "source",
                 Tags = ["string"],
-                UpdatedAt = null,
-                Url = "https://cdn.autorender.io/example.jpg",
-                Width = 1920,
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Url = "url",
+                Width = -9007199254740991,
             },
         ];
         Meta expectedMeta = new()
         {
-            HasNext = false,
-            HasPrev = false,
-            Limit = 20,
-            Page = 1,
-            Total = 100,
+            HasNext = true,
+            HasPrev = true,
+            Limit = -9007199254740991,
+            Page = -9007199254740991,
+            Total = -9007199254740991,
         };
 
         Assert.Equal(expectedFiles.Count, model.Files.Count);
@@ -101,35 +101,35 @@ public class FileListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "id_abc123",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FileNo = "file_abc123",
-                    FolderName = null,
-                    FolderNo = null,
-                    Format = "jpg",
-                    Height = 1080,
+                    ID = "id",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FileNo = "file_no",
+                    FolderName = "folder_name",
+                    FolderNo = "folder_no",
+                    Format = "format",
+                    Height = -9007199254740991,
                     Metadata = new Dictionary<string, JsonElement>()
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
-                    MimeType = "image/jpeg",
-                    Name = "example.jpg",
-                    Path = "/example.jpg",
-                    Size = 12345,
-                    Source = "direct",
+                    MimeType = "mime_type",
+                    Name = "name",
+                    Path = "path",
+                    Size = -9007199254740991,
+                    Source = "source",
                     Tags = ["string"],
-                    UpdatedAt = null,
-                    Url = "https://cdn.autorender.io/example.jpg",
-                    Width = 1920,
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Url = "url",
+                    Width = -9007199254740991,
                 },
             ],
             Meta = new()
             {
-                HasNext = false,
-                HasPrev = false,
-                Limit = 20,
-                Page = 1,
-                Total = 100,
+                HasNext = true,
+                HasPrev = true,
+                Limit = -9007199254740991,
+                Page = -9007199254740991,
+                Total = -9007199254740991,
             },
         };
 
@@ -151,35 +151,35 @@ public class FileListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "id_abc123",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FileNo = "file_abc123",
-                    FolderName = null,
-                    FolderNo = null,
-                    Format = "jpg",
-                    Height = 1080,
+                    ID = "id",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FileNo = "file_no",
+                    FolderName = "folder_name",
+                    FolderNo = "folder_no",
+                    Format = "format",
+                    Height = -9007199254740991,
                     Metadata = new Dictionary<string, JsonElement>()
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
-                    MimeType = "image/jpeg",
-                    Name = "example.jpg",
-                    Path = "/example.jpg",
-                    Size = 12345,
-                    Source = "direct",
+                    MimeType = "mime_type",
+                    Name = "name",
+                    Path = "path",
+                    Size = -9007199254740991,
+                    Source = "source",
                     Tags = ["string"],
-                    UpdatedAt = null,
-                    Url = "https://cdn.autorender.io/example.jpg",
-                    Width = 1920,
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Url = "url",
+                    Width = -9007199254740991,
                 },
             ],
             Meta = new()
             {
-                HasNext = false,
-                HasPrev = false,
-                Limit = 20,
-                Page = 1,
-                Total = 100,
+                HasNext = true,
+                HasPrev = true,
+                Limit = -9007199254740991,
+                Page = -9007199254740991,
+                Total = -9007199254740991,
             },
         };
 
@@ -194,35 +194,35 @@ public class FileListResponseTest : TestBase
         [
             new()
             {
-                ID = "id_abc123",
-                CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                FileNo = "file_abc123",
-                FolderName = null,
-                FolderNo = null,
-                Format = "jpg",
-                Height = 1080,
+                ID = "id",
+                CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                FileNo = "file_no",
+                FolderName = "folder_name",
+                FolderNo = "folder_no",
+                Format = "format",
+                Height = -9007199254740991,
                 Metadata = new Dictionary<string, JsonElement>()
                 {
                     { "foo", JsonSerializer.SerializeToElement("bar") },
                 },
-                MimeType = "image/jpeg",
-                Name = "example.jpg",
-                Path = "/example.jpg",
-                Size = 12345,
-                Source = "direct",
+                MimeType = "mime_type",
+                Name = "name",
+                Path = "path",
+                Size = -9007199254740991,
+                Source = "source",
                 Tags = ["string"],
-                UpdatedAt = null,
-                Url = "https://cdn.autorender.io/example.jpg",
-                Width = 1920,
+                UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Url = "url",
+                Width = -9007199254740991,
             },
         ];
         Meta expectedMeta = new()
         {
-            HasNext = false,
-            HasPrev = false,
-            Limit = 20,
-            Page = 1,
-            Total = 100,
+            HasNext = true,
+            HasPrev = true,
+            Limit = -9007199254740991,
+            Page = -9007199254740991,
+            Total = -9007199254740991,
         };
 
         Assert.Equal(expectedFiles.Count, deserialized.Files.Count);
@@ -242,35 +242,35 @@ public class FileListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "id_abc123",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FileNo = "file_abc123",
-                    FolderName = null,
-                    FolderNo = null,
-                    Format = "jpg",
-                    Height = 1080,
+                    ID = "id",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FileNo = "file_no",
+                    FolderName = "folder_name",
+                    FolderNo = "folder_no",
+                    Format = "format",
+                    Height = -9007199254740991,
                     Metadata = new Dictionary<string, JsonElement>()
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
-                    MimeType = "image/jpeg",
-                    Name = "example.jpg",
-                    Path = "/example.jpg",
-                    Size = 12345,
-                    Source = "direct",
+                    MimeType = "mime_type",
+                    Name = "name",
+                    Path = "path",
+                    Size = -9007199254740991,
+                    Source = "source",
                     Tags = ["string"],
-                    UpdatedAt = null,
-                    Url = "https://cdn.autorender.io/example.jpg",
-                    Width = 1920,
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Url = "url",
+                    Width = -9007199254740991,
                 },
             ],
             Meta = new()
             {
-                HasNext = false,
-                HasPrev = false,
-                Limit = 20,
-                Page = 1,
-                Total = 100,
+                HasNext = true,
+                HasPrev = true,
+                Limit = -9007199254740991,
+                Page = -9007199254740991,
+                Total = -9007199254740991,
             },
         };
 
@@ -286,35 +286,35 @@ public class FileListResponseTest : TestBase
             [
                 new()
                 {
-                    ID = "id_abc123",
-                    CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-                    FileNo = "file_abc123",
-                    FolderName = null,
-                    FolderNo = null,
-                    Format = "jpg",
-                    Height = 1080,
+                    ID = "id",
+                    CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    FileNo = "file_no",
+                    FolderName = "folder_name",
+                    FolderNo = "folder_no",
+                    Format = "format",
+                    Height = -9007199254740991,
                     Metadata = new Dictionary<string, JsonElement>()
                     {
                         { "foo", JsonSerializer.SerializeToElement("bar") },
                     },
-                    MimeType = "image/jpeg",
-                    Name = "example.jpg",
-                    Path = "/example.jpg",
-                    Size = 12345,
-                    Source = "direct",
+                    MimeType = "mime_type",
+                    Name = "name",
+                    Path = "path",
+                    Size = -9007199254740991,
+                    Source = "source",
                     Tags = ["string"],
-                    UpdatedAt = null,
-                    Url = "https://cdn.autorender.io/example.jpg",
-                    Width = 1920,
+                    UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Url = "url",
+                    Width = -9007199254740991,
                 },
             ],
             Meta = new()
             {
-                HasNext = false,
-                HasPrev = false,
-                Limit = 20,
-                Page = 1,
-                Total = 100,
+                HasNext = true,
+                HasPrev = true,
+                Limit = -9007199254740991,
+                Page = -9007199254740991,
+                Total = -9007199254740991,
             },
         };
 
@@ -331,52 +331,53 @@ public class FileTest : TestBase
     {
         var model = new File
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = "folder_abc123",
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
-        string expectedID = "id_abc123";
-        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedFileNo = "file_abc123";
-        string expectedFolderNo = "folder_abc123";
-        string expectedFormat = "jpg";
-        long expectedHeight = 1080;
+        string expectedID = "id";
+        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedFileNo = "file_no";
+        string expectedFolderName = "folder_name";
+        string expectedFolderNo = "folder_no";
+        string expectedFormat = "format";
+        long expectedHeight = -9007199254740991;
         Dictionary<string, JsonElement> expectedMetadata = new()
         {
             { "foo", JsonSerializer.SerializeToElement("bar") },
         };
-        string expectedMimeType = "image/jpeg";
-        string expectedName = "example.jpg";
-        string expectedPath = "/example.jpg";
-        long expectedSize = 12345;
-        string expectedSource = "direct";
+        string expectedMimeType = "mime_type";
+        string expectedName = "name";
+        string expectedPath = "path";
+        long expectedSize = -9007199254740991;
+        string expectedSource = "source";
         List<string> expectedTags = ["string"];
-        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedUrl = "https://cdn.autorender.io/example.jpg";
-        long expectedWidth = 1920;
+        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedUrl = "url";
+        long expectedWidth = -9007199254740991;
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedFileNo, model.FileNo);
-        Assert.Null(model.FolderName);
+        Assert.Equal(expectedFolderName, model.FolderName);
         Assert.Equal(expectedFolderNo, model.FolderNo);
         Assert.Equal(expectedFormat, model.Format);
         Assert.Equal(expectedHeight, model.Height);
@@ -408,26 +409,26 @@ public class FileTest : TestBase
     {
         var model = new File
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = "folder_abc123",
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -441,56 +442,57 @@ public class FileTest : TestBase
     {
         var model = new File
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = "folder_abc123",
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<File>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        string expectedID = "id_abc123";
-        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedFileNo = "file_abc123";
-        string expectedFolderNo = "folder_abc123";
-        string expectedFormat = "jpg";
-        long expectedHeight = 1080;
+        string expectedID = "id";
+        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedFileNo = "file_no";
+        string expectedFolderName = "folder_name";
+        string expectedFolderNo = "folder_no";
+        string expectedFormat = "format";
+        long expectedHeight = -9007199254740991;
         Dictionary<string, JsonElement> expectedMetadata = new()
         {
             { "foo", JsonSerializer.SerializeToElement("bar") },
         };
-        string expectedMimeType = "image/jpeg";
-        string expectedName = "example.jpg";
-        string expectedPath = "/example.jpg";
-        long expectedSize = 12345;
-        string expectedSource = "direct";
+        string expectedMimeType = "mime_type";
+        string expectedName = "name";
+        string expectedPath = "path";
+        long expectedSize = -9007199254740991;
+        string expectedSource = "source";
         List<string> expectedTags = ["string"];
-        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedUrl = "https://cdn.autorender.io/example.jpg";
-        long expectedWidth = 1920;
+        DateTimeOffset expectedUpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedUrl = "url";
+        long expectedWidth = -9007199254740991;
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedFileNo, deserialized.FileNo);
-        Assert.Null(deserialized.FolderName);
+        Assert.Equal(expectedFolderName, deserialized.FolderName);
         Assert.Equal(expectedFolderNo, deserialized.FolderNo);
         Assert.Equal(expectedFormat, deserialized.Format);
         Assert.Equal(expectedHeight, deserialized.Height);
@@ -522,26 +524,26 @@ public class FileTest : TestBase
     {
         var model = new File
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = "folder_abc123",
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
         model.Validate();
@@ -552,26 +554,26 @@ public class FileTest : TestBase
     {
         var model = new File
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            FileNo = "file_abc123",
-            FolderName = null,
-            FolderNo = "folder_abc123",
-            Format = "jpg",
-            Height = 1080,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            FileNo = "file_no",
+            FolderName = "folder_name",
+            FolderNo = "folder_no",
+            Format = "format",
+            Height = -9007199254740991,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
-            Source = "direct",
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
+            Source = "source",
             Tags = ["string"],
-            UpdatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
+            UpdatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Url = "url",
+            Width = -9007199254740991,
         };
 
         File copied = new(model);
@@ -587,18 +589,18 @@ public class MetaTest : TestBase
     {
         var model = new Meta
         {
-            HasNext = false,
-            HasPrev = false,
-            Limit = 20,
-            Page = 1,
-            Total = 100,
+            HasNext = true,
+            HasPrev = true,
+            Limit = -9007199254740991,
+            Page = -9007199254740991,
+            Total = -9007199254740991,
         };
 
-        bool expectedHasNext = false;
-        bool expectedHasPrev = false;
-        long expectedLimit = 20;
-        long expectedPage = 1;
-        long expectedTotal = 100;
+        bool expectedHasNext = true;
+        bool expectedHasPrev = true;
+        long expectedLimit = -9007199254740991;
+        long expectedPage = -9007199254740991;
+        long expectedTotal = -9007199254740991;
 
         Assert.Equal(expectedHasNext, model.HasNext);
         Assert.Equal(expectedHasPrev, model.HasPrev);
@@ -612,11 +614,11 @@ public class MetaTest : TestBase
     {
         var model = new Meta
         {
-            HasNext = false,
-            HasPrev = false,
-            Limit = 20,
-            Page = 1,
-            Total = 100,
+            HasNext = true,
+            HasPrev = true,
+            Limit = -9007199254740991,
+            Page = -9007199254740991,
+            Total = -9007199254740991,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -630,22 +632,22 @@ public class MetaTest : TestBase
     {
         var model = new Meta
         {
-            HasNext = false,
-            HasPrev = false,
-            Limit = 20,
-            Page = 1,
-            Total = 100,
+            HasNext = true,
+            HasPrev = true,
+            Limit = -9007199254740991,
+            Page = -9007199254740991,
+            Total = -9007199254740991,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Meta>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        bool expectedHasNext = false;
-        bool expectedHasPrev = false;
-        long expectedLimit = 20;
-        long expectedPage = 1;
-        long expectedTotal = 100;
+        bool expectedHasNext = true;
+        bool expectedHasPrev = true;
+        long expectedLimit = -9007199254740991;
+        long expectedPage = -9007199254740991;
+        long expectedTotal = -9007199254740991;
 
         Assert.Equal(expectedHasNext, deserialized.HasNext);
         Assert.Equal(expectedHasPrev, deserialized.HasPrev);
@@ -659,11 +661,11 @@ public class MetaTest : TestBase
     {
         var model = new Meta
         {
-            HasNext = false,
-            HasPrev = false,
-            Limit = 20,
-            Page = 1,
-            Total = 100,
+            HasNext = true,
+            HasPrev = true,
+            Limit = -9007199254740991,
+            Page = -9007199254740991,
+            Total = -9007199254740991,
         };
 
         model.Validate();
@@ -674,11 +676,11 @@ public class MetaTest : TestBase
     {
         var model = new Meta
         {
-            HasNext = false,
-            HasPrev = false,
-            Limit = 20,
-            Page = 1,
-            Total = 100,
+            HasNext = true,
+            HasPrev = true,
+            Limit = -9007199254740991,
+            Page = -9007199254740991,
+            Total = -9007199254740991,
         };
 
         Meta copied = new(model);

@@ -13,61 +13,62 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
-            Format = "jpg",
-            Hash = "abc123def456",
-            IsPrivate = false,
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
+            Format = "format",
+            Hash = "hash",
+            IsPrivate = true,
         };
 
-        string expectedID = "id_abc123";
-        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedExtension = "jpg";
-        string expectedFileNo = "file_abc123";
-        string expectedFolderNo = "folder_abc123";
-        long expectedHeight = 1080;
-        bool expectedIsDuplicate = false;
+        string expectedID = "id";
+        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedCustomID = "custom_id";
+        string expectedExtension = "extension";
+        string expectedFileNo = "file_no";
+        string expectedFolderNo = "folder_no";
+        long expectedHeight = -9007199254740991;
+        bool expectedIsDuplicate = true;
         Dictionary<string, JsonElement> expectedMetadata = new()
         {
             { "foo", JsonSerializer.SerializeToElement("bar") },
         };
-        string expectedMimeType = "image/jpeg";
-        string expectedName = "example.jpg";
-        string expectedPath = "/example.jpg";
-        long expectedSize = 12345;
+        string expectedMimeType = "mime_type";
+        string expectedName = "name";
+        string expectedPath = "path";
+        long expectedSize = -9007199254740991;
         List<string> expectedTags = ["string"];
-        string expectedThumbnail = "https://cdn.autorender.io/thumb.jpg";
-        string expectedUploadSource = "direct";
-        string expectedUrl = "https://cdn.autorender.io/example.jpg";
-        long expectedWidth = 1920;
-        string expectedWorkspaceID = "ws_abc123";
-        string expectedFormat = "jpg";
-        string expectedHash = "abc123def456";
-        bool expectedIsPrivate = false;
+        string expectedThumbnail = "thumbnail";
+        string expectedUploadSource = "upload_source";
+        string expectedUrl = "url";
+        long expectedWidth = -9007199254740991;
+        string expectedWorkspaceID = "workspace_id";
+        string expectedFormat = "format";
+        string expectedHash = "hash";
+        bool expectedIsPrivate = true;
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
-        Assert.Null(model.CustomID);
+        Assert.Equal(expectedCustomID, model.CustomID);
         Assert.Equal(expectedExtension, model.Extension);
         Assert.Equal(expectedFileNo, model.FileNo);
         Assert.Equal(expectedFolderNo, model.FolderNo);
@@ -105,31 +106,31 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
-            Format = "jpg",
-            Hash = "abc123def456",
-            IsPrivate = false,
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
+            Format = "format",
+            Hash = "hash",
+            IsPrivate = true,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -146,31 +147,31 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
-            Format = "jpg",
-            Hash = "abc123def456",
-            IsPrivate = false,
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
+            Format = "format",
+            Hash = "hash",
+            IsPrivate = true,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -180,34 +181,35 @@ public class MultipartUploadCompleteResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        string expectedID = "id_abc123";
-        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z");
-        string expectedExtension = "jpg";
-        string expectedFileNo = "file_abc123";
-        string expectedFolderNo = "folder_abc123";
-        long expectedHeight = 1080;
-        bool expectedIsDuplicate = false;
+        string expectedID = "id";
+        DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        string expectedCustomID = "custom_id";
+        string expectedExtension = "extension";
+        string expectedFileNo = "file_no";
+        string expectedFolderNo = "folder_no";
+        long expectedHeight = -9007199254740991;
+        bool expectedIsDuplicate = true;
         Dictionary<string, JsonElement> expectedMetadata = new()
         {
             { "foo", JsonSerializer.SerializeToElement("bar") },
         };
-        string expectedMimeType = "image/jpeg";
-        string expectedName = "example.jpg";
-        string expectedPath = "/example.jpg";
-        long expectedSize = 12345;
+        string expectedMimeType = "mime_type";
+        string expectedName = "name";
+        string expectedPath = "path";
+        long expectedSize = -9007199254740991;
         List<string> expectedTags = ["string"];
-        string expectedThumbnail = "https://cdn.autorender.io/thumb.jpg";
-        string expectedUploadSource = "direct";
-        string expectedUrl = "https://cdn.autorender.io/example.jpg";
-        long expectedWidth = 1920;
-        string expectedWorkspaceID = "ws_abc123";
-        string expectedFormat = "jpg";
-        string expectedHash = "abc123def456";
-        bool expectedIsPrivate = false;
+        string expectedThumbnail = "thumbnail";
+        string expectedUploadSource = "upload_source";
+        string expectedUrl = "url";
+        long expectedWidth = -9007199254740991;
+        string expectedWorkspaceID = "workspace_id";
+        string expectedFormat = "format";
+        string expectedHash = "hash";
+        bool expectedIsPrivate = true;
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
-        Assert.Null(deserialized.CustomID);
+        Assert.Equal(expectedCustomID, deserialized.CustomID);
         Assert.Equal(expectedExtension, deserialized.Extension);
         Assert.Equal(expectedFileNo, deserialized.FileNo);
         Assert.Equal(expectedFolderNo, deserialized.FolderNo);
@@ -245,31 +247,31 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
-            Format = "jpg",
-            Hash = "abc123def456",
-            IsPrivate = false,
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
+            Format = "format",
+            Hash = "hash",
+            IsPrivate = true,
         };
 
         model.Validate();
@@ -280,28 +282,28 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
         };
 
         Assert.Null(model.Format);
@@ -317,28 +319,28 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
         };
 
         model.Validate();
@@ -349,28 +351,28 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
 
             // Null should be interpreted as omitted for these properties
             Format = null,
@@ -391,28 +393,28 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
 
             // Null should be interpreted as omitted for these properties
             Format = null,
@@ -428,31 +430,31 @@ public class MultipartUploadCompleteResponseTest : TestBase
     {
         var model = new MultipartUploadCompleteResponse
         {
-            ID = "id_abc123",
-            CreatedAt = DateTimeOffset.Parse("2024-01-01T00:00:00Z"),
-            CustomID = null,
-            Extension = "jpg",
-            FileNo = "file_abc123",
-            FolderNo = "folder_abc123",
-            Height = 1080,
-            IsDuplicate = false,
+            ID = "id",
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            CustomID = "custom_id",
+            Extension = "extension",
+            FileNo = "file_no",
+            FolderNo = "folder_no",
+            Height = -9007199254740991,
+            IsDuplicate = true,
             Metadata = new Dictionary<string, JsonElement>()
             {
                 { "foo", JsonSerializer.SerializeToElement("bar") },
             },
-            MimeType = "image/jpeg",
-            Name = "example.jpg",
-            Path = "/example.jpg",
-            Size = 12345,
+            MimeType = "mime_type",
+            Name = "name",
+            Path = "path",
+            Size = -9007199254740991,
             Tags = ["string"],
-            Thumbnail = "https://cdn.autorender.io/thumb.jpg",
-            UploadSource = "direct",
-            Url = "https://cdn.autorender.io/example.jpg",
-            Width = 1920,
-            WorkspaceID = "ws_abc123",
-            Format = "jpg",
-            Hash = "abc123def456",
-            IsPrivate = false,
+            Thumbnail = "thumbnail",
+            UploadSource = "upload_source",
+            Url = "url",
+            Width = -9007199254740991,
+            WorkspaceID = "workspace_id",
+            Format = "format",
+            Hash = "hash",
+            IsPrivate = true,
         };
 
         MultipartUploadCompleteResponse copied = new(model);
