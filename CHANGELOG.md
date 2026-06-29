@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/autorenderhq/autorender-dotnet/compare/v0.3.0...v0.3.1) (2026-06-29)
+
+
+### Chores
+
+* remove Stainless attribution from README and SECURITY ([4449cc3](https://github.com/autorenderhq/autorender-dotnet/commit/4449cc37f345f626a30f9c5872c5ac02ed66bd94))
+* strip internal workflows; preserve production-managed files ([6d065e0](https://github.com/autorenderhq/autorender-dotnet/commit/6d065e02e0d802eaf358c5b36b87bd655e266e1a))
+
 ## [0.3.0](https://github.com/autorenderhq/autorender-dotnet/compare/v0.2.0...v0.3.0) (2026-06-12)
 
 
