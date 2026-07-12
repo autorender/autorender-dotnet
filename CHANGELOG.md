@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/autorender/autorender-dotnet/compare/v0.3.1...v0.3.2) (2026-07-12)
+
+
+### Chores
+
+* rename autorenderhq -&gt; autorender references (GitHub org rename) ([#10](https://github.com/autorender/autorender-dotnet/issues/10)) ([47849c7](https://github.com/autorender/autorender-dotnet/commit/47849c7c5d1d659ab298d4371d9b527abcbb22e9))
+
 ## [0.3.1](https://github.com/autorender/autorender-dotnet/compare/v0.3.0...v0.3.1) (2026-06-29)
 
 
