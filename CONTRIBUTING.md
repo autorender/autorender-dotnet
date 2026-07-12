@@ -3,7 +3,7 @@
 > **Note:** This SDK is automatically generated from the Autorender API specification.
 > Code pull requests are not accepted — changes to generated code will be overwritten on the next generation cycle.
 >
-> **Bug reports and feature requests are welcome** — please [open an issue](https://github.com/autorenderhq/autorender-dotnet/issues).
+> **Bug reports and feature requests are welcome** — please [open an issue](https://github.com/autorender/autorender-dotnet/issues).
 
 ---
 
