@@ -12,9 +12,9 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    if: github.repository == 'autorenderhq/autorender-dotnet-staging'
+    if: github.repository == 'autorender/autorender-dotnet-staging'
     env:
-      PRODUCTION_REPO: autorenderhq/autorender-dotnet
+      PRODUCTION_REPO: autorender/autorender-dotnet
     steps:
       - name: Check out staging
         uses: actions/checkout@v4

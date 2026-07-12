@@ -11,9 +11,9 @@ permissions:
 jobs:
   promote:
     runs-on: ubuntu-latest
-    if: github.repository == 'autorenderhq/autorender-dotnet-staging'
+    if: github.repository == 'autorender/autorender-dotnet-staging'
     env:
-      PRODUCTION_REPO: autorenderhq/autorender-dotnet
+      PRODUCTION_REPO: autorender/autorender-dotnet
       GH_TOKEN: ${{ secrets.PRODUCTION_REPO_TOKEN }}
     steps:
       - name: Check out staging
